@@ -1,1 +1,2 @@
 cli_without_shebang.patch
+npm_without_shebang.patch

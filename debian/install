@@ -1,4 +1,5 @@
 lib usr/share/npm
+bin usr/share/npm
 cli.js usr/share/npm
 npm.js usr/share/npm
 man1 usr/share/npm

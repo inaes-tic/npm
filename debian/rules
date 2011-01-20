@@ -20,6 +20,6 @@ binary-install/npm::
 		if [ "$$lFile" != "npm.1" ]; then mv "$$i" "$$lDir/npm-$$lFile"; fi; \
 	done
 	# fix permissions
-	chmod a-x debian/npm/usr/share/npm/npm.js
+	chmod a-x debian/npm/usr/share/npm/bin/npm.js
 	chmod a-x debian/npm/usr/share/npm/cli.js
 	chmod a-x debian/npm/usr/share/npm/lib/utils/which.js
