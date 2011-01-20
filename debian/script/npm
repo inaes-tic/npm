@@ -12,4 +12,4 @@ else
 fi
 
 # run it
-nodejs /usr/share/npm/npm.js $@
+node /usr/share/npm/cli.js $@

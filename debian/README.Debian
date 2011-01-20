@@ -8,28 +8,6 @@ Do not use /usr/share/npm/cli.js directly, especially as root:
 it can break your npm installation, or worse.
 
 
-node renamed to nodejs
-----------------------
-
-Upstream binary "node" has been renamed to avoid conflicts
-with "node" package, which provides /usr/sbin/node binary.
-See discussions at [0] and [1] for more information about this.
-
-Since `npm install <module>" may need node or node-waf, the npm
-debian package has its own links to nodejs and nodejs-waf, in
-/usr/lib/npm/bin/node and /usr/lib/npm/bin/node-waf.
-It is NOT needed to add those links in the PATH.
-
-Should the system admin wish to have node and node-waf in the PATH,
-it is advised to create appropriate links in /usr/local/bin.
-A non-privileged user can create them in its ~/bin dir.
-
-[0]
-http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=597571
-[1]
-http://lists.debian.org/debian-devel/2010/09/msg00460.html
-
-
 using npm as root
 -----------------
 
@@ -40,7 +18,7 @@ Modules go to /usr/local/lib/nodejs
 Executables go to /usr/local/bin
 Documentation go to /usr/local/share/man
 
-Installed modules must be on nodejs path before calling it :
+Installed modules must be on node path before calling it :
 export NODE_PATH=/usr/local/lib/nodejs
 
 
