@@ -1,0 +1,67 @@
+npm for Debian
+==============
+
+npm is invoked through /usr/bin/npm,
+ensuring install paths follow debian policy.
+
+Do not use /usr/share/npm/cli.js directly, especially as root:
+it can break your npm installation, or worse.
+
+
+node renamed to nodejs
+----------------------
+
+Upstream binary "node" has been renamed to avoid conflicts
+with "node" package, which provides /usr/sbin/node binary.
+See discussions at [0] and [1] for more information about this.
+
+Since `npm install <module>" may need node or node-waf, the npm
+debian package has its own links to nodejs and nodejs-waf, in
+/usr/lib/npm/bin/node and /usr/lib/npm/bin/node-waf.
+It is NOT needed to add those links in the PATH.
+
+Should the system admin wish to have node and node-waf in the PATH,
+it is advised to create appropriate links in /usr/local/bin.
+A non-privileged user can create them in its ~/bin dir.
+
+[0]
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=597571
+[1]
+http://lists.debian.org/debian-devel/2010/09/msg00460.html
+
+
+using npm as root
+-----------------
+
+/etc/npm/rootrc configures the default install paths
+when calling npm as root :
+
+Modules go to /usr/local/lib/nodejs
+Executables go to /usr/local/bin
+Documentation go to /usr/local/share/man
+
+Installed modules must be on nodejs path before calling it :
+export NODE_PATH=/usr/local/lib/nodejs
+
+
+using npm as non-root
+---------------------
+
+/etc/npm/userrc configures the default install paths
+when calling npm as a non-root user :
+
+Modules go to ~/.node_libraries
+Executables go to ~/bin
+Documentation is not installed
+
+~/.node_libraries is already on the NODE_PATH.
+
+
+do not confuse with /usr/lib/nodejs
+-----------------------------------
+
+/usr/lib/nodejs directory is reserved for modules that are provided by a
+debian package.
+
+
+ -- Jérémy Lal <kapouer@melix.org>  Sat, 25 Sep 2010 16:21:03 +0200

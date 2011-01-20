@@ -1,0 +1,5 @@
+npm (0.2.15-1) unstable; urgency=low
+
+  * Initial release. (Closes: #587525)
+
+ -- Jérémy Lal <kapouer@melix.org>  Wed, 29 Sep 2010 10:43:28 +0200

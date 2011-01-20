@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+install/npm::
+	dh_bash-completion
+
+binary-install/npm::
+	# fix manpages file names : prepend npm- except for npm.1, link installed man pages to /usr/share/npm/man
+	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.1`; \
+	for i in $$fManpages; do \
+		lDir=`dirname "$$i"`; \
+		lFile=`basename "$$i"`; \
+		lManDir=`basename "$$lDir"`; \
+		lRenamed="$$lFile"; \
+		if [ "$$lFile" != "npm.1" ]; then mv "$$i" "$$lDir/npm-$$lFile"; fi; \
+	done
+	# fix permissions
+	chmod a+x debian/npm/usr/bin/npm
+	chmod a-x debian/npm/usr/share/npm/npm.js
