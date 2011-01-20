@@ -22,3 +22,4 @@ binary-install/npm::
 	# fix permissions
 	chmod a+x debian/npm/usr/bin/npm
 	chmod a-x debian/npm/usr/share/npm/npm.js
+	chmod a-x debian/npm/usr/share/npm/lib/utils/which.js
