@@ -18,14 +18,18 @@ install/npm::
 	dh_bash-completion
 
 binary-install/npm::
-	# fix manpages file names : prepend npm- except for npm.1
+	# fix manpages file names : prepend npm- except for npm.1, and link manpages from npm manroot to the ones in /usr/share/man
 	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.1`; \
 	for i in $$fManpages; do \
 		lDir=`dirname "$$i"`; \
 		lFile=`basename "$$i"`; \
 		lManDir=`basename "$$lDir"`; \
 		lRenamed="$$lFile"; \
-		if [ "$$lFile" != "npm.1" ]; then mv "$$i" "$$lDir/npm-$$lFile"; fi; \
+		if [ "$$lFile" != "npm.1" ]; then \
+			lRenamed="npm-$$lFile"; \
+			mv "$$i" "$$lDir/$$lRenamed"; \
+		fi; \
+		ln -s "../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man1/$$lFile.gz"; \
 	done
 	# fix permissions
 	chmod a-x debian/npm/usr/share/npm/bin/npm.js

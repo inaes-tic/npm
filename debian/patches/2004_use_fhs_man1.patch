@@ -5,25 +5,25 @@ Last-Update: 2011-01-23
 ---
 --- a/lib/help.js
 +++ b/lib/help.js
-@@ -32,16 +32,17 @@
+@@ -32,7 +32,7 @@
        npm.config.set("loglevel", "silent")
        return output.write(npm.config.get("outfd"), npm.commands[section].usage, cb)
      }
 -    var section_path = path.join(__dirname, "../man1/"+section+".1")
-+    if (section != "npm") section = "npm-" + section
-+    var section_path = "/usr/share/man/man1/"+section+".1.gz"
++    var section_path = path.join(__dirname, "../man1/"+section+".1.gz")
      return fs.stat
        ( section_path
        , function (e, o) {
-           if (e) return cb(new Error("Help section not found: "+section))
-           // function exec (cmd, args, env, takeOver, cb) {
--          var manpath = path.join(__dirname, "..")
--            , env = {}
-+          // var manpath = path.join(__dirname, "..")
-+          var env = {}
-           Object.keys(process.env).forEach(function (i) { env[i] = process.env[i] })
--          env.MANPATH = manpath
-+          // env.MANPATH = manpath
-           var viewer = npm.config.get("viewer")
-           switch (viewer) {
-             case "woman":
+@@ -97,9 +97,9 @@
+ function getSections(cb) {
+   fs.readdir(path.join(__dirname, "../man1/"), function (er, files) {
+     if (er) return cb(er)
+-    var sectionList = files.concat("help.1")
+-      .filter(function (s) { return s.match(/\.1$/) })
+-      .map(function (s) { return s.replace(/\.1$/, '')})
++    var sectionList = files.concat("help.1.gz")
++      .filter(function (s) { return s.match(/\.1\.gz$/) })
++      .map(function (s) { return s.replace(/\.1\.gz$/, '')})
+     cb(null, sectionList)
+   })
+ }
