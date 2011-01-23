@@ -18,7 +18,7 @@ install/npm::
 	dh_bash-completion
 
 binary-install/npm::
-	# fix manpages file names : prepend npm- except for npm.1, link installed man pages to /usr/share/npm/man
+	# fix manpages file names : prepend npm- except for npm.1
 	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.1`; \
 	for i in $$fManpages; do \
 		lDir=`dirname "$$i"`; \
