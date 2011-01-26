@@ -4,7 +4,6 @@ Priority: extra
 Maintainer: Jérémy Lal <kapouer@melix.org>
 Uploaders: Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@,
- debhelper (>= 7.0.50~),
  bash-completion
 Standards-Version: 3.9.1
 Homepage: http://github.com/isaacs/npm
