@@ -1,5 +1,0 @@
---- a/cli.js
-+++ b/cli.js
-@@ -1,2 +1 @@
--#!/usr/bin/env node
- require("./bin/npm.js")
