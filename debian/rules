@@ -17,8 +17,9 @@ DEB_UPSTREAM_WGET_OPTS += --no-check-certificate
 install/npm::
 	dh_bash-completion
 
-binary-install/npm::
-	# fix manpages file names : prepend npm- except for npm.1, and link manpages from npm manroot to the ones in /usr/share/man
+# fix manpages file names : prepend npm- except for npm.1, and link manpages from npm manroot to the ones in /usr/share/man
+# also fix permissions
+binary-post-install/npm::
 	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.1`; \
 	for i in $$fManpages; do \
 		lDir=`dirname "$$i"`; \
@@ -31,7 +32,6 @@ binary-install/npm::
 		fi; \
 		ln -s "../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man1/$$lFile.gz"; \
 	done
-	# fix permissions
 	chmod a-x debian/npm/usr/share/npm/bin/npm.js
 	chmod a-x debian/npm/usr/share/npm/cli.js
 	chmod a-x debian/npm/usr/share/npm/lib/utils/which.js

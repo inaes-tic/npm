@@ -45,6 +45,8 @@ var commandCache = {}
               , "rb" : "rebuild"
               , "bn" : "bundle"
               , "list" : "ls"
+              , "search" : "ls"
+              , "find" : "ls"
               , "ln" : "link"
               , "i" : "install"
               , "up" : "update"
@@ -127,7 +129,7 @@ npm.load = function (conf, cb_) {
   function cb (er) {
     loaded = true
     loadListeners.forEach(function (cb) {
-      cb(er, npm)
+      process.nextTick(function () { cb(er, npm) })
     })
     loadListeners.length = 0
   }
