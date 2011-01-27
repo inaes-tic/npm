@@ -2,7 +2,6 @@ Description: Use manpages from /usr/share/man/man1
 Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2011-01-23
----
 --- a/lib/help.js
 +++ b/lib/help.js
 @@ -32,7 +32,7 @@

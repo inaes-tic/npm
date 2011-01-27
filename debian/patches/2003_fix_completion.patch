@@ -2,7 +2,6 @@ Description: Fix bash_completion invocation
 Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2011-01-23
----
 --- a/npm-completion.sh
 +++ b/npm-completion.sh
 @@ -17,7 +17,8 @@
