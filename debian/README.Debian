@@ -4,8 +4,15 @@ npm for Debian
 npm is invoked through /usr/bin/npm,
 ensuring install paths follow debian policy.
 
-Do not use /usr/share/npm/cli.js directly, especially as root:
-it can break your npm installation, or worse.
+
+WARNING
+-------
+
+* To prevent confusion and breakage, root user can't do :
+  `npm install npm`
+  However non-root user can still do it.
+* Do not use /usr/share/npm/cli.js directly as root.
+  it will break your npm installation, or worse.
 
 
 using npm as root
@@ -42,4 +49,4 @@ do not confuse with /usr/lib/nodejs
 debian package.
 
 
- -- Jérémy Lal <kapouer@melix.org>  Sat, 25 Sep 2010 16:21:03 +0200
+ -- Jérémy Lal <kapouer@melix.org>  Fri, 28 Jan 2011 00:33:28 +0200
