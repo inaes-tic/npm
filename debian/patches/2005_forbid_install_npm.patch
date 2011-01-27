@@ -14,8 +14,8 @@ Last-Update: 2011-01-27
    pkg = pkg.join("@")
    seen[name+"@"+ver] = true
 -
-+  if (name == "npm") {
-+    log.warn("npm debian package forbids install npm")
++  if (name == "npm" && process.getuid() === 0) {
++    log.error("'install npm' breaks debian npm package, use aptitude")
 +    return cb()
 +  }
    // if there is a satisfying version already, then simply move on.
