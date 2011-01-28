@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# npm NEEDS node and node-waf, since modules installation scripts usually call them.
-PATH="/usr/lib/npm/bin:$PATH"
-
 if [ "0" = "$(id -u)" ]; then
 	# root install, global paths
 	export npm_config_globalconfig=/etc/npm/rootrc
