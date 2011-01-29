@@ -1,18 +1,16 @@
-This work was packaged for Debian by:
+Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=166
+Upstream-Name: npm
+Upstream-Contact: Isaac Zimmitti Schlueter <i@izs.me>
+ https://github.com/isaacs/npm/issues
+Source: http://github.com/isaacs/npm
 
-    Jérémy Lal <kapouer@melix.org> on Sat, 17 Jul 2010 11:09:52 +0200
+Files: *
+Copyright: 2009-2010, Isaac Zimmitti Schlueter <i@izs.me>
+License: Expat
 
-It was downloaded from:
-
-    http://github.com/isaacs/npm
-
-Upstream Author:
-
-    Isaac Zimmitti Schlueter <i@izs.me>
-
-Copyright:
-
-    2009, 2010 Isaac Zimmitti Schlueter
+Files: debian/*
+Copyright: 2010, Jérémy Lal <kapouer@melix.org>
+License: Expat
 
 License: Expat
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,9 +30,3 @@ License: Expat
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
     IN THE SOFTWARE.
-
-The Debian packaging is:
-
-    Copyright (C) 2010 Jérémy Lal <kapouer@melix.org>
-
-and is licensed under the Expat license, see above.
