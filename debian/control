@@ -3,7 +3,7 @@ Section: web
 Priority: extra
 Maintainer: Jérémy Lal <kapouer@melix.org>
 Uploaders: Jonas Smedegaard <dr@jones.dk>
-Build-Depends: cdbs (>= 0.4.53),
+Build-Depends: cdbs (>= 0.4.85~),
  debhelper (>= 7.0.1),
  dh-buildinfo,
  bash-completion

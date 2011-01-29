@@ -1,5 +1,7 @@
 npm (0.2.16-1) unstable; urgency=low
 
-  * Initial release. (Closes: #587525)
+  [ Jérémy Lal ]
+  * Initial release.
+    Closes: #587525.
 
- -- Jérémy Lal <kapouer@melix.org>  Wed, 29 Sep 2010 10:43:28 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 29 Jan 2011 15:03:31 +0100
