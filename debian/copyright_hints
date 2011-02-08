@@ -53,6 +53,7 @@ Files: Makefile
  doc/find.md
  doc/folders.md
  doc/future-ideas/deploy.md
+ doc/future-ideas/new-module-system.md
  doc/future-ideas/remote.md
  doc/future-ideas/site.md
  doc/get.md
@@ -185,6 +186,7 @@ Files: Makefile
  man1/find.1
  man1/folders.1
  man1/future-ideas/deploy.1
+ man1/future-ideas/new-module-system.1
  man1/future-ideas/remote.1
  man1/future-ideas/site.1
  man1/get.1
