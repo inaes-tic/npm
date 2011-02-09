@@ -1,8 +1,9 @@
 Source: npm
 Section: web
 Priority: extra
-Maintainer: Jérémy Lal <kapouer@melix.org>
-Uploaders: Jonas Smedegaard <dr@jones.dk>
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Jérémy Lal <kapouer@melix.org>,
+ Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@,
  bash-completion
 Standards-Version: 3.9.1
