@@ -1,8 +1,13 @@
-npm (0.2.19-1) UNRELEASED; urgency=low
+npm (0.2.19-1) unstable; urgency=low
 
-  * New uptream release.
+  * New upstream release.
 
- -- Jonas Smedegaard <dr@jones.dk>  Tue, 08 Feb 2011 11:50:46 +0100
+  [ Jonas Smedegaard ]
+  * Bump policy compliance to standards-version 3.9.2.
+  * Bump copyright file format to draft 174 of DEP-5.
+  * Replace long description with intro from upstream documentation.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 16 Apr 2011 11:32:28 +0200
 
 npm (0.2.16-1) unstable; urgency=low
 
