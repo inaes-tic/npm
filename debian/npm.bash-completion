@@ -1,1 +1,1 @@
-npm-completion.sh npm
+lib/utils/completion.sh npm
