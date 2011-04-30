@@ -1,3 +1,9 @@
+npm (1.0.1~rcfinal) UNRELEASE; urgency=low
+
+  * DONT RELEASE THIS : this is in preparation for 1.0.1
+
+ -- Jérémy Lal <kapouer@melix.org>  Sat, 30 Apr 2011 17:08:31 +0200
+
 npm (0.2.19-1) unstable; urgency=low
 
   * New upstream release.
