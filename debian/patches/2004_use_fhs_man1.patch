@@ -4,16 +4,16 @@ Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2011-01-23
 --- a/lib/help.js
 +++ b/lib/help.js
-@@ -32,7 +32,7 @@
+@@ -25,7 +25,7 @@
        npm.config.set("loglevel", "silent")
-       return output.write(npm.config.get("outfd"), npm.commands[section].usage, cb)
+       return output.write(npm.commands[section].usage, cb)
      }
 -    var section_path = path.join(__dirname, "../man1/"+section+".1")
 +    var section_path = path.join(__dirname, "../man1/"+section+".1.gz")
      return fs.stat
        ( section_path
        , function (e, o) {
-@@ -97,9 +97,9 @@
+@@ -90,9 +90,9 @@
  function getSections(cb) {
    fs.readdir(path.join(__dirname, "../man1/"), function (er, files) {
      if (er) return cb(er)

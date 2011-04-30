@@ -1,4 +1,4 @@
-Description: forbid `npm install npm`
+Description: forbid installing npm
  It does not break anything per se, but /usr/local/bin/npm then
  takes precedence, so global config path is /usr/etc/npmrc (found
  by npm default config, relative to /usr/bin/node).
@@ -6,18 +6,22 @@ Description: forbid `npm install npm`
 Forwarded: not-needed
 Bug-Upstream: https://github.com/isaacs/npm/issues/issue/533
 Author: Jérémy Lal <kapouer@melix.org>
-Last-Update: 2011-01-27
+Last-Update: 2011-04-30
 --- a/lib/install.js
 +++ b/lib/install.js
-@@ -106,7 +106,10 @@
-   log.verbose([pkg, mustHave], "must install?")
-   pkg = pkg.join("@")
-   seen[name+"@"+ver] = true
+@@ -330,7 +330,14 @@
+   function cb (er) {
+     return cb_(er, [[targetFolder, target._id]])
+   }
 -
-+  if (name == "npm" && process.getuid() === 0) {
-+    log.error("'install npm' breaks debian npm package, use aptitude")
-+    return cb()
++  
++  if (target.name == "npm" && npm.config.get("global")) {
++    var er = new Error("'install npm' breaks debian npm package, use aptitude")
++    er.errno = npm.ELIFECYCLE
++    er.pkgid = target._id
++    return cb(er)
 +  }
-   // if there is a satisfying version already, then simply move on.
-   if (!tag && findSatisfying(pkg, name, range, mustHave, reg)) {
-     return cb()
++  
+   chain
+     ( [checkEngine, target]
+     , [checkCycle, target, previously]
