@@ -1,18 +1,33 @@
 #!/bin/sh
 
+if [ "x$0" = "xsh" ]; then
+  # run as curl | sh
+  cat > npm-install-$$.sh
+  sh npm-install-$$.sh
+  ret=$?
+  rm npm-install-$$.sh
+  exit $ret
+fi
+
 if ! [ "x$NPM_DEBUG" = "x" ]; then
   set +x
 fi
 
-
+# make sure that node exists
 node=`which node 2>&1`
 ret=$?
 if [ $ret -ne 0 ] || ! [ -x $node ]; then
   echo "npm cannot be installed without nodejs." >&2
   echo "Install node first, and then try again." >&2
+  echo "" >&2
+  echo "Maybe node is installed, but not in the PATH?" >&2
+  echo "Note that running as sudo can change envs." >&2
+  echo ""
+  echo "PATH=$PATH" >&2
   exit $ret
 fi
 
+# set the temp dir
 TMP="${TMPDIR}"
 if [ "x$TMP" = "x" ]; then
   TMP="/tmp"
@@ -74,16 +89,50 @@ cd "$TMP" \
       if [ $ret -eq 0 ]; then
         req=`$node bin/read-package-json.js package.json engines.node`
         if [ -e node_modules ]; then
-            $node node_modules/semver/bin/semver -v "$node_version" -r "$req"
+          $node node_modules/semver/bin/semver -v "$node_version" -r "$req"
+          ret=$?
         else
-            $node bin/semver.js -v "$node_version" -r "$req"
+          $node bin/semver.js -v "$node_version" -r "$req"
+          ret=$?
         fi
-        ret=$?
       fi
       if [ $ret -ne 0 ]; then
         echo "You need node $req to run this program." >&2
         echo "node --version reports: $node_version" >&2
         echo "Please upgrade node before continuing."
+        exit $ret
+      fi) \
+  && (ver=`$node bin/read-package-json.js package.json version`
+      isnpm10=0
+      if [ $ret -eq 0 ]; then
+        req=`$node bin/read-package-json.js package.json engines.node`
+        if [ -e node_modules ]; then
+          if $node node_modules/semver/bin/semver -v "$ver" -r "1"
+          then
+            isnpm10=1
+          fi
+        else
+          if $node bin/semver -v "$ver" -r ">=1.0"; then
+            isnpm10=1
+          fi
+        fi
+      fi
+
+      ret=0
+      if [ $isnpm10 -eq 1 ] && [ -f "scripts/clean-old.sh" ]; then
+        if ! [ "x$skipclean" = "x" ]; then
+          echo "Skipping 0.x cruft clean" >&2
+          ret=0
+        elif [ "x$clean" = "xy" ] || [ "x$clean" = "xyes" ]; then
+          NODE=$node /bin/sh "scripts/clean-old.sh" "-y"
+          ret=$?
+        else
+          NODE=$node /bin/sh "scripts/clean-old.sh" </dev/tty
+          ret=$?
+        fi
+      fi
+      if [ $ret -ne 0 ]; then
+        echo "Aborted 0.x cleanup.  Exiting." >&2
         exit $ret
       fi) \
   && (if [ "$make" = "NOMAKE" ] || ! $make clean install; then
