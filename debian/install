@@ -1,4 +1,7 @@
-lib usr/share/npm
+lib/*.js usr/share/npm/lib
+lib/utils/*.js usr/share/npm/lib/utils
+lib/utils/completion usr/share/npm/lib/utils/completion
+lib/utils/npm-registry-client usr/share/npm/lib/utils/npm-registry-client
 bin usr/share/npm
 cli.js usr/share/npm
 npm.js usr/share/npm
