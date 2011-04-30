@@ -1,7 +1,7 @@
 .\" Generated with Ronnjs/v0.1
 .\" http://github.com/kapouer/ronnjs/
 .
-.TH "NPM\-FAQ" "1" "January 2011" "" ""
+.TH "NPM\-FAQ" "1" "March 2011" "" ""
 .
 .SH "NAME"
 \fBnpm-faq\fR \-\- Frequently Asked Questions
@@ -19,47 +19,76 @@ I don\'t know yet\.
 Read the error output, and if you can\'t figure out what it means,
 do what it says and post a bug with all the information it asks for\.
 .
-.P
-If there doesn\'t seem to be enough output for your liking, run the
-command with \fB\-\-loglevel verbose\fR or if you\'re really brave, \fB\-\-loglevel
-silly\fR\|\.
-.
-.SH "How do I make npm less noisy?"
-\fBnpm config set loglevel error\fR
+.SH "Where does npm put stuff?"
+See \fBnpm help folders\fR
 .
 .P
-You can also set it to \fBwin\fR or \fBsilent\fR for even more quietness\.
+tl;dr:
+.
+.IP "\(bu" 4
+Use the \fBnpm root\fR command to see where modules go, and the \fBnpm bin\fR
+command to see where executables go
+.
+.IP "\(bu" 4
+Global installs are different from local installs\.  If you install
+something with the \fB\-g\fR flag, then its executables go in \fBnpm bin \-g\fR
+and its modules go in \fBnpm root \-g\fR\|\.
+.
+.IP "" 0
+.
+.SH "I installed something globally, but I can\'t `require()` it"
+Install it locally\.
+.
+.SH "I don\'t wanna\."
+Ok, then do this:
+.
+.IP "" 4
+.
+.nf
+echo \'export NODE_PATH="\'$(npm root \-g)\'"\' >> ~/\.bashrc
+\|\. ~/\.bashrc
+.
+.fi
+.
+.IP "" 0
 .
 .SH "How do I list installed packages?"
-\fBnpm ls installed\fR
-.
-.P
-If you just want to see the names, and not all the registry data, you
-can do: \fBnpm ls installed \-\-no\-registry\fR to turn off the registry\.
+\fBnpm ls\fR
 .
 .SH "How do I search for packages?"
-\fBnpm ls\fR
+\fBnpm search\fR
 .
 .P
 Arguments are greps\.  \fBnpm ls jsdom\fR shows jsdom packages\.
 .
 .SH "How do I update npm?"
-\fBnpm update npm\fR
+\fBNOTE\fR: This is the release candidate documentation\.  To update to the
+newer 1\.0 release candidate, do this:
+.
+.IP "" 4
+.
+.nf
+npm install npm@rc \-g
+.
+.fi
+.
+.IP "" 0
 .
 .P
-You can also update all outdated packages by doing \fBnpm update\fR without
-any arguments\.
+Once 1\.0 is stable, do this:
 .
-.SH "Why does it yell at me when I do `sudo npm install \.\.\.`?"
-Because you\'re not supposed to\.
+.IP "" 4
+.
+.nf
+npm update npm \-g
+.
+.fi
+.
+.IP "" 0
 .
 .P
-It is not safe to install things with sudo at this time\.  See this
-bug for discussion on why this is and how it will be changed in an
-upcoming version:
-.
-.P
-\fIhttps://github\.com/isaacs/npm/issues/issue/294\fR
+You can also update all outdated local packages by doing \fBnpm update\fR without
+any arguments, or global packages by doing \fBnpm update \-g\fR\|\.
 .
 .SH "What is a `package`?"
 A package is:
@@ -97,6 +126,9 @@ You don\'t\.  Try one of these:
 \fIhttp://github\.com/isaacs/nave\fR
 .
 .IP "\(bu" 4
+\fIhttp://github\.com/visionmedia/n\fR
+.
+.IP "\(bu" 4
 \fIhttp://github\.com/creationix/nvm\fR
 .
 .IP "" 0
@@ -109,27 +141,8 @@ You\'ll most likely want to \fBnpm link\fR your development folder\.  That\'s
 awesomely handy\.
 .
 .SH "Can I list a url as a dependency?"
-No\.
-.
-.P
-If you need to depend on something that isn\'t published, or a package
-that is published, but which you\'ve modified slightly, you can do this\.
-.
-.P
-The correct way is to do the following:
-.
-.IP "\(bu" 4
-add a \fB"name":"version"\fR entry to your package\.json file\.
-.
-.IP "\(bu" 4
-\fBnpm bundle install <pkg>\fR where \fB<pkg>\fR is a url or path to your
-custom unpublished package\.
-.
-.IP "" 0
-.
-.P
-When installing your package, npm will skip over any dependencies that
-are bundled\.
+Yes\.  It should be a url to a gzipped tarball containing a single folder
+that has a package\.json in its root\.  (See "what is a package?" above\.)
 .
 .SH "OK, but can I list a git repo as a dependency?"
 No\.
@@ -144,11 +157,17 @@ It\'s possible that something a bit more snazzy will be developed at some
 point in the future, but not likely\.  The current system allows for a
 lot of use cases, and is very easy to maintain\.
 .
+.P
+If you really really want to have the latest checkout in your program,
+you can clone the git repo, and then \fBnpm link\fR it, and then \fBnpm link
+<name>\fR in any packages that use it to install the link locally to that
+package\.
+.
 .SH "How do I symlink to a dev folder so that I don\'t have to keep re\-installing?"
-\fBnpm link\fR
+See \fBnpm help link\fR
 .
 .SH "The package registry website\.  What is that exactly?"
-See \fBnpm help registry\fR for more info\.
+See \fBnpm help registry\fR for more info, or just visit \fIhttp://github\.com/isaacs/npmjs\.org\fR\|\.
 .
 .SH "What\'s up with the insecure channel warnings?"
 As of this writing, node has problems uploading files over HTTPS\.  That
@@ -160,8 +179,7 @@ The warnings will disappear when node supports uploading tarballs over
 https reliably\.
 .
 .SH "I forgot my password, and can\'t publish\.  How do I reset it?"
-Email \fIi@izs\.me\fR from the email address that you signed up with\.  Then
-wait a day or two maybe\.
+Go to \fIhttp://admin\.npmjs\.org/\fR to reset it\.
 .
 .SH "I get ECONNREFUSED a lot\.  What\'s up?"
 Either the registry is down, or node\'s DNS isn\'t able to reach out\.
@@ -169,7 +187,7 @@ This happens a lot if you don\'t follow \fIall\fR the steps in the Cygwin
 setup doc\.
 .
 .P
-To check if the registry is down, open up \fIhttp://registry\.npmjs\.org/\fR
+To check if the registry is down, open up \fIhttp://registry\.npmjs\.org/\-/short\fR
 in a web browser\.  This will also tell you if you are just unable to
 access the internet for some reason\.
 .

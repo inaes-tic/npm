@@ -8,9 +8,6 @@ main () {
   # setup
   FAILURES=0
 
-  # TODO: add more tests here.
-  # Run node programs by doing node some-thing.js
-
   cd "$TESTDIR"
 
   # install
@@ -21,29 +18,41 @@ main () {
 
   npm install $( ls packages | awk '{print "packages/" $1 }' ) || exit 1
   (ls packages | while read pkg; do
-    npm test "$pkg"@"$(ls -- "$ROOTDIR"/.npm/"$pkg" | grep -v active)"
+    npm test "$pkg"
   done) || exit 1
   if [ "$FAILURES" == "0" ]; then
     npm rm $(ls packages) npm || exit 1
   fi
   cleanup
 
-  # link
-  npm install "$NPMPKG" || exit 1 
+  if ! [ "$npm_package_config_publishtest" == "true" ]; then
+    echo_err "To test publishing: npm config set npm:publishtest true"
+  else
+    # attempt to publish and unpublish each of them.
+    npm install "$NPMPKG" || exit 1
 
-  # used in test later
-  npm config set package-config:foo boo || exit 1
+    (ls packages | grep -v 'npm-test-private' | while read pkg; do
+      npm publish packages/$pkg || exit 1
+      npm install $pkg || exit 1
+      npm unpublish $pkg || exit 1
+    done) || exit 1
 
-  (ls packages | awk '{print "packages/" $1 }' | while read pkg; do
-    npm link "$pkg"
-  done) || exit 1
-  (ls packages | while read pkg; do
-    npm test "$pkg"@"$(ls -- "$ROOTDIR"/.npm/"$pkg" | grep -v active)"
-  done) || exit 1
-  if [ "$FAILURES" == "0" ]; then
-    npm rm $(ls packages) npm || exit 1
+    # verify that the private package can't be published
+    # bypass the test-harness npm function.
+    "$NPMCLI" publish packages/npm-test-private && (
+      npm unpublish npm-test-private
+      exit 1000
+    )
+    if [ $? -eq 1000 ]; then
+      fail "Private package shouldn't be publishable" >&2
+    fi
+
+    if [ "$FAILURES" == "0" ]; then
+      npm rm $(ls packages) npm || exit 1
+    fi
+    cleanup
+
   fi
-  cleanup
 
   if [ $FAILURES -eq 0 ]; then
     echo_err "ok"
@@ -62,15 +71,8 @@ main () {
 # fake functions
 npm () {
   echo -e "npm $@"
-  "$NPMCLI" "$@" &>output.log \
+  "$NPMCLI" "$@" \
     || fail npm "$@"
-  echo -n "" > output.log
-}
-node () {
-  local prog="$TESTDIR/$1"
-  $(which node) "$prog" &>output.log \
-    || fail node "$@"
-  echo -n "" > output.log
 }
 
 # get the absolute path of the executable
@@ -98,34 +100,28 @@ rm -rf $TMP/npm*
 TMP=$TMP/npm-test-$$
 echo "Testing in $TMP ..."
 ROOTDIR="$TMP/root"
-BINDIR="$TMP/bin"
-MANDIR="$TMP/man"
 
 cleanup () {
   if [ "$FAILURES" != "0" ] && [ "$FAILURES" != "" ]; then
     return
   fi
   [ -d "$ROOTDIR" ] && rm -rf -- "$ROOTDIR"
-  [ -d "$BINDIR" ] && rm -rf -- "$BINDIR"
-  [ -d "$MANDIR" ] && rm -rf -- "$MANDIR"
   mkdir -p -- "$ROOTDIR"
-  mkdir -p -- "$BINDIR"
-  mkdir -p -- "$MANDIR"
 }
 
-export npm_config_root="$ROOTDIR"
-export npm_config_binroot="$BINDIR"
-export npm_config_manroot="$MANDIR"
+export npm_config_prefix="$ROOTDIR"
 export npm_config_color="always"
-export PATH="$PATH":"$BINDIR"
-export NODE_PATH="$ROOTDIR"
+export npm_config_global=true
+# have to set this to false, or it'll try to test itself forever
+export npm_config_npat=false
+export PATH="$PATH":"$ROOTDIR/bin":"$ROOTDIR/node_modules/.bin"
+export NODE_PATH="$ROOTDIR/node_modules"
 
 echo_err () {
   echo "$@" >&2
 }
 fail () {
   let 'FAILURES += 1'
-  cat output.log
   echo_err ""
   echo_err -e "\033[33mFailure: $@\033[m"
   exit 1
