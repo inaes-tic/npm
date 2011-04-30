@@ -3,13 +3,8 @@ npm-json(1) -- Specifics of npm's package.json handling
 
 ## DESCRIPTION
 
-npm aims to implement the commonjs
-[Packages](http://wiki.commonjs.org/wiki/Packages/1.0) spec. However, some
-adjustments have been made, which may eventually be unmade, but hopefully will
-be incorporated into the spec.
-
 This document is all you need to know about what's required in your package.json
-file.
+file.  It must be actual JSON, not just a JavaScript object literal.
 
 A lot of the behavior described in this document is affected by the config
 settings described in `npm help config`.
@@ -17,6 +12,10 @@ settings described in `npm help config`.
 ## name
 
 The *most* important things in your package.json are the name and version fields.
+Those are actually required, and your package won't install without
+them.  The name and version together form an identifier that is assumed
+to be completely unique.  Changes to the package should come along with
+changes to the version.
 
 The name is what your thing is called.  Some tips:
 
@@ -24,8 +23,8 @@ The name is what your thing is called.  Some tips:
   writing a package.json file, and you can specify the engine using the "engines"
   field.  (See below.)
 * The name ends up being part of a URL, an argument on the command line, and a
-  folder name. So, don't use characters that are annoying in those contexts, like
-  funny UTF things or parentheses or slashes, or else it'll break.
+  folder name. Any name with non-url-safe characters will be rejected.
+  Also, it can't start with a dot or an underscore.
 * The name will probably be passed as an argument to require(), so it should
   be something short, but also reasonably descriptive.
 * You may want to check the npm registry to see if there's something by that name
@@ -34,22 +33,27 @@ The name is what your thing is called.  Some tips:
 ## version
 
 The *most* important things in your package.json are the name and version fields.
+Those are actually required, and your package won't install without
+them.  The name and version together form an identifier that is assumed
+to be completely unique.  Changes to the package should come along with
+changes to the version.
 
-Version must be [semver](http://semver.org)-compliant. npm assumes that you've
-read the semver page, and that you comply with it.  Here's how it deviates from
-what's on semver.org:
+Version must be parseable by
+[node-semver](https://github.com/isaacs/node-semver), which is bundled
+with npm as a dependency.  (`npm install semver` to use it yourself.)
+
+Here's how npm's semver implementation deviates from what's on semver.org:
 
 * Versions can start with "v"
 * A numeric item separated from the main three-number version by a hyphen
   will be interpreted as a "build" number, and will *increase* the version.
   But, if the tag is not a number separated by a hyphen, then it's treated
   as a pre-release tag, and is *less than* the version without a tag.
-  So, 0.1.2-7 > 0.1.2-6 > 0.1.2 > 0.1.2beta
+  So, `0.1.2-7 > 0.1.2-7-beta > 0.1.2-6 > 0.1.2 > 0.1.2beta`
 
 This is a little bit confusing to explain, but matches what you see in practice
 when people create tags in git like "v1.2.3" and then do "git describe" to generate
-a patch version.  (This is how node's versions are generated, and has driven this
-design.)
+a patch version.
 
 ## description
 
@@ -93,17 +97,12 @@ npm also sets a top-level "maintainers" field with your npm user info.
 
 The "files" field is an array of files to include in your project.  If
 you name a folder in the array, then it will also include the files
-inside that folder.  The default is just `[""]` which includes the
-entire package folder in the tarball, but you may want to only include
-specific things.
-
-If you specify bins or man pages, then those will be
-automatically added to the files array, even if they would not
-ordinarily be included.
+inside that folder. (Unless they would be ignored by another rule.)
 
 You can also provide a ".npmignore" file in the root of your package,
 which will keep files from being included, even if they would be picked
-up by the files array.
+up by the files array.  The ".npmignore" file works just like a
+".gitignore".
 
 ## main
 
@@ -195,27 +194,25 @@ In the future, this information may be used in other creative ways.
 
 ### directories.lib
 
-If you specify a "lib" directory, then the lib
-folder will be walked and any *.js or *.node files found will be exposed as a
-default module hash.
-
-**The lib directory mapping will be deprecated soon. Please do not rely
-on it.**
+Tell people where the bulk of your library is.  Nothing special is done
+with the lib folder in any way, but it's useful meta info.
 
 ### directories.bin
 
-If you specify a "bin" directory, then all the files in that folder will be used
-as the "bin" hash.
+If you specify a "bin" directory, then all the files in that folder will
+be used as the "bin" hash.
 
 If you have a "bin" hash already, then this has no effect.
 
 ### directories.man
 
-A folder that is full of man pages.  Sugar to generate a "man" array by walking the folder.
+A folder that is full of man pages.  Sugar to generate a "man" array by
+walking the folder.
 
 ### directories.doc
 
-Put markdown files in here.  Eventually, these will be displayed nicely, maybe, someday.
+Put markdown files in here.  Eventually, these will be displayed nicely,
+maybe, someday.
 
 ### directories.example
 
@@ -223,9 +220,9 @@ Put example scripts in here.  Someday, it might be exposed in some clever way.
 
 ## repository
 
-Specify the place where your code lives. This is helpful for people who want to
-contribute, as well as perhaps maybe being the underpinning of some magical "track
-this package on git" feature someday maybe if somebody wants to write it ever.
+Specify the place where your code lives. This is helpful for people who
+want to contribute.  If the git repo is on github, then the `npm docs`
+command will be able to find you.
 
 Do it like this:
 
@@ -242,28 +239,6 @@ Do it like this:
 The URL should be a publicly available (perhaps read-only) url that can be handed
 directly to a VCS program without any modification.  It should not be a url to an
 html project page that you put in your browser.  It's for computers.
-
-Here are some examples of Doing It Wrong:
-
-    WRONG!
-    "repository" :
-      { "type" : "git"
-      , "url" : "git@github.com:isaacs/npm.git" <-- THIS IS PRIVATE!
-      }
-    
-    ALSO WRONG!
-    "repository" :
-      { "type" : "git"
-      , "url" : "http://github.com/isaacs/npm" <-- THIS IS WEBPAGE!
-      }
-
-    This is ok, but completely unnecessary:
-    "repository" :
-      { "type" : "git"
-      , "url" : "http://github.com/isaacs/npm.git"
-      , "private" : "git@github.com:isaacs/npm.git"
-      , "web" : "http://github.com/isaacs/npm"
-      }
 
 ## scripts
 
@@ -294,6 +269,9 @@ configs.
 Dependencies are specified with a simple hash of package name to version
 range. The version range is EITHER a string which has one or more
 space-separated descriptors, OR a range like "fromVersion - toVersion"
+
+**Please do not put test harnesses in your `dependencies` hash.**  See
+`devDependencies`, below.
 
 Version range descriptors may be any of the following styles, where "version"
 is a semver compatible version identifier.
@@ -363,8 +341,26 @@ digits after the first "x" are ignored.
 Starting with npm version 0.2.14, you may specify a tarball URL in place
 of a version range.
 
-This tarball will be downloaded and installed as a bundle at install
-time.  See `npm help bundle`
+This tarball will be downloaded and installed locally to your package at
+install time.
+
+## devDependencies
+
+If someone is planning on downloading and using your module in their
+program, then they probably don't want or need to download and build
+the external test or documentation framework that you use.
+
+In this case, it's best to list these additional items in a
+`devDependencies` hash.
+
+These things will be installed whenever the `--dev` configuration flag
+is set.  This flag is set automatically when doing `npm link`, and can
+be managed like any other npm configuration param.  See `npm help
+config` for more on the topic.
+
+## bundledDependencies
+
+Array of package names that will be bundled when publishing the package.
 
 ## engines
 
@@ -388,36 +384,24 @@ If you specify an "engines" field, then npm will require that "node" be
 somewhere on that list. If "engines" is omitted, then npm will just assume
 that it works on node.
 
-## overlay
+## preferGlobal
 
-npm responds to the `node` and `npm` env-specific package.json values, which
-you can hang on the "overlay" key.
+If your package is primarily a command-line application that should be
+installed globally, then set this value to `true` to provide a warning
+if it is installed locally.
 
-For example:
+It doesn't actually prevent users from installing it locally, but it
+does help prevent some confusion if it doesn't work as expected.
 
-    { "name" : "foo"
-    , "version" : 7
-    , "description" : "generic description"
-    , "overlay" :
-      { "node" :
-        { "name" : "bar"
-        , "description" : "description for node"
-        }
-      , "npm" :
-        { "version" : "1.0.7"
-        , "description" : "description for npm"
-        }
-      , "narwhal" :
-        { "description" : "description for narwhal" }
-      }
-    }
+## publishConfig
 
-In this case, this is what npm will treat it as:
+This is a set of config values that will be used at publish-time.  It's
+especially handy if you want to set the tag or registry, so that you can
+ensure that a given package is not tagged with "latest" or published to
+the global public registry by default.
 
-    { "name" : "bar"
-    , "version" : "1.0.7"
-    , "description" : "description for npm"
-    }
+Any config values can be overridden, but of course only "tag" and
+"registry" probably matter for the purposes of publishing.
 
-This way, even if npm is not exactly the same as some other package management
-system, you can still use both, and it can be a happy planet.
+See `npm help config` to see the list of config options that can be
+overridden.

@@ -16,45 +16,52 @@ I don't know yet.
 Read the error output, and if you can't figure out what it means,
 do what it says and post a bug with all the information it asks for.
 
-If there doesn't seem to be enough output for your liking, run the
-command with `--loglevel verbose` or if you're really brave, `--loglevel
-silly`.
+## Where does npm put stuff?
 
-## How do I make npm less noisy?
+See `npm help folders`
 
-`npm config set loglevel error`
+tl;dr:
 
-You can also set it to `win` or `silent` for even more quietness.
+* Use the `npm root` command to see where modules go, and the `npm bin`
+  command to see where executables go
+* Global installs are different from local installs.  If you install
+  something with the `-g` flag, then its executables go in `npm bin -g`
+  and its modules go in `npm root -g`.
+
+## I installed something globally, but I can't `require()` it
+
+Install it locally.
+
+## I don't wanna.
+
+Ok, then do this:
+
+    echo 'export NODE_PATH="'$(npm root -g)'"' >> ~/.bashrc
+    . ~/.bashrc
 
 ## How do I list installed packages?
 
-`npm ls installed`
-
-If you just want to see the names, and not all the registry data, you
-can do: `npm ls installed --no-registry` to turn off the registry.
+`npm ls`
 
 ## How do I search for packages?
 
-`npm ls`
+`npm search`
 
 Arguments are greps.  `npm ls jsdom` shows jsdom packages.
 
 ## How do I update npm?
 
-`npm update npm`
+**NOTE**: This is the release candidate documentation.  To update to the
+newer 1.0 release candidate, do this:
 
-You can also update all outdated packages by doing `npm update` without
-any arguments.
+    npm install npm@rc -g
 
-## Why does it yell at me when I do `sudo npm install ...`?
+Once 1.0 is stable, do this:
 
-Because you're not supposed to.
+    npm update npm -g
 
-It is not safe to install things with sudo at this time.  See this
-bug for discussion on why this is and how it will be changed in an
-upcoming version:
-
-<https://github.com/isaacs/npm/issues/issue/294>
+You can also update all outdated local packages by doing `npm update` without
+any arguments, or global packages by doing `npm update -g`.
 
 ## What is a `package`?
 
@@ -77,6 +84,7 @@ after packing it up into a tarball (b).
 You don't.  Try one of these:
 
 * <http://github.com/isaacs/nave>
+* <http://github.com/visionmedia/n>
 * <http://github.com/creationix/nvm>
 
 ## How can I use npm for development?
@@ -88,19 +96,8 @@ awesomely handy.
 
 ## Can I list a url as a dependency?
 
-No.
-
-If you need to depend on something that isn't published, or a package
-that is published, but which you've modified slightly, you can do this.
-
-The correct way is to do the following:
-
-* add a `"name":"version"` entry to your package.json file.
-* `npm bundle install <pkg>` where `<pkg>` is a url or path to your
-  custom unpublished package.
-
-When installing your package, npm will skip over any dependencies that
-are bundled.
+Yes.  It should be a url to a gzipped tarball containing a single folder
+that has a package.json in its root.  (See "what is a package?" above.)
 
 ## OK, but can I list a git repo as a dependency?
 
@@ -114,13 +111,19 @@ It's possible that something a bit more snazzy will be developed at some
 point in the future, but not likely.  The current system allows for a
 lot of use cases, and is very easy to maintain.
 
+If you really really want to have the latest checkout in your program,
+you can clone the git repo, and then `npm link` it, and then `npm link
+<name>` in any packages that use it to install the link locally to that
+package.
+
 ## How do I symlink to a dev folder so that I don't have to keep re-installing?
 
-`npm link`
+See `npm help link`
 
 ## The package registry website.  What is that exactly?
 
-See `npm help registry` for more info.
+See `npm help registry` for more info, or just visit
+<http://github.com/isaacs/npmjs.org>.
 
 ## What's up with the insecure channel warnings?
 
@@ -133,8 +136,7 @@ https reliably.
 
 ## I forgot my password, and can't publish.  How do I reset it?
 
-Email <i@izs.me> from the email address that you signed up with.  Then
-wait a day or two maybe.
+Go to <http://admin.npmjs.org/> to reset it.
 
 ## I get ECONNREFUSED a lot.  What's up?
 
@@ -142,7 +144,8 @@ Either the registry is down, or node's DNS isn't able to reach out.
 This happens a lot if you don't follow *all* the steps in the Cygwin
 setup doc.
 
-To check if the registry is down, open up <http://registry.npmjs.org/>
+To check if the registry is down, open up
+<http://registry.npmjs.org/-/short>
 in a web browser.  This will also tell you if you are just unable to
 access the internet for some reason.
 

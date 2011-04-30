@@ -12,12 +12,14 @@ var fs = require("../lib/utils/graceful-fs")
   , rm = require("../lib/utils/rm-rf")
   , errorHandler = require("../lib/utils/error-handler")
 
-  , argv = process.argv.slice(2)
-  , parseArgs = require("../lib/utils/parse-args")
+  , configDefs = require("../lib/utils/config-defs")
+  , shorthands = configDefs.shorthands
+  , types = configDefs.types
+  , nopt = require("nopt")
 
-log.verbose(argv, "cli")
+log.verbose(process.argv, "cli")
 
-var conf = parseArgs(argv)
+var conf = nopt(types, shorthands)
 npm.argv = conf.argv.remain
 if (npm.deref(npm.argv[0])) npm.command = npm.argv.shift()
 else conf.usage = true
@@ -30,7 +32,7 @@ if (conf.version) {
 log("node@"+process.version, "using")
 
 // make sure that this version of node works with this version of npm.
-var semver = require("../lib/utils/semver")
+var semver = require("semver")
   , nodeVer = process.version
   , reqVer = npm.nodeVersionRequired
 if (reqVer && !semver.satisfies(nodeVer, reqVer)) {
