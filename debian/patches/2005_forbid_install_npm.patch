@@ -9,9 +9,9 @@ Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2011-04-30
 --- a/lib/install.js
 +++ b/lib/install.js
-@@ -330,7 +330,14 @@
-   function cb (er) {
-     return cb_(er, [[targetFolder, target._id]])
+@@ -460,7 +460,14 @@
+       return cb_(er, data)
+     })
    }
 -
 +  
@@ -23,5 +23,5 @@ Last-Update: 2011-04-30
 +  }
 +  
    chain
-     ( [checkEngine, target]
-     , [checkCycle, target, previously]
+     ( [ npm.commands.unbuild, [targetFolder] ]
+     , [ cache.unpack, target.name, target.version, targetFolder
