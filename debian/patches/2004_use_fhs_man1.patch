@@ -4,7 +4,7 @@ Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2011-01-23
 --- a/lib/help.js
 +++ b/lib/help.js
-@@ -25,7 +25,7 @@
+@@ -26,7 +26,7 @@
        npm.config.set("loglevel", "silent")
        return output.write(npm.commands[section].usage, cb)
      }
@@ -13,7 +13,7 @@ Last-Update: 2011-01-23
      return fs.stat
        ( section_path
        , function (e, o) {
-@@ -90,9 +90,9 @@
+@@ -87,9 +87,9 @@
  function getSections(cb) {
    fs.readdir(path.join(__dirname, "../man1/"), function (er, files) {
      if (er) return cb(er)
