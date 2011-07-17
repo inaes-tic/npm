@@ -12,7 +12,7 @@ Files: AUTHORS
  bin/npm.js
  bin/read-package-json.js
  cli.js
- config
+ configure
  debian/README.Debian
  debian/README.source
  debian/compat
@@ -40,6 +40,7 @@ Files: AUTHORS
  doc/author.md
  doc/bin.md
  doc/build.md
+ doc/bundle.md
  doc/cache.md
  doc/changelog.md
  doc/coding-style.md
@@ -55,6 +56,8 @@ Files: AUTHORS
  doc/folders.md
  doc/get.md
  doc/global.md
+ doc/help-search.md
+ doc/home.md
  doc/init.md
  doc/install.md
  doc/json.md
@@ -65,6 +68,7 @@ Files: AUTHORS
  doc/npm.md
  doc/outdated.md
  doc/owner.md
+ doc/pack.md
  doc/prefix.md
  doc/prune.md
  doc/publish.md
@@ -77,9 +81,11 @@ Files: AUTHORS
  doc/run-script.md
  doc/scripts.md
  doc/search.md
+ doc/semver.md
  doc/set.md
  doc/start.md
  doc/stop.md
+ doc/submodule.md
  doc/tag.md
  doc/test.md
  doc/uninstall.md
@@ -90,6 +96,8 @@ Files: AUTHORS
  doc/whoami.md
  html/favicon.ico
  html/index.html
+ html/n-64.png
+ html/n-large.png
  html/npm.png
  lib/adduser.js
  lib/bin.js
@@ -102,12 +110,13 @@ Files: AUTHORS
  lib/explore.js
  lib/faq.js
  lib/get.js
+ lib/help-search.js
  lib/init.js
- lib/install.js
  lib/link.js
  lib/ls.js
  lib/outdated.js
  lib/owner.js
+ lib/pack.js
  lib/prefix.js
  lib/prune.js
  lib/publish.js
@@ -118,6 +127,7 @@ Files: AUTHORS
  lib/set.js
  lib/start.js
  lib/stop.js
+ lib/submodule.js
  lib/tag.js
  lib/test.js
  lib/unbuild.js
@@ -135,6 +145,7 @@ Files: AUTHORS
  lib/utils/completion/users.js
  lib/utils/config-defs.js
  lib/utils/error-handler.js
+ lib/utils/excludes.js
  lib/utils/exec.js
  lib/utils/fetch.js
  lib/utils/find-prefix.js
@@ -175,6 +186,7 @@ Files: AUTHORS
  man1/author.1
  man1/bin.1
  man1/build.1
+ man1/bundle.1
  man1/cache.1
  man1/changelog.1
  man1/coding-style.1
@@ -187,9 +199,10 @@ Files: AUTHORS
  man1/explore.1
  man1/faq.1
  man1/find.1
- man1/folders.1
  man1/get.1
  man1/global.1
+ man1/help-search.1
+ man1/home.1
  man1/init.1
  man1/install.1
  man1/json.1
@@ -200,6 +213,7 @@ Files: AUTHORS
  man1/npm.1
  man1/outdated.1
  man1/owner.1
+ man1/pack.1
  man1/prefix.1
  man1/prune.1
  man1/publish.1
@@ -212,9 +226,11 @@ Files: AUTHORS
  man1/run-script.1
  man1/scripts.1
  man1/search.1
+ man1/semver.1
  man1/set.1
  man1/start.1
  man1/stop.1
+ man1/submodule.1
  man1/tag.1
  man1/test.1
  man1/uninstall.1
@@ -225,7 +241,6 @@ Files: AUTHORS
  man1/whoami.1
  package.json
  scripts/clean-old.sh
- scripts/install-message.sh
  scripts/install.sh
  test/common.js
  test/disabled/bundlerecurs/package.json
@@ -239,6 +254,8 @@ Files: AUTHORS
  test/packages/npm-test-blerg/test.js
  test/packages/npm-test-env-reader/package.json
  test/packages/npm-test-env-reader/test.sh
+ test/packages/npm-test-missing-bindir/package.json
+ test/packages/npm-test-missing-bindir/test.js
  test/packages/npm-test-private/package.json
  test/packages/npm-test-test-package/package.json
  test/packages/npm-test-url-dep/package.json
@@ -250,6 +267,7 @@ License: UNKNOWN
 
 Files: lib/completion.js
  lib/help.js
+ lib/install.js
  lib/run-script.js
  lib/utils/minimatch.js
  lib/utils/prompt.js
