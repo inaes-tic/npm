@@ -27,6 +27,23 @@ Use `npm install blerg` to install the latest version of "blerg".  Check out
 Use the `npm search` command to show everything that's available.
 Use `npm ls` to show everything you've installed.
 
+## DIRECTORIES
+
+See `npm help folders` to learn about where npm puts stuff.
+
+In particular, npm has two modes of operation:
+
+* global mode:  
+  npm installs packages into the install prefix at
+  `prefix/lib/node_modules` and bins are installed in `prefix/bin`.
+* local mode:  
+  npm installs packages into the current project directory, which
+  defaults to the current working directory.  Packages are installed to
+  `./node_modules`, and bins are installed to `./node_modules/.bin`.
+
+Local mode is the default.  Use `--global` or `-g` on any command to
+operate in global mode instead.
+
 ## DEVELOPER USAGE
 
 If you're using npm to develop and publish your code, check out the
@@ -43,7 +60,7 @@ following help topics:
   Especially, installing other peoples code from the registry is done via
   `npm install`
 * adduser:
-  Create an account or log in.  Creditials are stored (encrypted) in the
+  Create an account or log in.  Creditials are stored in the
   user config file.
 * publish:
   Use the `npm publish` command to upload your code to the registry.
