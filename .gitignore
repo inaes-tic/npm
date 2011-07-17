@@ -7,6 +7,5 @@ test/packages/test-package/random-data.txt
 test/root
 .pc
 node_modules/ronn
-node_modules/node-uuid
 node_modules/.bin
 npm-debug.log

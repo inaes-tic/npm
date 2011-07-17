@@ -1,7 +1,7 @@
 .\" Generated with Ronnjs/v0.1
 .\" http://github.com/kapouer/ronnjs/
 .
-.TH "NPM" "1" "March 2011" "" ""
+.TH "NPM" "1" "July 2011" "" ""
 .
 .SH "NAME"
 \fBnpm\fR \-\- node package manager
@@ -36,6 +36,31 @@ Use \fBnpm install blerg\fR to install the latest version of "blerg"\.  Check ou
 Use the \fBnpm search\fR command to show everything that\'s available\.
 Use \fBnpm ls\fR to show everything you\'ve installed\.
 .
+.SH "DIRECTORIES"
+See \fBnpm help folders\fR to learn about where npm puts stuff\.
+.
+.P
+In particular, npm has two modes of operation:
+.
+.IP "\(bu" 4
+global mode:
+.
+.br
+npm installs packages into the install prefix at \fBprefix/lib/node_modules\fR and bins are installed in \fBprefix/bin\fR\|\.
+.
+.IP "\(bu" 4
+local mode:
+.
+.br
+npm installs packages into the current project directory, which
+defaults to the current working directory\.  Packages are installed to \fB\|\./node_modules\fR, and bins are installed to \fB\|\./node_modules/\.bin\fR\|\.
+.
+.IP "" 0
+.
+.P
+Local mode is the default\.  Use \fB\-\-global\fR or \fB\-g\fR on any command to
+operate in global mode instead\.
+.
 .SH "DEVELOPER USAGE"
 If you\'re using npm to develop and publish your code, check out the
 following help topics:
@@ -56,7 +81,7 @@ Especially, installing other peoples code from the registry is done via \fBnpm i
 .
 .IP "\(bu" 4
 adduser:
-Create an account or log in\.  Creditials are stored (encrypted) in the
+Create an account or log in\.  Creditials are stored in the
 user config file\.
 .
 .IP "\(bu" 4
@@ -106,7 +131,7 @@ Defaults:
 .
 .br
 npm\'s default configuration options are defined in
-lib/utils/default\-config\.js\.  These should not be changed\.
+lib/utils/config\-defs\.js\.  These must not be changed\.
 .
 .IP "" 0
 .

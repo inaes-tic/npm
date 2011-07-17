@@ -7,3 +7,9 @@
 [submodule "node_modules/nopt"]
 	path = node_modules/nopt
 	url = git://github.com/isaacs/nopt.git
+[submodule "node_modules/node-uuid"]
+	path = node_modules/node-uuid
+	url = git://github.com/broofa/node-uuid
+[submodule "node_modules/minimatch"]
+	path = node_modules/minimatch
+	url = git://github.com/isaacs/minimatch.git
