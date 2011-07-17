@@ -1,11 +1,11 @@
 Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
 Upstream-Name: npm
-Upstream-Contact: Isaac Zimmitti Schlueter <i@izs.me>
+Upstream-Contact: Isaac Z. Schlueter <i@izs.me>
  https://github.com/isaacs/npm/issues
 Source: http://github.com/isaacs/npm
 
 Files: *
-Copyright: 2009-2010, Isaac Zimmitti Schlueter <i@izs.me>
+Copyright: 2009-2011, Isaac Z. Schlueter <i@izs.me>
 License: Expat
 
 Files: debian/*
