@@ -2,12 +2,20 @@ npm (1.0.3-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
+  [ Jérémy Lal ]
+  * Unfuzz patches.
+
+  [ Jonas Smedegaard ]
+  * Update copyright file:
+    + Stop listing convenience copy of uuid.js: no longer included.
+    + Extend a copyright year.
+    + Abbreviate author middle name (to match upstream change).
+
 TODO :
-* check/update debian/copyright
 * manage dependencies on semver, abbrev, nopt modules
 * check npm usage as root, there's a new upstream policy.
 
- -- Jérémy Lal <kapouer@melix.org>  Sun, 01 May 2011 01:49:48 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 17 Jul 2011 07:13:55 +0200
 
 npm (0.2.19-1) unstable; urgency=low
 
