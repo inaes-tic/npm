@@ -40,7 +40,7 @@ Install it locally.
 
 Check out `npm link`.  You might like it.
 
-## No, I really want 0.x style "everything's global" style.
+## No, I really want 0.x style 'everything global' style.
 
 Ok, fine.  Do this:
 
@@ -57,6 +57,23 @@ about things being broken.
 When you realize what a mistake it was, do this to switch back:
 
     npm config delete global --local
+
+## If 'npm' is an acronym, why is it never capitalized?
+
+Contrary to the belief of many, "npm" is not in fact an abbreviation for
+"Node Package Manager".  It is a recursive bacronymic abbreviation for
+"npm is not an acronym".
+
+"NPM", however, *is* an acronym for the National Association of
+Pastoral Musicians.  You can learn more about them at <http://npm.org/>.
+It is not an acronym, you see, but rather a capitonym.
+
+In all earnestness, "npm" is named after its command-line utility,
+which was mostly designed to be easily typed by right-handed programmers
+using US QWERTY keyboard layouts, ending with the right-ring-finger in a
+postition to type the `"-"` key for flags and other command-line
+arguments, and is always lower-case, though it starts most sentences it
+is a part of.
 
 ## How do I list installed packages?
 
@@ -94,11 +111,22 @@ A package is:
 * d) a `<name>@<version>` that is published on the registry with (c)
 * e) a `<name>@<tag>` that points to (d)
 * f) a `<name>` that has a "latest" tag satisfying (e)
+* g) a `git` url that, when cloned, results in (a).
 
 Even if you never publish your package, you can still get a lot of
 benefits of using npm if you just want to write a node program (a), and
 perhaps if you also want to be able to easily install it elsewhere
 after packing it up into a tarball (b).
+
+Git urls can be of the form:
+
+    git://github.com/user/project.git#commit-ish
+    git+ssh://user@hostname:project.git#commit-ish
+    git+http://user@hostname/project/blah.git#commit-ish
+    git+https://user@hostname/project/blah.git#commit-ish
+
+The `commit-ish` can be any tag, sha, or branch which can be supplied as
+an argument to `git checkout`.  The default is `master`.
 
 ## How do I install node with npm?
 
@@ -120,13 +148,8 @@ To set up your own private registry, check out `npm help registry`.
 ## Can I list a url as a dependency?
 
 Yes.  It should be a url to a gzipped tarball containing a single folder
-that has a package.json in its root.  (See "what is a package?" above.)
-
-## OK, but can I list a git repo as a dependency?
-
-No.
-
-However, you can list a url as a dependency.
+that has a package.json in its root, or a git url.
+(See "what is a package?" above.)
 
 ## How do I symlink to a dev folder so I don't have to keep re-installing?
 
@@ -138,17 +161,12 @@ See `npm help registry`.
 
 ## What's up with the insecure channel warnings?
 
-As of this writing, node has problems uploading files over HTTPS.  That
-means that publishes go over HTTP by default.
-
-Allegedly this problem is solved in node 0.4.7.  You can suppress those
-warnings by doing this:
-
-    npm config set registry https://registry.npmjs.org
+Until node 0.4.10, there were problems sending big files over HTTPS.  That
+means that publishes go over HTTP by default in those versions of node.
 
 ## I forgot my password, and can't publish.  How do I reset it?
 
-Go to <http://admin.npmjs.org/>.
+Go to <http://admin.npmjs.org/reset>.
 
 ## I get ECONNREFUSED a lot.  What's up?
 
@@ -161,8 +179,8 @@ To check if the registry is down, open up
 in a web browser.  This will also tell you if you are just unable to
 access the internet for some reason.
 
-If the registry IS down, let me know by emailing <i@izs.me>.  I'll have
-someone kick it or something.
+If the registry IS down, let me know by emailing or posting an issue.
+We'll have someone kick it or something.
 
 ## Who does npm?
 

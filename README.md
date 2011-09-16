@@ -41,7 +41,7 @@ curl http://npmjs.org/install.sh | clean=yes sh
 If that fails, try this:
 
 ```bash
-git clone http://github.com/isaacs/npm.git
+git clone https://github.com/isaacs/npm.git
 cd npm
 sudo make install
 ```
@@ -152,6 +152,16 @@ npm.load(myConfigObject, function (er) {
   npm.on("log", function (message) { .... })
 })
 ```
+
+The `load` function takes an object hash of the command-line configs.
+The various `npm.commands.<cmd>` functions take an **array** of
+positional argument **strings**.  The last argument to any
+`npm.commands.<cmd>` function is a callback.  Some commands take other
+optional arguments.  Read the source.
+
+You cannot set configs individually for any single npm function at this
+time.  Since `npm` is a singleton, any call to `npm.config.set` will
+change the value for *all* npm commands in that process.
 
 See `./bin/npm.js` for an example of pulling config values off of the
 command line arguments using nopt.  You may also want to check out `npm
