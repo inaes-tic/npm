@@ -1,6 +1,10 @@
 
 process.title = "npm"
 
+
+// FIXME there really ought to be a path.split in node core
+require("path").SPLIT_CHAR = process.platform === "win32" ? "\\" : "/"
+
 var EventEmitter = require("events").EventEmitter
   , npm = module.exports = new EventEmitter
   , config = require("./lib/config.js")
@@ -15,6 +19,7 @@ var EventEmitter = require("events").EventEmitter
   , semver = require("semver")
   , findPrefix = require("./lib/utils/find-prefix.js")
   , getUid = require("./lib/utils/uid-number.js")
+  , mkdir = require("./lib/utils/mkdir-p.js")
 
 npm.commands = {}
 npm.ELIFECYCLE = {}
@@ -23,8 +28,31 @@ npm.EPUBLISHCONFLICT = {}
 npm.EJSONPARSE = {}
 npm.EISGIT = {}
 npm.ECYCLE = {}
-npm.EENGINE = {}
+npm.ENOTSUP = {}
 
+// HACK for windows
+if (process.platform === "win32") {
+  // stub in unavailable methods from process and fs binding
+  if (!process.getuid) process.getuid = function() {}
+  if (!process.getgid) process.getgid = function() {}
+  var fsBinding = process.binding("fs")
+  if (!fsBinding.chown) fsBinding.chown = function() {
+    var cb = arguments[arguments.length - 1]
+    if (typeof cb == "function") cb()
+  }
+
+  // patch rename/renameSync, but this should really be fixed in node
+  var _fsRename = fs.rename
+    , _fsPathPatch
+  _fsPathPatch = function(p) {
+    return p && p.replace(/\\/g, "/") || p;
+  }
+  fs.rename = function(p1, p2) {
+    arguments[0] = _fsPathPatch(p1)
+    arguments[1] = _fsPathPatch(p2)
+    return _fsRename.apply(fs, arguments);
+  }
+}
 
 try {
   // startup, ok to do this synchronously
@@ -68,6 +96,8 @@ var commandCache = {}
               , "se" : "search"
               , "author" : "owner"
               , "home" : "docs"
+              , "unstar": "star" // same function
+              , "apihelp" : "help"
               }
 
   , aliasNames = Object.keys(aliases)
@@ -88,6 +118,7 @@ var commandCache = {}
               , "link"
 
               , "publish"
+              , "star"
               , "tag"
               , "adduser"
               , "unpublish"
@@ -104,6 +135,7 @@ var commandCache = {}
               , "edit"
               , "explore"
               , "docs"
+              , "bugs"
               , "faq"
               , "root"
               , "prefix"
@@ -135,6 +167,7 @@ Object.keys(abbrevs).concat(plumbing).forEach(function addCommand (c) {
     if (c === "la" || c === "ll") {
       npm.config.set("long", true)
     }
+    npm.command = c
     if (commandCache[a]) return commandCache[a]
     var cmd = require(__dirname+"/lib/"+a+".js")
     commandCache[a] = function () {
@@ -216,14 +249,18 @@ npm.load = function (conf, cb_) {
 
 function load (npm, conf, cb) {
   which(process.argv[0], function (er, node) {
-    if (!er && node !== process.execPath) {
+    //console.error("back from which")
+    if (!er && node.toUpperCase() !== process.execPath.toUpperCase()) {
       log.verbose("node symlink", node)
       process.execPath = node
       process.installPrefix = path.resolve(node, "..", "..")
     }
 
     // look up configs
+    //console.error("about to look up configs")
+
     ini.resolveConfigs(conf, function (er) {
+      //console.error("back from config lookup", er && er.stack)
       if (er) return cb(er)
 
       var n = 2
@@ -233,6 +270,7 @@ function load (npm, conf, cb) {
       loadUid(npm, conf, next)
 
       function next (er) {
+        //console.error("next", er && er.stack)
         if (errState) return
         if (er) return cb(errState = er)
         if (-- n <= 0) return cb()
@@ -253,12 +291,14 @@ function loadPrefix (npm, conf, cb) {
   }
 
   findPrefix(p, function (er, p) {
+    //console.log("Back from findPrefix", er && er.stack, p)
     Object.defineProperty(npm, "prefix",
       { get : function () { return p }
       , set : function (r) { return p = r }
       , enumerable : true
       })
-    cb()
+    // the prefix MUST exist, or else nothing works.
+    mkdir(p, cb)
   })
 }
 
@@ -268,7 +308,10 @@ function loadUid (npm, conf, cb) {
   // to run stuff as.  Do this first, to support `npm update npm -g`
   if (!npm.config.get("unsafe-perm")) {
     getUid(npm.config.get("user"), npm.config.get("group"), cb)
-  } else cb()
+  } else {
+    //console.error("skipping loadUid")
+    process.nextTick(cb)
+  }
 }
 
 

@@ -1,21 +1,21 @@
 { "name" : "npm"
 , "description" : "A package manager for node"
 , "keywords" : [ "package manager", "modules", "install", "package.json" ]
-, "version" : "1.0.27"
+, "version" : "1.0.93"
 , "preferGlobal" : true
 , "config" : { "publishtest" : false }
 , "homepage" : "http://npmjs.org/"
 , "author" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)"
 , "repository" :
   { "type" : "git"
-  , "url" : "https://github.com/isaacs/npm.git"
+  , "url" : "https://github.com/isaacs/npm"
   }
 , "bugs" :
   { "mail" : "npm-@googlegroups.com"
   , "web" : "http://github.com/isaacs/npm/issues"
   }
 , "directories" : { "doc" : "./doc"
-                  , "man" : "./man1"
+                  , "man" : "./man"
                   , "lib" : "./lib"
                   , "bin" : "./bin"
                   }
@@ -34,6 +34,7 @@
   , "node-uuid" : "1.2"
   , "proto-list": "1"
   , "rimraf" : "1"
+  , "request": "~2.1.1"
   , "which" : "1" }
 , "bundleDependencies" :
   [ "slide"
@@ -45,12 +46,15 @@
   , "nopt"
   , "node-uuid"
   , "rimraf"
+  , "request"
   , "proto-list"
   , "which" ]
-, "devDependencies" : { "ronn" : "" }
+, "devDependencies" :
+  { "ronn" : "https://github.com/isaacs/ronnjs/tarball/master" }
 , "engines" : { "node" : "0.4 || 0.5", "npm" : "1" }
-, "scripts" : { "test" : "./test/run.sh"
+, "scripts" : { "test" : "./test/run"
               , "prepublish" : "make doc"
+              , "dumpconf": "env | grep npm | sort | uniq"
               }
 , "licenses" :
   [ { "type" : "MIT"
