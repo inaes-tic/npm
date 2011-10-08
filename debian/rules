@@ -51,4 +51,4 @@ binary-post-install/npm::
 		ln -s "../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man3/$$lFile.gz"; \
 	done
 	chmod a-x debian/npm/usr/share/npm/bin/*.js
-	chmod a-x debian/npm/usr/share/npm/cli.js
+	chmod a+x debian/npm/usr/share/npm/bin/npm.js

@@ -1,9 +1,8 @@
 lib/*.js usr/share/npm/lib
 lib/utils/*.js usr/share/npm/lib/utils
-lib/utils/completion usr/share/npm/lib/utils/completion
-lib/utils/npm-registry-client usr/share/npm/lib/utils/npm-registry-client
-bin usr/share/npm
-cli.js usr/share/npm
+lib/utils/completion usr/share/npm/lib/utils
+lib/utils/npm-registry-client usr/share/npm/lib/utils
+bin/*.js usr/share/npm/bin
 npm.js usr/share/npm
 package.json usr/share/npm
-debian/script/npm usr/bin
+node_modules usr/share/npm
