@@ -7,5 +7,3 @@ cli.js usr/share/npm
 npm.js usr/share/npm
 package.json usr/share/npm
 debian/script/npm usr/bin
-debian/userrc etc/npm
-debian/rootrc etc/npm
