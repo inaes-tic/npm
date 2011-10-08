@@ -38,5 +38,17 @@ binary-post-install/npm::
 		fi; \
 		ln -s "../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man1/$$lFile.gz"; \
 	done
+	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.3`; \
+	for i in $$fManpages; do \
+		lDir=`dirname "$$i"`; \
+		lFile=`basename "$$i"`; \
+		lManDir=`basename "$$lDir"`; \
+		lRenamed="$$lFile"; \
+		if [ "$$lFile" != "npm.3" ]; then \
+			lRenamed="npm-$$lFile"; \
+			mv "$$i" "$$lDir/$$lRenamed"; \
+		fi; \
+		ln -s "../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man3/$$lFile.gz"; \
+	done
 	chmod a-x debian/npm/usr/share/npm/bin/*.js
 	chmod a-x debian/npm/usr/share/npm/cli.js
