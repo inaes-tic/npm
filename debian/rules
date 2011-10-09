@@ -19,7 +19,9 @@ DEB_UPSTREAM_WGET_OPTS += --no-check-certificate
 # Suppress copyright-checking some binaries to not upset dpkg-source
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(html/npm-.*\.png|debian/(changelog|copyright(|_hints|_newhints)))$
 
-configure/npm::
+configure/npm::npmrc
+
+npmrc:
 	./configure --globalconfig=/etc/npmrc --globalignorefile=/etc/npmignore --prefix=/usr/local
 
 install/npm::
