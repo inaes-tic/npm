@@ -8,6 +8,7 @@ npm (1.0.95-1) UNRELEASED; urgency=low
     + /etc/npm/rootrc and /etc/npm/userrc are removed.
     + the configuration is kept across `npm update npm`, which is now allowed.
   * Install and prefix by 'npm-' man(3) manpages.
+  * Install and register html documentation with doc-base.
   * debian/watch updated : the release tarball is downloaded from npm registry.
   * debian/README.Debian updated.
 
@@ -20,7 +21,6 @@ npm (1.0.95-1) UNRELEASED; urgency=low
   [ TODO ]
   * Package some or all node_modules.
   * Migrate from npm < 1.0 with  scripts/clean-old.sh
-  * Install html docs.
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
