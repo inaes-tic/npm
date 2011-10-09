@@ -1,4 +1,4 @@
-npm (1.0.27-1) UNRELEASED; urgency=low
+npm (1.0.94-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
@@ -10,11 +10,6 @@ npm (1.0.27-1) UNRELEASED; urgency=low
     + Stop listing convenience copy of uuid.js: no longer included.
     + Extend a copyright year.
     + Abbreviate author middle name (to match upstream change).
-
-  [ TODO ]
-  * npm depends on semver, abbrev, nopt modules.
-    They are so small they could be packaged in some nodejs-common-modules ?
-  * check npm usage as root, there's a new upstream policy.
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
