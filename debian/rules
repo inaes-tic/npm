@@ -19,6 +19,9 @@ DEB_UPSTREAM_WGET_OPTS += --no-check-certificate
 # Suppress copyright-checking some binaries to not upset dpkg-source
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(html/npm-.*\.png|debian/(changelog|copyright(|_hints|_newhints)))$
 
+clean::
+	rm -f npmrc
+
 configure/npm::npmrc
 
 npmrc:
