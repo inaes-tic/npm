@@ -6,3 +6,4 @@ bin/*.js usr/share/npm/bin
 npm.js usr/share/npm
 package.json usr/share/npm
 node_modules usr/share/npm
+npmrc usr/share/npm
