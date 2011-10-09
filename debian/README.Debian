@@ -1,45 +1,27 @@
 npm for Debian
 ==============
 
-npm is invoked through /usr/bin/npm,
-ensuring install paths follow debian policy.
-
-
 WARNING
 -------
 
-* To prevent confusion and breakage, root user can't do :
-  `npm install npm`
-  However non-root user can still do it.
-* Do not use /usr/share/npm/cli.js directly as root.
-  it will break your npm installation, or worse.
+root user can do a global install of npm by npm : `npm -g install npm`
+Npm and its debian package have been designed to support this gracefully.
+
+It is nonetheless *strongly advised* to update npm through the debian package.
+To fall back to npm installed by debian package, simply remove /usr/local/bin/npm.
 
 
-using npm as root
------------------
+npm default configuration for global mode
+-----------------------------------------
 
-/etc/npm/rootrc configures the default install paths
-when calling npm as root :
+prefix=/usr/local
+globalconfig=/etc/npmrc
+globalignorefile=/etc/npmignore
 
-Modules go to /usr/local/lib/nodejs
-Executables go to /usr/local/bin
-Documentation go to /usr/local/share/man
+In particular, modules installed globally go to /usr/local/lib/node_modules,
+executables to /usr/local/bin, and man pages to /usr/local/share/man.
 
-Installed modules must be on node path before calling it :
-export NODE_PATH=/usr/local/lib/nodejs
-
-
-using npm as non-root
----------------------
-
-/etc/npm/userrc configures the default install paths
-when calling npm as a non-root user :
-
-Modules go to ~/.node_libraries
-Executables go to ~/bin
-Documentation is not installed
-
-~/.node_libraries is already on the NODE_PATH.
+Please read npm-config(1), npm-folders(1) and npm-link(1) man pages.
 
 
 do not confuse with /usr/lib/nodejs
