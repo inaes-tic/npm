@@ -1,0 +1,20 @@
+Document: npm
+Title: Npm documentation
+Author: Isaac Z. Schlueter
+Abstract: This describes command-line usage of npm.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/npm/doc/index.html
+Files: /usr/share/doc/npm/doc/*.html
+
+
+Document: npm-api
+Title: Npm API documentation
+Author: Isaac Z. Schlueter
+Abstract: This describes the API of npm.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/npm/api/index.html
+Files: /usr/share/doc/npm/api/*.html
