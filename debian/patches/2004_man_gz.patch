@@ -1,0 +1,28 @@
+Description: Use manpages from /usr/share/man/man1 or man3
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2011-10-09
+--- a/lib/help.js
++++ b/lib/help.js
+@@ -37,7 +37,7 @@
+       return output.write(npm.commands[section].usage, cb)
+     }
+     var sectionPath = path.join( __dirname, "..", "man", "man" + num
+-                               , section + "." + num)
++                               , section + "." + num + ".gz")
+       , htmlPath = path.resolve( __dirname, "..", "html"
+                                , num === 3 ? "api" : "doc"
+                                , section+".html" )
+@@ -139,10 +139,10 @@
+   if (typeof cb !== "function") cb = num, num = 1
+ 
+   var mp = path.join(__dirname, "../man/man" + num + "/")
+-    , cleaner = new RegExp("\\." + num + "$")
++    , cleaner = new RegExp("\\." + num + ".gz$")
+   fs.readdir(mp, function (er, files) {
+     if (er) return cb(er)
+-    var sectionList = files.concat("help." + num)
++    var sectionList = files.concat("help." + num  + ".gz")
+       .filter(function (s) { return s.match(cleaner) })
+       .map(function (s) { return s.replace(cleaner, "")})
+     cb(null, sectionList)

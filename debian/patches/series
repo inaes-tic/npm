@@ -1,5 +1,4 @@
-2001_npm_without_shebang.patch
 2002_cli_without_shebang.patch
 2003_fix_completion.patch
-2004_use_fhs_man1.patch
+2004_man_gz.patch
 2005_forbid_install_npm.patch
