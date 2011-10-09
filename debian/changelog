@@ -1,15 +1,26 @@
-npm (1.0.94-1) UNRELEASED; urgency=low
+npm (1.0.95-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
   [ Jérémy Lal ]
-  * Unfuzz patches.
+  * npm can now be configured to follow FHS for root usage :
+    + prefix is /usr/local, globalconfig is /etc/npmrc.
+    + /etc/npm/rootrc and /etc/npm/userrc are removed.
+    + the configuration is kept across `npm update npm`, which is now allowed.
+  * Install and prefix by 'npm-' man(3) manpages.
+  * debian/watch updated : the release tarball is downloaded from npm registry.
+  * debian/README.Debian updated.
 
   [ Jonas Smedegaard ]
   * Update copyright file:
     + Stop listing convenience copy of uuid.js: no longer included.
     + Extend a copyright year.
     + Abbreviate author middle name (to match upstream change).
+
+  [ TODO ]
+  * Package some or all node_modules.
+  * Migrate from npm < 1.0 with  scripts/clean-old.sh
+  * Install html docs.
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
