@@ -8,6 +8,8 @@ npm (1.0.95-1) UNRELEASED; urgency=low
     + /etc/npm/rootrc and /etc/npm/userrc are removed.
     + the configuration is kept across `npm update npm`, which is now allowed.
   * Install and prefix by 'npm-' man(3) manpages.
+  * Symlink manpages with wrong ext so npm doesn't need a patch to search
+    for *.1.gz man pages. Override lintian error.
   * Install and register html documentation with doc-base.
   * debian/watch updated : the release tarball is downloaded from npm registry.
   * debian/README.Debian updated.
