@@ -11,6 +11,8 @@ npm (1.0.95-1) UNRELEASED; urgency=low
   * Symlink manpages with wrong ext so npm doesn't need a patch to search
     for *.1.gz man pages. Override lintian error.
   * Install and register html documentation with doc-base.
+  * Drop patch to remove shebangs of non-executable files, applied upstream.
+  * Drop patch to fix completion, it wasn't broken.
   * debian/watch updated : the release tarball is downloaded from npm registry.
   * debian/README.Debian updated.
 
