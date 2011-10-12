@@ -44,7 +44,7 @@ binary-post-install/npm::
 			lRenamed="npm-$$lFile"; \
 			mv "$$i" "$$lDir/$$lRenamed"; \
 		fi; \
-		ln -s "../../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man/man1/$$lFile.gz"; \
+		ln -s "../../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man/man1/$$lFile"; \
 	done
 	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.3`; \
 	for i in $$fManpages; do \
@@ -56,7 +56,7 @@ binary-post-install/npm::
 			lRenamed="npm-$$lFile"; \
 			mv "$$i" "$$lDir/$$lRenamed"; \
 		fi; \
-		ln -s "../../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man/man3/$$lFile.gz"; \
+		ln -s "../../../man/$$lManDir/$$lRenamed.gz" "$(CURDIR)/debian/npm/usr/share/npm/man/man3/$$lFile"; \
 	done
 	chmod a-x debian/npm/usr/share/npm/bin/*.js
 	chmod a+x debian/npm/usr/share/npm/bin/npm.js
