@@ -10,7 +10,7 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<pre><code>npm version &lt;newversion&gt;</code></pre>
+<pre><code>npm version &lt;newversion&gt; [--message commit-message]</code></pre>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -18,13 +18,15 @@
 data back to the package.json file.</p>
 
 <p>If run in a git repo, it will also create a version commit and tag, and
-fail if the repo is not clean.</p>
+fail if the repo is not clean.
+If supplied with <code>--message</code> (shorthand: <code>-m</code>) command line option, npm
+will use it as a commit message when creating a version commit.</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
 <ul><li><a href="../doc/init.html">init(1)</a></li><li><a href="../doc/json.html">json(1)</a></li><li><a href="../doc/semver.html">semver(1)</a></li></ul>
 </div>
-<p id="footer">version &mdash; npm@1.0.94</p>
+<p id="footer">version &mdash; npm@1.0.95</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")

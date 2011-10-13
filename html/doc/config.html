@@ -20,7 +20,7 @@ npm set &lt;key&gt; &lt;value&gt; [--global]</code></pre>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
-<p>npm gets its configuration values from 5 sources, in this priority:</p>
+<p>npm gets its configuration values from 6 sources, in this priority:</p>
 
 <ul><li>cli:
 The command line flags.  Putting <code>--foo bar</code> on the command line sets the
@@ -34,7 +34,11 @@ environment configurations that are not given a value will be given the value
 of <code>true</code>.  Config values are case-insensitive, so <code>NPM_CONFIG_FOO=bar</code> will
 work the same.</li><li>$HOME/.npmrc (or the <code>userconfig</code> param, if set above):
 This file is an ini-file formatted list of <code>key = value</code> parameters.</li><li>$PREFIX/etc/npmrc (or the <code>globalconfig</code> param, if set above):
-This file is an ini-file formatted list of <code>key = value</code> parameters</li><li>default configs:
+This file is an ini-file formatted list of <code>key = value</code> parameters</li><li>path/to/npm/itself/npmrc:  This is an unchangeable "builtin"
+configuration file that npm keeps consistent across updates.  Set
+fields in here using the <code>./configure</code> script that comes with npm.
+This is primarily for distribution maintainers to override default
+configs in a standard and consistent manner.</li><li>default configs:
 This is a set of configuration parameters that are internal to npm, and are
 defaults if nothing else is specified.</li></ul>
 
@@ -79,7 +83,7 @@ global config.</p>
 
 <p>The following shorthands are parsed on the command-line:</p>
 
-<ul><li><code>-v</code>: <code>--version</code></li><li><code>-h</code>, <code>-?</code>, <code>--help</code>, <code>-H</code>: <code>--usage</code></li><li><code>-s</code>, <code>--silent</code>: <code>--loglevel silent</code></li><li><code>-d</code>: <code>--loglevel info</code></li><li><code>-dd</code>, <code>--verbose</code>: <code>--loglevel verbose</code></li><li><code>-ddd</code>: <code>--loglevel silly</code></li><li><code>-g</code>: <code>--global</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-p</code>, <code>--porcelain</code>: <code>--parseable</code></li><li><code>-reg</code>: <code>--registry</code></li><li><code>-v</code>: <code>--version</code></li><li><code>-f</code>: <code>--force</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-desc</code>: <code>--description</code></li><li><code>-S</code>: <code>--save</code></li><li><code>-y</code>: <code>--yes</code></li><li><code>-n</code>: <code>--yes false</code></li><li><code>ll</code> and <code>la</code> commands: <code>ls --long</code></li></ul>
+<ul><li><code>-v</code>: <code>--version</code></li><li><code>-h</code>, <code>-?</code>, <code>--help</code>, <code>-H</code>: <code>--usage</code></li><li><code>-s</code>, <code>--silent</code>: <code>--loglevel silent</code></li><li><code>-d</code>: <code>--loglevel info</code></li><li><code>-dd</code>, <code>--verbose</code>: <code>--loglevel verbose</code></li><li><code>-ddd</code>: <code>--loglevel silly</code></li><li><code>-g</code>: <code>--global</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-m</code>: <code>--message</code></li><li><code>-p</code>, <code>--porcelain</code>: <code>--parseable</code></li><li><code>-reg</code>: <code>--registry</code></li><li><code>-v</code>: <code>--version</code></li><li><code>-f</code>: <code>--force</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-desc</code>: <code>--description</code></li><li><code>-S</code>: <code>--save</code></li><li><code>-y</code>: <code>--yes</code></li><li><code>-n</code>: <code>--yes false</code></li><li><code>ll</code> and <code>la</code> commands: <code>ls --long</code></li></ul>
 
 <p>If the specified configuration param resolves unambiguously to a known
 configuration parameter, then it is expanded to that configuration
@@ -340,6 +344,13 @@ also "color" and "loglevel".</p>
 
 <p>Show extended information in <code>npm ls</code></p>
 
+<h3 id="message">message</h3>
+
+<ul><li>Default: null</li><li>Type: [null, String]</li></ul>
+
+<p>Commit message which is used by <code>npm version</code> when creating version commit.
+When null, "version &lt;version&gt;" is used.</p>
+
 <h3 id="node-version">node-version</h3>
 
 <ul><li>Default: process.version</li><li>Type: semver or false</li></ul>
@@ -529,6 +540,17 @@ instead of complete help when doing <code><a href="../doc/help.html">help(1)</a>
 <p>If not found, but there is a .gitignore file in the same directory, then
 that will be used instead.</p>
 
+<h3 id="umask">umask</h3>
+
+<ul><li>Default: 022</li><li>Type: Octal numeric string</li></ul>
+
+<p>The "umask" value to use when setting the file creation mode on files
+and folders.</p>
+
+<p>Folders and executables are given a mode which is <code>0777</code> masked against
+this value.  Other files are given a mode which is <code>0666</code> masked against
+this value.  Thus, the defaults are <code>0755</code> and <code>0644</code> respectively.</p>
+
 <h3 id="version">version</h3>
 
 <ul><li>Default: false</li><li>Type: boolean</li></ul>
@@ -559,7 +581,7 @@ then answer "no" to any prompt.</p>
 
 <ul><li><a href="../doc/folders.html">folders(1)</a></li><li><a href="../doc/npm.html">npm(1)</a></li></ul>
 </div>
-<p id="footer">config &mdash; npm@1.0.94</p>
+<p id="footer">config &mdash; npm@1.0.95</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")
