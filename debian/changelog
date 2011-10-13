@@ -24,7 +24,9 @@ npm (1.0.95-1) UNRELEASED; urgency=low
 
   [ TODO ]
   * Package some or all node_modules.
-  * Migrate from npm < 1.0 with  scripts/clean-old.sh
+  * Migrate from npm < 1.0 with  scripts/clean-old.sh (?)
+  * Get rid of deps/basic-bsdtar*
+  * Update debian/copyright
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
