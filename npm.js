@@ -91,6 +91,7 @@ var commandCache = {}
               , "up" : "update"
               , "c" : "config"
               , "info" : "view"
+              , "show" : "view"
               , "find" : "search"
               , "s" : "search"
               , "se" : "search"
@@ -265,6 +266,11 @@ function load (npm, conf, cb) {
 
       var n = 2
         , errState
+
+      var umask = parseInt(conf.umask, 8)
+      npm.modes = { exec: 0777 & (~umask)
+                  , file: 0666 & (~umask)
+                  , umask: umask }
 
       loadPrefix(npm, conf, next)
       loadUid(npm, conf, next)

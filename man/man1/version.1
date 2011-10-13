@@ -9,7 +9,7 @@
 .SH "SYNOPSIS"
 .
 .nf
-npm version <newversion>
+npm version <newversion> [\-\-message commit\-message]
 .
 .fi
 .
@@ -20,6 +20,8 @@ data back to the package\.json file\.
 .P
 If run in a git repo, it will also create a version commit and tag, and
 fail if the repo is not clean\.
+If supplied with \fB\-\-message\fR (shorthand: \fB\-m\fR) command line option, npm
+will use it as a commit message when creating a version commit\.
 .
 .SH "SEE ALSO"
 .

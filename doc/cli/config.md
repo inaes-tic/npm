@@ -13,7 +13,7 @@ npm-config(1) -- Manage the npm configuration file
 
 ## DESCRIPTION
 
-npm gets its configuration values from 5 sources, in this priority:
+npm gets its configuration values from 6 sources, in this priority:
 
 * cli:
   The command line flags.  Putting `--foo bar` on the command line sets the
@@ -31,6 +31,11 @@ npm gets its configuration values from 5 sources, in this priority:
   This file is an ini-file formatted list of `key = value` parameters.
 * $PREFIX/etc/npmrc (or the `globalconfig` param, if set above):
   This file is an ini-file formatted list of `key = value` parameters
+* path/to/npm/itself/npmrc:  This is an unchangeable "builtin"
+  configuration file that npm keeps consistent across updates.  Set
+  fields in here using the `./configure` script that comes with npm.
+  This is primarily for distribution maintainers to override default
+  configs in a standard and consistent manner.
 * default configs:
   This is a set of configuration parameters that are internal to npm, and are
   defaults if nothing else is specified.
@@ -84,6 +89,7 @@ The following shorthands are parsed on the command-line:
 * `-ddd`: `--loglevel silly`
 * `-g`: `--global`
 * `-l`: `--long`
+* `-m`: `--message`
 * `-p`, `--porcelain`: `--parseable`
 * `-reg`: `--registry`
 * `-v`: `--version`
@@ -389,6 +395,14 @@ also "color" and "loglevel".
 
 Show extended information in `npm ls`
 
+### message
+
+* Default: null
+* Type: [null, String]
+
+Commit message which is used by `npm version` when creating version commit.
+When null, "version <version>" is used.
+
 ### node-version
 
 * Default: process.version
@@ -605,6 +619,18 @@ The location of a user-level ignore file to apply to all packages.
 
 If not found, but there is a .gitignore file in the same directory, then
 that will be used instead.
+
+### umask
+
+* Default: 022
+* Type: Octal numeric string
+
+The "umask" value to use when setting the file creation mode on files
+and folders.
+
+Folders and executables are given a mode which is `0777` masked against
+this value.  Other files are given a mode which is `0666` masked against
+this value.  Thus, the defaults are `0755` and `0644` respectively.
 
 ### version
 
