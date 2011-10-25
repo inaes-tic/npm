@@ -26,7 +26,9 @@ npm (1.0.101~dfsg1-1) UNRELEASED; urgency=low
     + Abbreviate author middle name (to match upstream change).
 
   [ TODO ]
-  * Package some or all node_modules.
+  * Package all submodules, and exclude them (see debian/rules) since we
+    are already dfsg-repackaging.
+  * Generate html and man pages from ronnjs. Exclude them too.
   * Migrate from npm < 1.0 with scripts/clean-old.sh (?)
   * Update debian/copyright
 
