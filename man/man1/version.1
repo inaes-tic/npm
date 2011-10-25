@@ -18,8 +18,15 @@ Run this in a package directory to bump the version and write the new
 data back to the package\.json file\.
 .
 .P
+The \fBnewversion\fR argument should be a valid semver string, \fIor\fR a valid
+second argument to semver\.inc (one of "patch", "minor", or "major")\. In 
+the second case, the existing version will be incremented by that amount\.
+.
+.P
 If run in a git repo, it will also create a version commit and tag, and
 fail if the repo is not clean\.
+.
+.P
 If supplied with \fB\-\-message\fR (shorthand: \fB\-m\fR) command line option, npm
 will use it as a commit message when creating a version commit\.
 .

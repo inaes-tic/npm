@@ -346,10 +346,11 @@ also "color" and "loglevel".</p>
 
 <h3 id="message">message</h3>
 
-<ul><li>Default: null</li><li>Type: [null, String]</li></ul>
+<ul><li>Default: "%s"</li><li>Type: String</li></ul>
 
-<p>Commit message which is used by <code>npm version</code> when creating version commit.
-When null, "version &lt;version&gt;" is used.</p>
+<p>Commit message which is used by <code>npm version</code> when creating version commit.</p>
+
+<p>Any "%s" in the message will be replaced with the version number.</p>
 
 <h3 id="node-version">node-version</h3>
 
@@ -581,7 +582,7 @@ then answer "no" to any prompt.</p>
 
 <ul><li><a href="../doc/folders.html">folders(1)</a></li><li><a href="../doc/npm.html">npm(1)</a></li></ul>
 </div>
-<p id="footer">get &mdash; npm@1.0.95</p>
+<p id="footer">get &mdash; npm@1.0.101</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")

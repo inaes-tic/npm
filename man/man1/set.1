@@ -707,16 +707,18 @@ Show extended information in \fBnpm ls\fR
 .SS "message"
 .
 .IP "\(bu" 4
-Default: null
+Default: "%s"
 .
 .IP "\(bu" 4
-Type: [null, String]
+Type: String
 .
 .IP "" 0
 .
 .P
 Commit message which is used by \fBnpm version\fR when creating version commit\.
-When null, "version <version>" is used\.
+.
+.P
+Any "%s" in the message will be replaced with the version number\.
 .
 .SS "node\-version"
 .
