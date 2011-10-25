@@ -17,16 +17,21 @@
 <p>Run this in a package directory to bump the version and write the new
 data back to the package.json file.</p>
 
+<p>The <code>newversion</code> argument should be a valid semver string, <em>or</em> a valid
+second argument to semver.inc (one of "patch", "minor", or "major"). In 
+the second case, the existing version will be incremented by that amount.</p>
+
 <p>If run in a git repo, it will also create a version commit and tag, and
-fail if the repo is not clean.
-If supplied with <code>--message</code> (shorthand: <code>-m</code>) command line option, npm
+fail if the repo is not clean.</p>
+
+<p>If supplied with <code>--message</code> (shorthand: <code>-m</code>) command line option, npm
 will use it as a commit message when creating a version commit.</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
 <ul><li><a href="../doc/init.html">init(1)</a></li><li><a href="../doc/json.html">json(1)</a></li><li><a href="../doc/semver.html">semver(1)</a></li></ul>
 </div>
-<p id="footer">version &mdash; npm@1.0.95</p>
+<p id="footer">version &mdash; npm@1.0.101</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")
