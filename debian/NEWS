@@ -1,4 +1,4 @@
-npm (1.0.95-1) UNRELEASED; urgency=low
+npm (1.0.101~dfsg1-1) UNRELEASED; urgency=low
 
   Npm can now preserve its configuration across self-updates: `npm update npm`
   is now allowed, and the npm-updated version would go to /usr/local/bin/npm.
@@ -22,4 +22,4 @@ npm (1.0.95-1) UNRELEASED; urgency=low
 
   Please read npm-config(1), npm-folders(1) and npm-link(1) man pages.
 
- -- Jérémy Lal <kapouer@melix.org>  Sun, 09 Oct 2011 23:05:33 +0200
+ -- Jérémy Lal <kapouer@melix.org>  Tue, 25 Oct 2011 15:19:32 +0200
