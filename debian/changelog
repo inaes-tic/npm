@@ -1,4 +1,4 @@
-npm (1.0.95-1) UNRELEASED; urgency=low
+npm (1.0.101~dfsg1-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
@@ -15,6 +15,9 @@ npm (1.0.95-1) UNRELEASED; urgency=low
   * Drop patch to fix completion, it wasn't broken.
   * debian/watch updated : github url update, tarball from npm registry.
   * debian/README.Debian updated.
+  * DFSG repackaging using cdbs upstream-tarball.mk, removed :
+    + deps/basic-bsdtar*
+    + html/*/GubbleBum-Blocky.ttf
 
   [ Jonas Smedegaard ]
   * Update copyright file:
@@ -24,8 +27,7 @@ npm (1.0.95-1) UNRELEASED; urgency=low
 
   [ TODO ]
   * Package some or all node_modules.
-  * Migrate from npm < 1.0 with  scripts/clean-old.sh (?)
-  * Get rid of deps/basic-bsdtar*
+  * Migrate from npm < 1.0 with scripts/clean-old.sh (?)
   * Update debian/copyright
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
