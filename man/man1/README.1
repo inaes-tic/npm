@@ -19,7 +19,7 @@ Much more info available via \fBnpm help\fR once it\'s installed\.
 To install an old \fBand unsupported\fR version of npm that works on node 0\.3
 and prior, clone the git repo and dig through the old tags and branches\.
 .
-.SH "Simple Install"
+.SH "Simple Install (Unix only, sorry)"
 To install npm with one command, do this:
 .
 .IP "" 4
@@ -55,26 +55,17 @@ curl http://npmjs\.org/install\.sh | clean=yes sh
 .
 .IP "" 0
 .
+.P
+If you get permission errors, see the section below, entitled
+"Permission Errors on Installation"\.
+.
 .SH "Installing on Windows \-\- Experimental"
-\fBIMPORTANT: Please read this and do every step\.\fR  npm \fBwill not\fR work
-properly if you don\'t, and I\'ll ruthlessly close your bug report and direct
-you to this document\.
-.
-.P
-There are 4 steps\.
-.
-.P
 Yes, this sucks\.  A convenient one\-liner is coming soon\.
 .
-.SS "Step 1: Choose a location for node\.exe that ends in `bin`"
-npm uses a somewhat posix\-centric folder structure, with \fBbin\fR and \fBlib\fR
-folders rooted in a specific \fBprefix\fR\|\.  For now, it works best if you
-put node\.exe in a folder named \fBbin\fR, for example, \fBC:\\projects\\node\\bin\\node\.exe\fR\|\.
-.
-.P
+.SS "Step 1: Drop the node\.exe somewhere"
 You will probably need the latest version of node, \fBat least\fR version \fB0\.5\.8\fR or higher\.  You can get it from \fIhttp://nodejs\.org/dist/v0\.5\.8/node\.exe\fR\|\.
 .
-.SS "Step 2: Update the %PATH% environment variable"
+.SS "Step 2 (optional): Update the %PATH% environment variable"
 Update your \fB%PATH%\fR environment variable in System Properties:
 Advanced: Environment, so that it includes the \fBbin\fR folder you chose\.
 The entries are separated by semicolons\.
@@ -91,6 +82,13 @@ setx path "%PATH%"
 .fi
 .
 .IP "" 0
+.
+.P
+This will have the added advantage that you\'ll be able to simply type \fBnpm\fR or \fBnode\fR in any project folder to access those commands\.
+.
+.P
+If you decide not to update the PATH, and put the node\.exe file in \fBC:\\node\\node\.exe\fR, then the npm executable will end up \fBC:\\node\\npm\.cmd\fR,
+and you\'ll have to type \fBC:\\node\\npm <command>\fR to use it\.
 .
 .SS "Step 3: Install git"
 If you don\'t already have git, install it \fIhttps://git\.wiki\.kernel\.org/index\.php/MSysGit:InstallMSysGit\fR\|\.
@@ -133,6 +131,21 @@ curl http://npmjs\.org/install\.sh | sudo sh
 from the internet typically doesn\'t require elevated permissions\.
 Running it might\.
 .
+.P
+I highly recommend that you first download the file, and make sure that
+it is what you expect, and \fIthen\fR run it\.
+.
+.IP "" 4
+.
+.nf
+curl \-O http://npmjs\.org/install\.sh
+# inspect file\.\.
+sudo sh install\.sh
+.
+.fi
+.
+.IP "" 0
+.
 .SH "Installing on Cygwin"
 Don\'t\.
 .
@@ -148,7 +161,7 @@ To install the latest \fBunstable\fR development version from git:
 .nf
 git clone https://github\.com/isaacs/npm\.git
 cd npm
-sudo make install
+sudo make install     # (or: `node cli\.js install \-gf`)
 .
 .fi
 .
