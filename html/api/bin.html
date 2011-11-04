@@ -16,17 +16,10 @@
 
 <p>Print the folder where npm will install executables.</p>
 
-<p>This function should not be used programmatically.  The logic for
-attaining the bin folder is quite simple.</p>
-
-<pre><code>var bin
-if (npm.config.get("global")) {
-  bin = path.resolve(npm.prefix, "bin")
-} else {
-  bin = path.resolve(npm.dir, ".bin")
-}</code></pre>
+<p>This function should not be used programmatically.  Instead, just refer
+to the <code>npm.bin</code> member.</p>
 </div>
-<p id="footer">bin &mdash; npm@1.0.101</p>
+<p id="footer">bin &mdash; npm@1.0.103</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")

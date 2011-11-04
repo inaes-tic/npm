@@ -17,13 +17,18 @@
 <h3 id="tl-dr">tl;dr</h3>
 
 <ul><li>Local install (default): puts stuff in <code>./node_modules</code> of the current
-package root.</li><li>Global install (with <code>-g</code>): puts stuff in /usr/local</li><li>Install it <strong>locally</strong> if you're going to <code>require()</code> it.</li><li>Install it <strong>globally</strong> if you're going to run it on the command line.</li><li>If you need both, then install it in both places, or use <code>npm link</code>.</li></ul>
+package root.</li><li>Global install (with <code>-g</code>): puts stuff in /usr/local or wherever node
+is installed.</li><li>Install it <strong>locally</strong> if you're going to <code>require()</code> it.</li><li>Install it <strong>globally</strong> if you're going to run it on the command line.</li><li>If you need both, then install it in both places, or use <code>npm link</code>.</li></ul>
 
 <h3 id="prefix-Configuration">prefix Configuration</h3>
 
 <p>The <code>prefix</code> config defaults to the location where node is installed.
 On most systems, this is <code>/usr/local</code>, and most of the time is the same
 as node's <code>process.installPrefix</code>.</p>
+
+<p>On windows, this is the exact location of the node.exe binary.  On Unix
+systems, it's one level up, since node is typically installed at
+<code>{prefix}/bin/node</code> rather than <code>{prefix}/node.exe</code>.</p>
 
 <p>When the <code>global</code> flag is set, npm installs things into this prefix.
 When it is not set, it uses the root of the current package, or the
@@ -36,20 +41,29 @@ When installing locally, this means that you can
 <code>require("packagename")</code> to load its main module, or
 <code>require("packagename/lib/path/to/sub/module")</code> to load other modules.</p>
 
+<p>Global installs on Unix systems go to <code>{prefix}/lib/node_modules</code>.
+Global installs on Windows go to <code>{prefix}/node_modules</code> (that is, no
+<code>lib</code> folder.)</p>
+
 <p>If you wish to <code>require()</code> a package, then install it locally.</p>
 
 <h3 id="Executables">Executables</h3>
 
-<p>When in global mode, executables are linked into <code>prefix/bin</code>.</p>
+<p>When in global mode, executables are linked into <code>{prefix}/bin</code> on Unix,
+or directly into <code>{prefix}</code> on Windows.</p>
 
 <p>When in local mode, executables are linked into
-<code>prefix/node_modules/.bin</code>.</p>
+<code>./node_modules/.bin</code> so that they can be made available to scripts run
+through npm.  (For example, so that a test runner will be in the path
+when you run <code>npm test</code>.)</p>
 
 <h3 id="Man-Pages">Man Pages</h3>
 
-<p>When in global mode, man pages are linked into <code>prefix/share/man</code>.</p>
+<p>When in global mode, man pages are linked into <code>{prefix}/share/man</code>.</p>
 
 <p>When in local mode, man pages are not installed.</p>
+
+<p>Man pages are not installed on Windows systems.</p>
 
 <h3 id="Cache">Cache</h3>
 
@@ -61,15 +75,15 @@ When installing locally, this means that you can
 <h3 id="Temp-Files">Temp Files</h3>
 
 <p>Temporary files are stored by default in the folder specified by the
-<code>tmp</code> config, which defaults to either the TMPDIR environment
-variable, or <code>/tmp</code>.</p>
+<code>tmp</code> config, which defaults to the TMPDIR, TMP, or TEMP environment
+variables, or <code>/tmp</code> on Unix and <code>c:\windows\temp</code> on Windows.</p>
 
 <p>Temp files are given a unique folder under this root for each run of the
 program, and are deleted upon successful exit.</p>
 
 <h2 id="More-Information">More Information</h2>
 
-<p>When doing local installings, npm first tries to find an appropriate
+<p>When installing locally, npm first tries to find an appropriate
 <code>prefix</code> folder.  This is so that <code>npm install foo@1.2.3</code> will install
 to the sensible root of your package, even if you happen to have <code>cd</code>ed
 into some other folder.</p>
@@ -97,8 +111,7 @@ be found by npm scripts when necessary.</p>
 install packages "globally".</p>
 
 <p>For global installation, packages are installed roughly the same way,
-but the module root is <code>/usr/local/lib/node_modules</code>, and bin files are
-linked to <code>/usr/local/bin</code> instead of <code>./node_modules/.bin</code>.</p>
+but using the folders described above.</p>
 
 <h3 id="Cycles-Conflicts-and-Folder-Parsimony">Cycles, Conflicts, and Folder Parsimony</h3>
 
@@ -192,7 +205,7 @@ cannot be found elsewhere.  See <code><a href="../doc/json.html">json(1)</a></co
 
 <ul><li><a href="../doc/faq.html">faq(1)</a></li><li><a href="../doc/json.html">json(1)</a></li><li><a href="../doc/install.html">install(1)</a></li><li><a href="../doc/pack.html">pack(1)</a></li><li><a href="../doc/cache.html">cache(1)</a></li><li><a href="../doc/config.html">config(1)</a></li><li><a href="../doc/publish.html">publish(1)</a></li></ul>
 </div>
-<p id="footer">folders &mdash; npm@1.0.101</p>
+<p id="footer">folders &mdash; npm@1.0.103</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")
