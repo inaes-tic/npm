@@ -16,7 +16,11 @@ DEB_UPSTREAM_URL = http://registry.npmjs.org/npm/-
 DEB_UPSTREAM_TARBALL_EXTENSION = tgz
 DEB_UPSTREAM_TARBALL_SRCDIR = package
 DEB_UPSTREAM_WGET_OPTS += --no-check-certificate
-DEB_UPSTREAM_REPACKAGE_EXCLUDES += ./deps/basic-bsdtar* ./html/*/GubbleBum-Blocky.ttf
+DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
+deps/basic-bsdtar* \
+html/*/GubbleBum-Blocky.ttf \
+node_modules/request
+
 DEB_UPSTREAM_REPACKAGE_TAG = dfsg1
 
 # Suppress copyright-checking some binaries to not upset dpkg-source
