@@ -17,10 +17,10 @@ DEB_UPSTREAM_TARBALL_EXTENSION = tgz
 DEB_UPSTREAM_TARBALL_SRCDIR = package
 DEB_UPSTREAM_WGET_OPTS += --no-check-certificate
 DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
-deps/basic-bsdtar* \
-html/*/GubbleBum-Blocky.ttf \
-node_modules/request \
-node_modules/node-uuid
+./deps/basic-bsdtar* \
+./html/*/GubbleBum-Blocky.ttf \
+./node_modules/request/ \
+./node_modules/node-uuid/
 
 DEB_UPSTREAM_REPACKAGE_TAG = dfsg2
 
