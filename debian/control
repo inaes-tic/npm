@@ -4,8 +4,8 @@ Priority: extra
 Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
 Uploaders: Jérémy Lal <kapouer@melix.org>,
  Jonas Smedegaard <dr@jones.dk>
-Build-Depends: cdbs (>= 0.4.85~),
- debhelper (>= 7.0.1),
+Build-Depends: cdbs,
+ debhelper,
  dh-buildinfo,
  bash-completion
 Standards-Version: 3.9.2
@@ -17,6 +17,7 @@ Package: npm
 Architecture: all
 Depends: nodejs (>= 0.4.7),
  nodejs-dev (>= 0.4.7),
+ node-request,
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
