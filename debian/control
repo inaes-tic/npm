@@ -17,6 +17,7 @@ Package: npm
 Architecture: all
 Depends: nodejs (>= 0.4.7),
  nodejs-dev (>= 0.4.7),
+ node-node-uuid,
  node-request,
  ${misc:Depends}
 Description: package manager for nodejs
