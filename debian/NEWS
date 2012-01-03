@@ -1,4 +1,7 @@
-npm (1.0.101~dfsg1-1) UNRELEASED; urgency=low
+npm (1.0.106~dfsg2-1) UNRELEASED; urgency=low
+
+  Self-installation
+  =================
 
   Npm can now preserve its configuration across self-updates: `npm update npm`
   is now allowed, and the npm-updated version would go to /usr/local/bin/npm.
@@ -9,13 +12,20 @@ npm (1.0.101~dfsg1-1) UNRELEASED; urgency=low
   It is nonetheless strongly advised to update npm through the debian package.
   To fall back to npm installed by debian package, simply remove /usr/local/bin/npm.
 
-  In global mode (root user):
+  Configuration changes
+  =====================
+  
+  Global mode (root user)
+  -----------------------
+  
   * /etc/npm/rootrc and userrc are removed, global config is in /etc/npmrc.
   * The new globalignorefile is /etc/npmignore.
   * /usr/local/lib/nodejs has moved to /usr/local/lib/node_modules,
     and is no more on the node path by default. See npm-link(1) for a better usage.
 
-  In local mode:
+  Local mode
+  ----------
+  
   * Modules are not installed in ~/.node_libraries, but in per-project's
     ./node_modules directory.
   * Executables are not linked in ~/bin, but in per-project's node_modules/.bin.
