@@ -522,25 +522,6 @@ Type: String or Number
 The group to use when running package scripts in global mode as the root
 user\.
 .
-.SS "gzipbin"
-.
-.IP "\(bu" 4
-Default: "gzip"
-.
-.IP "\(bu" 4
-Type: path
-.
-.IP "" 0
-.
-.P
-The gzip binary
-.
-.P
-\fBDEPRECATED\fR This is no longer used\.
-.
-.P
-npm now requires a tar that supports the \fB\-z\fR flag\.
-.
 .SS "https\-proxy"
 .
 .IP "\(bu" 4
@@ -978,22 +959,6 @@ it will install the specified tag\.
 .P
 Also the tag that is added to the package@version specified by the \fBnpm
 tag\fR command, if no explicit tag is given\.
-.
-.SS "tar"
-.
-.IP "\(bu" 4
-Default: TAR environment variable, or "tar"
-.
-.IP "\(bu" 4
-Type: path
-.
-.IP "" 0
-.
-.P
-The tar executable
-.
-.P
-npm now requires a tar that supports the \fB\-z\fR flag\.
 .
 .SS "tmp"
 .

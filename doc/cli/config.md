@@ -101,6 +101,7 @@ The following shorthands are parsed on the command-line:
 * `-v`: `--version`
 * `-h`, `-?`, `--help`, `-H`: `--usage`
 * `-s`, `--silent`: `--loglevel silent`
+* `-q`, `--quiet`: `--loglevel warn`
 * `-d`: `--loglevel info`
 * `-dd`, `--verbose`: `--loglevel verbose`
 * `-ddd`: `--loglevel silly`
@@ -212,7 +213,7 @@ See also the `strict-ssl` config.
 
 ### cache
 
-* Default: Windows: `~/npm-cache`, Posix: `~/.npm`
+* Default: Windows: `%APPDATA%\npm-cache`, Posix: `~/.npm`
 * Type: path
 
 The location of npm's cache directory.  See `npm-cache(1)`
@@ -224,6 +225,14 @@ The location of npm's cache directory.  See `npm-cache(1)`
 
 If false, never shows colors.  If `"always"` then always shows colors.
 If true, then only prints color codes for tty file descriptors.
+
+### coverage
+
+* Default: false
+* Type: Boolean
+
+A flag to tell test-harness to run with their coverage options enabled,
+if they respond to the `npm_config_coverage` environment variable.
 
 ### depth
 
@@ -270,6 +279,15 @@ Makes various commands more forceful.
 * skips cache when requesting from the registry.
 * prevents checks against clobbering non-npm files.
 
+### git
+
+* Default: `"git"`
+* Type: String
+
+The command to use for git commands.  If git is installed on the
+computer, but is not in the `PATH`, then set this to the full path to
+the git binary.
+
 ### global
 
 * Default: false
@@ -310,17 +328,6 @@ same directory, then that will be used instead.
 The group to use when running package scripts in global mode as the root
 user.
 
-### gzipbin
-
-* Default: "gzip"
-* Type: path
-
-The gzip binary
-
-**DEPRECATED** This is no longer used.
-
-npm now requires a tar that supports the `-z` flag.
-
 ### https-proxy
 
 * Default: the `HTTPS_PROXY` or `https_proxy` or `HTTP_PROXY` or
@@ -337,7 +344,7 @@ A proxy to use for outgoing https requests.
 A white-space separated list of glob patterns of files to always exclude
 from packages when building tarballs.
 
-### init.version 
+### init.version
 
 * Default: "0.0.0"
 * Type: semver
@@ -390,12 +397,15 @@ The location to write log output.
 
 ### loglevel
 
-* Default: "warn"
+* Default: "http"
 * Type: String
-* Values: "silent", "win", "error", "warn", "info", "verbose", "silly"
+* Values: "silent", "win", "error", "warn", "http", "info", "verbose", "silly"
 
 What level of logs to report.  On failure, *all* logs are written to
 `npm-debug.log` in the current working directory.
+
+Any logs of a higher level than the setting are shown.
+The default is "http", which shows http, warn, and error output.
 
 ### logprefix
 
@@ -485,6 +495,18 @@ Set to true to run in "production" mode.
    local `npm install` without any arguments.
 2. Set the NODE_ENV="production" for lifecycle scripts.
 
+### proprietary-attribs
+
+* Default: true
+* Type: Boolean
+
+Whether or not to include proprietary extended attributes in the
+tarballs created by npm.
+
+Unless you are expecting to unpack package tarballs with something other
+than npm -- particularly a very outdated tar implementation -- leave
+this as true.
+
 ### proxy
 
 * Default: `HTTP_PROXY` or `http_proxy` environment variable, or null
@@ -536,6 +558,16 @@ Space-separated options that are always passed to search.
 
 Space-separated options that limit the results from search.
 
+### searchsort
+
+* Default: "name"
+* Type: String
+* Values: "name", "-name", "date", "-date", "description",
+  "-description", "keywords", "-keywords"
+
+Indication of which field to sort search results by.  Prefix with a `-`
+character to indicate reverse sort.
+
 ### shell
 
 * Default: SHELL environment variable, or "bash" on Posix, or "cmd" on
@@ -564,15 +596,6 @@ it will install the specified tag.
 
 Also the tag that is added to the package@version specified by the `npm
 tag` command, if no explicit tag is given.
-
-### tar
-
-* Default: TAR environment variable, or "tar"
-* Type: path
-
-The tar executable
-
-npm now requires a tar that supports the `-z` flag.
 
 ### tmp
 

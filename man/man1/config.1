@@ -1,7 +1,7 @@
 .\" Generated with Ronnjs/v0.1
 .\" http://github.com/kapouer/ronnjs/
 .
-.TH "NPM\-CONFIG" "1" "November 2011" "" ""
+.TH "NPM\-CONFIG" "1" "January 2012" "" ""
 .
 .SH "NAME"
 \fBnpm-config\fR \-\- Manage the npm configuration file
@@ -127,6 +127,9 @@ The following shorthands are parsed on the command\-line:
 .
 .IP "\(bu" 4
 \fB\-s\fR, \fB\-\-silent\fR: \fB\-\-loglevel silent\fR
+.
+.IP "\(bu" 4
+\fB\-q\fR, \fB\-\-quiet\fR: \fB\-\-loglevel warn\fR
 .
 .IP "\(bu" 4
 \fB\-d\fR: \fB\-\-loglevel info\fR
@@ -344,7 +347,7 @@ See also the \fBstrict\-ssl\fR config\.
 .SS "cache"
 .
 .IP "\(bu" 4
-Default: Windows: \fB~/npm\-cache\fR, Posix: \fB~/\.npm\fR
+Default: Windows: \fB%APPDATA%\\npm\-cache\fR, Posix: \fB~/\.npm\fR
 .
 .IP "\(bu" 4
 Type: path
@@ -367,6 +370,20 @@ Type: Boolean or \fB"always"\fR
 .P
 If false, never shows colors\.  If \fB"always"\fR then always shows colors\.
 If true, then only prints color codes for tty file descriptors\.
+.
+.SS "coverage"
+.
+.IP "\(bu" 4
+Default: false
+.
+.IP "\(bu" 4
+Type: Boolean
+.
+.IP "" 0
+.
+.P
+A flag to tell test\-harness to run with their coverage options enabled,
+if they respond to the \fBnpm_config_coverage\fR environment variable\.
 .
 .SS "depth"
 .
@@ -452,6 +469,21 @@ prevents checks against clobbering non\-npm files\.
 .
 .IP "" 0
 .
+.SS "git"
+.
+.IP "\(bu" 4
+Default: \fB"git"\fR
+.
+.IP "\(bu" 4
+Type: String
+.
+.IP "" 0
+.
+.P
+The command to use for git commands\.  If git is installed on the
+computer, but is not in the \fBPATH\fR, then set this to the full path to
+the git binary\.
+.
 .SS "global"
 .
 .IP "\(bu" 4
@@ -521,25 +553,6 @@ Type: String or Number
 .P
 The group to use when running package scripts in global mode as the root
 user\.
-.
-.SS "gzipbin"
-.
-.IP "\(bu" 4
-Default: "gzip"
-.
-.IP "\(bu" 4
-Type: path
-.
-.IP "" 0
-.
-.P
-The gzip binary
-.
-.P
-\fBDEPRECATED\fR This is no longer used\.
-.
-.P
-npm now requires a tar that supports the \fB\-z\fR flag\.
 .
 .SS "https\-proxy"
 .
@@ -664,18 +677,22 @@ The location to write log output\.
 .SS "loglevel"
 .
 .IP "\(bu" 4
-Default: "warn"
+Default: "http"
 .
 .IP "\(bu" 4
 Type: String
 .
 .IP "\(bu" 4
-Values: "silent", "win", "error", "warn", "info", "verbose", "silly"
+Values: "silent", "win", "error", "warn", "http", "info", "verbose", "silly"
 .
 .IP "" 0
 .
 .P
 What level of logs to report\.  On failure, \fIall\fR logs are written to \fBnpm\-debug\.log\fR in the current working directory\.
+.
+.P
+Any logs of a higher level than the setting are shown\.
+The default is "http", which shows http, warn, and error output\.
 .
 .SS "logprefix"
 .
@@ -836,6 +853,25 @@ Set the NODE_ENV="production" for lifecycle scripts\.
 .
 .IP "" 0
 .
+.SS "proprietary\-attribs"
+.
+.IP "\(bu" 4
+Default: true
+.
+.IP "\(bu" 4
+Type: Boolean
+.
+.IP "" 0
+.
+.P
+Whether or not to include proprietary extended attributes in the
+tarballs created by npm\.
+.
+.P
+Unless you are expecting to unpack package tarballs with something other
+than npm \-\- particularly a very outdated tar implementation \-\- leave
+this as true\.
+.
 .SS "proxy"
 .
 .IP "\(bu" 4
@@ -930,6 +966,24 @@ Type: String
 .P
 Space\-separated options that limit the results from search\.
 .
+.SS "searchsort"
+.
+.IP "\(bu" 4
+Default: "name"
+.
+.IP "\(bu" 4
+Type: String
+.
+.IP "\(bu" 4
+Values: "name", "\-name", "date", "\-date", "description",
+"\-description", "keywords", "\-keywords"
+.
+.IP "" 0
+.
+.P
+Indication of which field to sort search results by\.  Prefix with a \fB\-\fR
+character to indicate reverse sort\.
+.
 .SS "shell"
 .
 .IP "\(bu" 4
@@ -978,22 +1032,6 @@ it will install the specified tag\.
 .P
 Also the tag that is added to the package@version specified by the \fBnpm
 tag\fR command, if no explicit tag is given\.
-.
-.SS "tar"
-.
-.IP "\(bu" 4
-Default: TAR environment variable, or "tar"
-.
-.IP "\(bu" 4
-Type: path
-.
-.IP "" 0
-.
-.P
-The tar executable
-.
-.P
-npm now requires a tar that supports the \fB\-z\fR flag\.
 .
 .SS "tmp"
 .

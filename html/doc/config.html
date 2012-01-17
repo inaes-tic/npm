@@ -105,7 +105,7 @@ global config.</p>
 
 <p>The following shorthands are parsed on the command-line:</p>
 
-<ul><li><code>-v</code>: <code>--version</code></li><li><code>-h</code>, <code>-?</code>, <code>--help</code>, <code>-H</code>: <code>--usage</code></li><li><code>-s</code>, <code>--silent</code>: <code>--loglevel silent</code></li><li><code>-d</code>: <code>--loglevel info</code></li><li><code>-dd</code>, <code>--verbose</code>: <code>--loglevel verbose</code></li><li><code>-ddd</code>: <code>--loglevel silly</code></li><li><code>-g</code>: <code>--global</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-m</code>: <code>--message</code></li><li><code>-p</code>, <code>--porcelain</code>: <code>--parseable</code></li><li><code>-reg</code>: <code>--registry</code></li><li><code>-v</code>: <code>--version</code></li><li><code>-f</code>: <code>--force</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-desc</code>: <code>--description</code></li><li><code>-S</code>: <code>--save</code></li><li><code>-y</code>: <code>--yes</code></li><li><code>-n</code>: <code>--yes false</code></li><li><code>ll</code> and <code>la</code> commands: <code>ls --long</code></li></ul>
+<ul><li><code>-v</code>: <code>--version</code></li><li><code>-h</code>, <code>-?</code>, <code>--help</code>, <code>-H</code>: <code>--usage</code></li><li><code>-s</code>, <code>--silent</code>: <code>--loglevel silent</code></li><li><code>-q</code>, <code>--quiet</code>: <code>--loglevel warn</code></li><li><code>-d</code>: <code>--loglevel info</code></li><li><code>-dd</code>, <code>--verbose</code>: <code>--loglevel verbose</code></li><li><code>-ddd</code>: <code>--loglevel silly</code></li><li><code>-g</code>: <code>--global</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-m</code>: <code>--message</code></li><li><code>-p</code>, <code>--porcelain</code>: <code>--parseable</code></li><li><code>-reg</code>: <code>--registry</code></li><li><code>-v</code>: <code>--version</code></li><li><code>-f</code>: <code>--force</code></li><li><code>-l</code>: <code>--long</code></li><li><code>-desc</code>: <code>--description</code></li><li><code>-S</code>: <code>--save</code></li><li><code>-y</code>: <code>--yes</code></li><li><code>-n</code>: <code>--yes false</code></li><li><code>ll</code> and <code>la</code> commands: <code>ls --long</code></li></ul>
 
 <p>If the specified configuration param resolves unambiguously to a known
 configuration parameter, then it is expanded to that configuration
@@ -196,7 +196,7 @@ to trust only that specific signing authority.</p>
 
 <h3 id="cache">cache</h3>
 
-<ul><li>Default: Windows: <code>~/npm-cache</code>, Posix: <code>~/.npm</code></li><li>Type: path</li></ul>
+<ul><li>Default: Windows: <code>%APPDATA%\npm-cache</code>, Posix: <code>~/.npm</code></li><li>Type: path</li></ul>
 
 <p>The location of npm's cache directory.  See <code><a href="../doc/cache.html">cache(1)</a></code></p>
 
@@ -206,6 +206,13 @@ to trust only that specific signing authority.</p>
 
 <p>If false, never shows colors.  If <code>"always"</code> then always shows colors.
 If true, then only prints color codes for tty file descriptors.</p>
+
+<h3 id="coverage">coverage</h3>
+
+<ul><li>Default: false</li><li>Type: Boolean</li></ul>
+
+<p>A flag to tell test-harness to run with their coverage options enabled,
+if they respond to the <code>npm_config_coverage</code> environment variable.</p>
 
 <h3 id="depth">depth</h3>
 
@@ -244,6 +251,14 @@ or <code>"notepad"</code> on Windows.</li><li>Type: path</li></ul>
 
 <ul><li>lifecycle script failure does not block progress.</li><li>publishing clobbers previously published versions.</li><li>skips cache when requesting from the registry.</li><li>prevents checks against clobbering non-npm files.</li></ul>
 
+<h3 id="git">git</h3>
+
+<ul><li>Default: <code>"git"</code></li><li>Type: String</li></ul>
+
+<p>The command to use for git commands.  If git is installed on the
+computer, but is not in the <code>PATH</code>, then set this to the full path to
+the git binary.</p>
+
 <h3 id="global">global</h3>
 
 <ul><li>Default: false</li><li>Type: Boolean</li></ul>
@@ -277,16 +292,6 @@ same directory, then that will be used instead.</p>
 
 <p>The group to use when running package scripts in global mode as the root
 user.</p>
-
-<h3 id="gzipbin">gzipbin</h3>
-
-<ul><li>Default: "gzip"</li><li>Type: path</li></ul>
-
-<p>The gzip binary</p>
-
-<p><strong>DEPRECATED</strong> This is no longer used.</p>
-
-<p>npm now requires a tar that supports the <code>-z</code> flag.</p>
 
 <h3 id="https-proxy">https-proxy</h3>
 
@@ -348,10 +353,13 @@ being installed locally.</li></ul>
 
 <h3 id="loglevel">loglevel</h3>
 
-<ul><li>Default: "warn"</li><li>Type: String</li><li>Values: "silent", "win", "error", "warn", "info", "verbose", "silly"</li></ul>
+<ul><li>Default: "http"</li><li>Type: String</li><li>Values: "silent", "win", "error", "warn", "http", "info", "verbose", "silly"</li></ul>
 
 <p>What level of logs to report.  On failure, <em>all</em> logs are written to
 <code>npm-debug.log</code> in the current working directory.</p>
+
+<p>Any logs of a higher level than the setting are shown.
+The default is "http", which shows http, warn, and error output.</p>
 
 <h3 id="logprefix">logprefix</h3>
 
@@ -429,6 +437,17 @@ it forces non-global commands to run in the specified folder.</p>
 <ol><li>devDependencies are not installed at the topmost level when running
 local <code>npm install</code> without any arguments.</li><li>Set the NODE_ENV="production" for lifecycle scripts.</li></ol>
 
+<h3 id="proprietary-attribs">proprietary-attribs</h3>
+
+<ul><li>Default: true</li><li>Type: Boolean</li></ul>
+
+<p>Whether or not to include proprietary extended attributes in the
+tarballs created by npm.</p>
+
+<p>Unless you are expecting to unpack package tarballs with something other
+than npm -- particularly a very outdated tar implementation -- leave
+this as true.</p>
+
 <h3 id="proxy">proxy</h3>
 
 <ul><li>Default: <code>HTTP_PROXY</code> or <code>http_proxy</code> environment variable, or null</li><li>Type: url</li></ul>
@@ -473,6 +492,14 @@ local <code>npm install</code> without any arguments.</li><li>Set the NODE_ENV="
 
 <p>Space-separated options that limit the results from search.</p>
 
+<h3 id="searchsort">searchsort</h3>
+
+<ul><li>Default: "name"</li><li>Type: String</li><li>Values: "name", "-name", "date", "-date", "description",
+"-description", "keywords", "-keywords"</li></ul>
+
+<p>Indication of which field to sort search results by.  Prefix with a <code>-</code>
+character to indicate reverse sort.</p>
+
 <h3 id="shell">shell</h3>
 
 <ul><li>Default: SHELL environment variable, or "bash" on Posix, or "cmd" on
@@ -498,14 +525,6 @@ it will install the specified tag.</p>
 
 <p>Also the tag that is added to the package@version specified by the <code>npm
 tag</code> command, if no explicit tag is given.</p>
-
-<h3 id="tar">tar</h3>
-
-<ul><li>Default: TAR environment variable, or "tar"</li><li>Type: path</li></ul>
-
-<p>The tar executable</p>
-
-<p>npm now requires a tar that supports the <code>-z</code> flag.</p>
 
 <h3 id="tmp">tmp</h3>
 
@@ -604,7 +623,7 @@ then answer "no" to any prompt.</p>
 
 <ul><li><a href="../doc/folders.html">folders(1)</a></li><li><a href="../doc/npm.html">npm(1)</a></li></ul>
 </div>
-<p id="footer">config &mdash; npm@1.0.106</p>
+<p id="footer">config &mdash; npm@1.1.0-2</p>
 <script>
 ;(function () {
 var wrapper = document.getElementById("wrapper")
