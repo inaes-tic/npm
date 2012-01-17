@@ -3,6 +3,7 @@ npm (1.1.0-2~dfsg1-1) UNRELEASED; urgency=low
   * New upstream release.
 
   [ Jérémy Lal ]
+  * Depend on node >= 0.6.7
   * npm can now be configured to follow FHS for root usage :
     + prefix is /usr/local, globalconfig is /etc/npmrc.
     + /etc/npm/rootrc and /etc/npm/userrc are removed.
