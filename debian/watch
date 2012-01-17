@@ -1,4 +1,4 @@
 version=3
 opts=downloadurlmangle=s/.*v(.*)/http\:\/\/registry\.npmjs\.org\/npm\/-\/npm\-$1\.tgz/,\
 filenamemangle=s/.*v(.*)$/npm-$1\.tar\.gz/ \
-https://github.com/isaacs/npm/tags .*/tarball/v(.*)	
+https://github.com/isaacs/npm/tags .*/tarball/v([\d.-]+)	
