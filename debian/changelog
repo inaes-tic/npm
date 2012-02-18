@@ -8,6 +8,7 @@ npm (1.1.1~dfsg1-1) UNRELEASED; urgency=low
     + prefix is /usr/local, globalconfig is /etc/npmrc.
     + /etc/npm/rootrc and /etc/npm/userrc are removed.
     + the configuration is kept after `npm -g update npm`, which is now allowed.
+  * Installed as a require-able nodejs module.
   * Install and prefix by 'npm-' man(3) manpages.
   * Symlink manpages with wrong ext so npm doesn't need a patch to search
     for *.1.gz man pages. Override lintian error.
