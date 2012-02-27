@@ -61,6 +61,7 @@ Files: AUTHORS
  doc/api/root.md
  doc/api/run-script.md
  doc/api/search.md
+ doc/api/shrinkwrap.md
  doc/api/start.md
  doc/api/stop.md
  doc/api/submodule.md
@@ -114,6 +115,7 @@ Files: AUTHORS
  doc/cli/scripts.md
  doc/cli/search.md
  doc/cli/semver.md
+ doc/cli/shrinkwrap.md
  doc/cli/star.md
  doc/cli/start.md
  doc/cli/stop.md
@@ -160,6 +162,7 @@ Files: AUTHORS
  html/api/run-script.html
  html/api/search.html
  html/api/set.html
+ html/api/shrinkwrap.html
  html/api/start.html
  html/api/stop.html
  html/api/style.css
@@ -224,6 +227,7 @@ Files: AUTHORS
  html/doc/search.html
  html/doc/semver.html
  html/doc/set.html
+ html/doc/shrinkwrap.html
  html/doc/star.html
  html/doc/start.html
  html/doc/stop.html
@@ -271,6 +275,7 @@ Files: AUTHORS
  lib/root.js
  lib/search.js
  lib/set.js
+ lib/shrinkwrap.js
  lib/star.js
  lib/start.js
  lib/stop.js
@@ -373,6 +378,7 @@ Files: AUTHORS
  man/man1/search.1
  man/man1/semver.1
  man/man1/set.1
+ man/man1/shrinkwrap.1
  man/man1/star.1
  man/man1/start.1
  man/man1/stop.1
@@ -419,6 +425,7 @@ Files: AUTHORS
  man/man3/run-script.3
  man/man3/search.3
  man/man3/set.3
+ man/man3/shrinkwrap.3
  man/man3/start.3
  man/man3/stop.3
  man/man3/submodule.3
