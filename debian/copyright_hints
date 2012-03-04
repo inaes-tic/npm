@@ -1,4 +1,4 @@
-Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: FIXME
 Upstream-Contact: FIXME
 Source: FIXME
@@ -301,7 +301,6 @@ Files: AUTHORS
  lib/utils/find-prefix.js
  lib/utils/find.js
  lib/utils/gently-rm.js
- lib/utils/get-agent.js
  lib/utils/get.js
  lib/utils/lifecycle.js
  lib/utils/link.js
@@ -552,6 +551,9 @@ Files: AUTHORS
  test/packages/npm-test-missing-bindir/test.js
  test/packages/npm-test-optional-deps/package.json
  test/packages/npm-test-private/package.json
+ test/packages/npm-test-shrinkwrap/npm-shrinkwrap.json
+ test/packages/npm-test-shrinkwrap/package.json
+ test/packages/npm-test-shrinkwrap/test.sh
  test/packages/npm-test-test-package/package.json
  test/packages/npm-test-url-dep/package.json
  test/run.js
@@ -598,14 +600,14 @@ License: MIT/X11 (BSD like)
 
 Files: node_modules/mkdirp/LICENSE
 Copyright: 2010, James Halliday (mail@substack.net)
- HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 License: MIT/X11 (BSD like)
  FIXME
 
 Files: LICENSE
 Copyright: 2009-2011, Isaac Z. Schlueter (the "Author")
- 2010, Robert Kieffer
- 2011, Mikeal Rogers
+  2010, Robert Kieffer
+  2011, Mikeal Rogers
 License: MIT/X11 (BSD like)
  FIXME
 
@@ -651,8 +653,8 @@ License: UNKNOWN
 
 Files: node_modules/semver/semver.js
 Copyright: { return c.join(" ") }).join("||")
- { return c.length })
- { return c.match(expressions.validComparator) })
+  { return c.length })
+  { return c.match(expressions.validComparator) })
 License: UNKNOWN
  FIXME
 
