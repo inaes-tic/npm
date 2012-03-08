@@ -15,10 +15,11 @@ Vcs-Browser: http://git.debian.org/?p=collab-maint/npm.git;a=summary
 
 Package: npm
 Architecture: all
-Depends: nodejs (>= 0.6.7),
- nodejs-dev (>= 0.6.7),
+Depends: nodejs (>= 0.6.8),
+ nodejs-dev (>= 0.6.8),
  node-node-uuid,
- node-request,
+ node-request (>= 2.9.153),
+ node-mkdirp
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
