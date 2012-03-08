@@ -17,7 +17,7 @@ Depends: nodejs (>= 0.6.8),
  nodejs-dev (>= 0.6.8),
  node-node-uuid,
  node-request (>= 2.9.153),
- node-mkdirp
+ node-mkdirp,
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
