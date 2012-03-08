@@ -22,7 +22,7 @@ DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
 ./node_modules/node-uuid/ \
 ./node_modules/mkdirp/
 
-DEB_UPSTREAM_REPACKAGE_TAG = dfsg1
+DEB_UPSTREAM_REPACKAGE_TAG = dfsg2
 
 # Suppress copyright-checking some binaries to not upset dpkg-source
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(html/npm-.*\.png|debian/(changelog|copyright(|_hints|_newhints)))$
