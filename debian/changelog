@@ -1,4 +1,4 @@
-npm (1.1.4~dfsg1-1) UNRELEASED; urgency=low
+npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
@@ -17,7 +17,7 @@ npm (1.1.4~dfsg1-1) UNRELEASED; urgency=low
   * Drop patch to fix completion, it wasn't broken.
   * debian/watch updated : github url update, tarball from npm registry.
   * debian/README.Debian updated.
-  * Depend on node-node-uuid, node-request.
+  * Depend on node-node-uuid, node-request, node-mkdirp.
   * DFSG repackaging using cdbs upstream-tarball.mk, removed :
     + non-free html/*/GubbleBum-Blocky.ttf
     + dependency node_modules/node-uuid
