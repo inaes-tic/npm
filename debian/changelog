@@ -3,25 +3,34 @@ npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
   * New upstream release.
 
   [ Jérémy Lal ]
-  * Depend on node >= 0.6.8
-  * npm can now be configured to follow FHS for root usage :
-    + prefix is /usr/local, globalconfig is /etc/npmrc.
-    + /etc/npm/rootrc and /etc/npm/userrc are removed.
-    + the configuration is kept after `npm -g update npm`, which is now allowed.
-  * Installed as a require-able nodejs module.
-  * Install and prefix by 'npm-' man(3) manpages.
-  * Symlink manpages with wrong ext so npm doesn't need a patch to search
-    for *.1.gz man pages. Override lintian error.
-  * Install and register html documentation with doc-base.
-  * Drop patch to remove shebangs of non-executable files, applied upstream.
-  * Drop patch to fix completion, it wasn't broken.
-  * debian/watch updated : github url update, tarball from npm registry.
-  * debian/README.Debian updated.
-  * Depend on node-node-uuid, node-request, node-mkdirp.
-  * DFSG repackaging using cdbs upstream-tarball.mk, removed :
+  * Dependencies :
+    + node >= 0.6.12
+    + node-node-uuid
+    + node-request
+    + node-mkdirp
+  * DFSG repackaging (using cdbs upstream-tarball.mk), remove :
     + non-free html/*/GubbleBum-Blocky.ttf
     + dependency node_modules/node-uuid
     + dependency node_modules/request
+    + dependency node_modules/mkdirp
+  * Patches :
+    + Drop patch to remove shebangs of non-executable files, applied upstream,
+    + Drop patch to fix completion, it wasn't necessary,
+    + Comply with Expat+no-false-attribs : change upstream author's bug reporting
+      email addresses and urls with information on how to report debian bugs.
+  * npm can now be configured to follow FHS for root usage, though discouraged :
+    + prefix is /usr/local, globalconfig is /etc/npmrc,
+    + /etc/npm/rootrc and /etc/npm/userrc are removed,
+    + the configuration is kept after `npm -g update npm`.
+  * npm is also a node module :
+    + it can be "required",
+    + it has man(3) documentation.
+  * Documentation :
+    + npm looks for its own manpages in /usr/share/npm/man, add symlinks to the
+      proper location in /usr/share/man. Fix *.gz extension, override lintian error.
+    + Install and register html with doc-base.
+  * debian/watch updated : github url update, tarball from npm registry.
+  * debian/README.Debian updated.
 
   [ Jonas Smedegaard ]
   * Update copyright file:
@@ -32,14 +41,16 @@ npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
   [ TODO ]
   * Make sure MIT+no-false-attribs license is DFSG, see
     http://lists.debian.org/debian-legal/2012/01/msg00104.html
-  * Package all submodules, and exclude them (see debian/rules) since we
-    are already dfsg-repackaging. Priority is given to modules that
-    are not from the author, then popular modules. One-liners or useless
-    modules might stay bundled.
+    + Expat+no-false-attribs is DFSG provided some reformulation
+      that's been done in npm github repository.
+  * Package ./node_modules/* that have a valid license, and since there is already
+    a good reason to DFSG-repackage, exclude them from tarball using
+    DEB_UPSTREAM_REPACKAGE_EXCLUDES in debian/rules.
+    + modules not from upstream author are already covered
+    + modules from upstream author and having a valid license are listed in
+      debian/copyright.
   * Generate html and man pages from ronnjs. Exclude them too.
-  * Migrate from npm < 1.0 with scripts/clean-old.sh : result is not
-    guaranteed. debian/NEWS could explain that npm cache clean is a good idea.
-  * Update debian/copyright, review *all files*.
+    + nodejs >= 0.6.12 ships node-marked. Check if npm will use that tool.
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
