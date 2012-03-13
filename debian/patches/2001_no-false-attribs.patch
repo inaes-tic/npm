@@ -1,0 +1,20 @@
+Description: Comply with Expat+no-false-attribs license
+ Please see debian/copyright.
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2012-03-13
+--- a/lib/utils/error-handler.js
++++ b/lib/utils/error-handler.js
+@@ -169,9 +169,9 @@
+   default:
+     log.error(er)
+     log.error(["You may report this log at:"
+-              ,"    <http://github.com/isaacs/npm/issues>"
+-              ,"or email it to:"
+-              ,"    <npm-@googlegroups.com>"
++              ,"    <http://bugs.debian.org/npm>"
++              ,"or use"
++              ,"    reportbug --attach "+path.resolve("npm-debug.log")+" npm"
+               ].join("\n"))
+     break
+   }
