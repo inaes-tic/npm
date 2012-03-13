@@ -39,8 +39,10 @@ install/npm::
 	dh_bash-completion
 	chmod a+x debian/npm/etc/bash_completion.d/npm
 
-# fix manpages file names : prepend npm- except for npm.1, and link manpages from npm manroot to the ones in /usr/share/man
-# also fix permissions
+# Fix manpages file names : prepend npm- except for npm.1,
+# and link manpages from npm manroot to the ones in /usr/share/man
+# Fix permissions
+# Remove LICENSE files.
 binary-post-install/npm::
 	fManpages=`find $(CURDIR)/debian/npm/usr/share/man -name *.1`; \
 	for i in $$fManpages; do \
@@ -68,3 +70,5 @@ binary-post-install/npm::
 	done
 	chmod a-x debian/npm/usr/share/npm/bin/*.js
 	chmod a+x debian/npm/usr/share/npm/bin/npm-cli.js
+	find debian/npm -name LICENSE -delete
+
