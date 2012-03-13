@@ -1,12 +1,10 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: npm
 Upstream-Contact: Isaac Z. Schlueter <i@izs.me>
- https://github.com/isaacs/npm/issues
 Source: http://github.com/isaacs/npm
 
 Files: *
 Copyright: 2009, 2010, 2011 Isaac Z. Schlueter <i@izs.me>
-License: Expat +no-false-attribs
+License: Expat+no-false-attribs
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
  files (the "Software"), to deal in the Software without
