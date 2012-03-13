@@ -1,0 +1,8 @@
+* Package ./node_modules/* that have a valid license, and since there is already
+  a good reason to DFSG-repackage, exclude them from tarball using
+  DEB_UPSTREAM_REPACKAGE_EXCLUDES in debian/rules.
+  + modules not from upstream author are already dependencies and excluded,
+  + modules from upstream author and having a valid license are listed in
+    debian/copyright.
+* Generate html and man pages from ronnjs. Exclude them too.
+  + nodejs >= 0.6.12 ships node-marked. Check if npm will use that tool.
