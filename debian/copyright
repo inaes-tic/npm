@@ -3,6 +3,11 @@ Upstream-Contact: Isaac Z. Schlueter <i@izs.me>
 Source: http://github.com/isaacs/npm
 
 Files: *
+ node_modules/block-stream/*
+ node_modules/fast-list/*
+ node_modules/fstream/*
+ node_modules/read/*
+ node_modules/tar/*
 Copyright: 2009, 2010, 2011 Isaac Z. Schlueter <i@izs.me>
 License: Expat+no-false-attribs
  Permission is hereby granted, free of charge, to any person
@@ -37,6 +42,77 @@ License: Expat+no-false-attribs
 
 Files: debian/*
 Copyright: 2010, Jérémy Lal <kapouer@melix.org>
+License: Expat
+
+Files: node_modules/abbrev/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/graceful-fs/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/inherits/*
+Copyright: 2011 Isaac Z. Schlueter (the "Author") All rights reserved.
+License: General-Public-Obviousness-License
+ The Author asserts that this software and associated documentation
+ files (the "Software"), while the Author's original creation, is
+ nonetheless obvious, trivial, unpatentable, and implied by the
+ context in which the software was created.  If you sat down and
+ thought about the problem for an hour or less, you'd probably
+ come up with exactly this solution.
+ .
+ Permission is granted to use this software in any way
+ whatsoever, with the following restriction:
+ .
+ You may not release the Software under a more restrictive license
+ than this one.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+Files: node_modules/ini/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/lru-cache/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/minimatch/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/nopt/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/proto-list/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/rimraf/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/semver/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/slide/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/which/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a
  copy of this software and associated documentation files (the
