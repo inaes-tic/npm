@@ -8,7 +8,7 @@ Files: *
  node_modules/fstream/*
  node_modules/read/*
  node_modules/tar/*
-Copyright: 2009, 2010, 2011 Isaac Z. Schlueter <i@izs.me>
+Copyright: 2009-2012, Isaac Z. Schlueter (the "Original Author")
 License: Expat+no-false-attribs
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -27,9 +27,9 @@ License: Expat+no-false-attribs
  containing modifications that substantially alter, remove, or
  disable functionality of the Software, outside of the documented
  configuration mechanisms provided by the Software, shall be
- modified such that the Author's bug reporting email addresses and
- urls are either replaced with the contact information of the
- parties responsible for the changes, or removed entirely.
+ modified such that the Original Author's bug reporting email
+ addresses and urls are either replaced with the contact information
+ of the parties responsible for the changes, or removed entirely.
  .
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
