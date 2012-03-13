@@ -1,7 +1,10 @@
-npm (1.1.4~dfsg1-1) UNRELEASED; urgency=low
+npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
 
-  Self-installation
-  =================
+  npm is meant to be used as a normal user.
+  Avoid using npm as root.
+
+  Self-installation is possible
+  =============================
 
   Npm can now preserve its configuration across self-updates: `npm update npm`
   is now allowed, and the npm-updated version would go to /usr/local/bin/npm.
@@ -10,6 +13,8 @@ npm (1.1.4~dfsg1-1) UNRELEASED; urgency=low
   that don't break if npm is self-updated.
 
   It is nonetheless strongly advised to update npm through the debian package.
+  Doing so might break npm, or worse, your system, especially if npm is used in
+  global mode (see below).
   To fall back to npm installed by debian package, simply remove /usr/local/bin/npm.
 
   Configuration changes
