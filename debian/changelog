@@ -3,6 +3,9 @@ npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
   * New upstream release.
 
   [ Jérémy Lal ]
+  * License changed to Expat+no-false-attribs :
+    + http://lists.debian.org/debian-legal/2012/03/msg00030.html
+    + Use license from version 1.1.5, where the meaning of "Author" is clearer.
   * Dependencies :
     + node >= 0.6.12
     + node-node-uuid
@@ -37,20 +40,6 @@ npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
     + Stop listing convenience copy of uuid.js: no longer included.
     + Extend a copyright year.
     + Abbreviate author middle name (to match upstream change).
-
-  [ TODO ]
-  * Make sure MIT+no-false-attribs license is DFSG, see
-    http://lists.debian.org/debian-legal/2012/01/msg00104.html
-    + Expat+no-false-attribs is DFSG provided some reformulation
-      that's been done in npm github repository.
-  * Package ./node_modules/* that have a valid license, and since there is already
-    a good reason to DFSG-repackage, exclude them from tarball using
-    DEB_UPSTREAM_REPACKAGE_EXCLUDES in debian/rules.
-    + modules not from upstream author are already covered
-    + modules from upstream author and having a valid license are listed in
-      debian/copyright.
-  * Generate html and man pages from ronnjs. Exclude them too.
-    + nodejs >= 0.6.12 ships node-marked. Check if npm will use that tool.
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
