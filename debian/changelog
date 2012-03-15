@@ -1,4 +1,4 @@
-npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
+npm (1.1.4~dfsg3-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
@@ -11,6 +11,8 @@ npm (1.1.4~dfsg2-1) UNRELEASED; urgency=low
     + node-node-uuid
     + node-request
     + node-mkdirp
+    + node-lru-cache
+    + node-minimatch
   * DFSG repackaging (using cdbs upstream-tarball.mk), remove :
     + non-free html/*/GubbleBum-Blocky.ttf
     + dependency node_modules/node-uuid
