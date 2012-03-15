@@ -471,9 +471,6 @@ Files: AUTHORS
  node_modules/inherits/inherits-old.js
  node_modules/inherits/inherits.js
  node_modules/inherits/package.json
- node_modules/ini/README.md
- node_modules/ini/ini.js
- node_modules/ini/package.json
  node_modules/nopt/README.md
  node_modules/nopt/bin/nopt.js
  node_modules/nopt/package.json
@@ -573,7 +570,6 @@ License: UNKNOWN
 
 Files: node_modules/abbrev/LICENSE
  node_modules/graceful-fs/LICENSE
- node_modules/ini/LICENSE
  node_modules/nopt/LICENSE
  node_modules/proto-list/LICENSE
  node_modules/rimraf/LICENSE
