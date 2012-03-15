@@ -474,13 +474,6 @@ Files: AUTHORS
  node_modules/ini/README.md
  node_modules/ini/ini.js
  node_modules/ini/package.json
- node_modules/lru-cache/.npmignore
- node_modules/lru-cache/README.md
- node_modules/lru-cache/lib/lru-cache.js
- node_modules/lru-cache/package.json
- node_modules/minimatch/.travis.yml
- node_modules/minimatch/README.md
- node_modules/minimatch/package.json
  node_modules/nopt/README.md
  node_modules/nopt/bin/nopt.js
  node_modules/nopt/package.json
@@ -571,7 +564,6 @@ Files: lib/completion.js
  node_modules/fstream/lib/file-reader.js
  node_modules/fstream/lib/proxy-reader.js
  node_modules/fstream/lib/proxy-writer.js
- node_modules/minimatch/minimatch.js
  node_modules/nopt/lib/nopt.js
  node_modules/read/lib/read.js
  node_modules/tar/lib/buffer-entry.js
@@ -585,8 +577,6 @@ License: UNKNOWN
 Files: node_modules/abbrev/LICENSE
  node_modules/graceful-fs/LICENSE
  node_modules/ini/LICENSE
- node_modules/lru-cache/LICENSE
- node_modules/minimatch/LICENSE
  node_modules/nopt/LICENSE
  node_modules/proto-list/LICENSE
  node_modules/rimraf/LICENSE
