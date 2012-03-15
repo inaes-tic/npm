@@ -21,7 +21,8 @@ DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
 ./node_modules/request/ \
 ./node_modules/node-uuid/ \
 ./node_modules/mkdirp/ \
-./node_modules/minimatch/
+./node_modules/minimatch/ \
+./node_modules/lru-cache/
 
 DEB_UPSTREAM_REPACKAGE_TAG = $(shell echo $(DEB_UPSTREAM_VERSION) | egrep -o "dfsg[0-9]+")
 
