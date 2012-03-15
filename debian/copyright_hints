@@ -486,9 +486,6 @@ Files: AUTHORS
  node_modules/rimraf/README.md
  node_modules/rimraf/package.json
  node_modules/rimraf/rimraf.js
- node_modules/semver/README.md
- node_modules/semver/bin/semver
- node_modules/semver/package.json
  node_modules/slide/.npmignore
  node_modules/slide/README.md
  node_modules/slide/index.js
@@ -580,7 +577,6 @@ Files: node_modules/abbrev/LICENSE
  node_modules/nopt/LICENSE
  node_modules/proto-list/LICENSE
  node_modules/rimraf/LICENSE
- node_modules/semver/LICENSE
  node_modules/slide/LICENSE
  node_modules/which/LICENSE
 Copyright: 2009-2011, Isaac Z. Schlueter
@@ -631,13 +627,6 @@ License: UNKNOWN
 
 Files: lib/utils/mkdir-p.js
 Copyright: { c(er) })
-License: UNKNOWN
- FIXME
-
-Files: node_modules/semver/semver.js
-Copyright: { return c.join(" ") }).join("||")
-  { return c.length })
-  { return c.match(expressions.validComparator) })
 License: UNKNOWN
  FIXME
 
