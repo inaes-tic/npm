@@ -22,6 +22,7 @@ Depends: nodejs (>= 0.6.12~),
  node-mkdirp,
  node-minimatch,
  node-lru-cache,
+ node-semver,
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
