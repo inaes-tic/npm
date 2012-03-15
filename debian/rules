@@ -20,7 +20,8 @@ DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
 ./html/*/GubbleBum-Blocky.ttf \
 ./node_modules/request/ \
 ./node_modules/node-uuid/ \
-./node_modules/mkdirp/
+./node_modules/mkdirp/ \
+./node_modules/minimatch/
 
 DEB_UPSTREAM_REPACKAGE_TAG = $(shell echo $(DEB_UPSTREAM_VERSION) | egrep -o "dfsg[0-9]+")
 
