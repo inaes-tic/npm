@@ -44,10 +44,6 @@ Files: debian/*
 Copyright: 2010, Jérémy Lal <kapouer@melix.org>
 License: Expat
 
-Files: node_modules/nopt/*
-Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
-License: Expat
-
 Files: node_modules/proto-list/*
 Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
 License: Expat
