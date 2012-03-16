@@ -438,9 +438,6 @@ Files: AUTHORS
  man/man3/version.3
  man/man3/view.3
  man/man3/whoami.3
- node_modules/abbrev/README.md
- node_modules/abbrev/lib/abbrev.js
- node_modules/abbrev/package.json
  node_modules/block-stream/README.md
  node_modules/block-stream/package.json
  node_modules/fast-list/.npmignore
@@ -463,17 +460,6 @@ Files: AUTHORS
  node_modules/fstream/lib/socket-reader.js
  node_modules/fstream/lib/writer.js
  node_modules/fstream/package.json
- node_modules/graceful-fs/.npmignore
- node_modules/graceful-fs/README.md
- node_modules/graceful-fs/graceful-fs.js
- node_modules/graceful-fs/package.json
- node_modules/inherits/README.md
- node_modules/inherits/inherits-old.js
- node_modules/inherits/inherits.js
- node_modules/inherits/package.json
- node_modules/nopt/README.md
- node_modules/nopt/bin/nopt.js
- node_modules/nopt/package.json
  node_modules/proto-list/README.md
  node_modules/proto-list/package.json
  node_modules/proto-list/proto-list.js
@@ -558,7 +544,6 @@ Files: lib/completion.js
  node_modules/fstream/lib/file-reader.js
  node_modules/fstream/lib/proxy-reader.js
  node_modules/fstream/lib/proxy-writer.js
- node_modules/nopt/lib/nopt.js
  node_modules/read/lib/read.js
  node_modules/tar/lib/buffer-entry.js
  node_modules/tar/lib/extended-header.js
@@ -568,10 +553,7 @@ Copyright:
 License: UNKNOWN
  FIXME
 
-Files: node_modules/abbrev/LICENSE
- node_modules/graceful-fs/LICENSE
- node_modules/nopt/LICENSE
- node_modules/proto-list/LICENSE
+Files: node_modules/proto-list/LICENSE
  node_modules/rimraf/LICENSE
  node_modules/slide/LICENSE
  node_modules/which/LICENSE
@@ -588,11 +570,6 @@ License: MIT/X11 (BSD like)
 
 Files: lib/npm.js
 Copyright: !== -1) return c
-License: UNKNOWN
- FIXME
-
-Files: node_modules/inherits/LICENSE
-Copyright: 2011, Isaac Z. Schlueter (the "Author")
 License: UNKNOWN
  FIXME
 
