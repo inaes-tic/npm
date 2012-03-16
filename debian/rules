@@ -25,6 +25,7 @@ DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
 ./node_modules/lru-cache/ \
 ./node_modules/semver/ \
 ./node_modules/graceful-fs/ \
+./node_modules/inherits/ \
 ./node_modules/ini/
 
 DEB_UPSTREAM_REPACKAGE_TAG = $(shell echo $(DEB_UPSTREAM_VERSION) | egrep -o "dfsg[0-9]+")
