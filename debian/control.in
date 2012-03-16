@@ -24,6 +24,7 @@ Depends: nodejs (>= 0.6.12~),
  node-ini,
  node-graceful-fs,
  node-inherits,
+ node-abbrev,
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
