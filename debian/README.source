@@ -8,6 +8,14 @@ debian/control is generated from debian/control.in, to update it, run :
 DEB_MAINTAINER_MODE=1 fakeroot debian/rules clean
 
 
+updating package
+----------------
+
+* change version in debian/changelog
+* ./debian/rules get-orig-source
+* git-import-orig <generated-tarball>
+
+
 symlinks to man pages
 ---------------------
 
