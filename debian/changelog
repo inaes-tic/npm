@@ -18,6 +18,7 @@ npm (1.1.4~dfsg6-1) UNRELEASED; urgency=low
     + node-graceful-fs
     + node-inherits
     + node-abbrev
+    + node-nopt
   * DFSG repackaging (using cdbs upstream-tarball.mk), remove :
     + non-free html/*/GubbleBum-Blocky.ttf
     + dependency node_modules/node-uuid
