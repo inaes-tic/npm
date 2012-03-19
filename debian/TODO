@@ -4,5 +4,7 @@
   + modules not from upstream author are already dependencies and excluded,
   + modules from upstream author and having a valid license are listed in
     debian/copyright.
+* Some of those dependencies are not direct, for example node-block-stream is
+  needed by node-tar, but not directly by npm.
 * Generate html and man pages from ronnjs. Exclude them too.
   + nodejs >= 0.6.12 ships node-marked. Check if npm will use that tool.
