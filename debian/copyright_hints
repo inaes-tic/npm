@@ -438,37 +438,11 @@ Files: AUTHORS
  man/man3/version.3
  man/man3/view.3
  man/man3/whoami.3
- node_modules/block-stream/README.md
- node_modules/block-stream/package.json
- node_modules/fast-list/.npmignore
- node_modules/fast-list/.travis.yml
- node_modules/fast-list/README.md
- node_modules/fast-list/fast-list.js
- node_modules/fast-list/package.json
- node_modules/fstream/.npmignore
- node_modules/fstream/.travis.yml
- node_modules/fstream/README.md
- node_modules/fstream/fstream.js
- node_modules/fstream/lib/abstract.js
- node_modules/fstream/lib/collect.js
- node_modules/fstream/lib/dir-reader.js
- node_modules/fstream/lib/dir-writer.js
- node_modules/fstream/lib/get-type.js
- node_modules/fstream/lib/link-reader.js
- node_modules/fstream/lib/link-writer.js
- node_modules/fstream/lib/reader.js
- node_modules/fstream/lib/socket-reader.js
- node_modules/fstream/lib/writer.js
- node_modules/fstream/package.json
  node_modules/proto-list/README.md
  node_modules/proto-list/package.json
  node_modules/proto-list/proto-list.js
  node_modules/read/README.md
  node_modules/read/package.json
- node_modules/rimraf/AUTHORS
- node_modules/rimraf/README.md
- node_modules/rimraf/package.json
- node_modules/rimraf/rimraf.js
  node_modules/slide/.npmignore
  node_modules/slide/README.md
  node_modules/slide/index.js
@@ -478,15 +452,6 @@ Files: AUTHORS
  node_modules/slide/lib/chain.js
  node_modules/slide/lib/slide.js
  node_modules/slide/package.json
- node_modules/tar/.npmignore
- node_modules/tar/.travis.yml
- node_modules/tar/README.md
- node_modules/tar/lib/extended-header-writer.js
- node_modules/tar/lib/extract.js
- node_modules/tar/lib/global-header-writer.js
- node_modules/tar/lib/header.js
- node_modules/tar/package.json
- node_modules/tar/tar.js
  node_modules/which/README.md
  node_modules/which/bin/which
  node_modules/which/package.json
@@ -540,21 +505,12 @@ Files: lib/completion.js
  lib/run-script.js
  lib/utils/ini.js
  lib/utils/read-json.js
- node_modules/block-stream/block-stream.js
- node_modules/fstream/lib/file-reader.js
- node_modules/fstream/lib/proxy-reader.js
- node_modules/fstream/lib/proxy-writer.js
  node_modules/read/lib/read.js
- node_modules/tar/lib/buffer-entry.js
- node_modules/tar/lib/extended-header.js
- node_modules/tar/lib/pack.js
- node_modules/tar/lib/parse.js
 Copyright: 
 License: UNKNOWN
  FIXME
 
 Files: node_modules/proto-list/LICENSE
- node_modules/rimraf/LICENSE
  node_modules/slide/LICENSE
  node_modules/which/LICENSE
 Copyright: 2009-2011, Isaac Z. Schlueter
@@ -578,23 +534,8 @@ Copyright: cleanup = (cleanup || [
 License: UNKNOWN
  FIXME
 
-Files: node_modules/fstream/lib/file-writer.js
-Copyright: me.write
-License: UNKNOWN
- FIXME
-
 Files: lib/substack.js
 Copyright: npm.commands[c
-License: UNKNOWN
- FIXME
-
-Files: node_modules/tar/lib/entry-writer.js
-Copyright: this._buffer.push
-License: UNKNOWN
- FIXME
-
-Files: node_modules/tar/lib/entry.js
-Copyright: this.write
 License: UNKNOWN
  FIXME
 
