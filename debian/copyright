@@ -46,10 +46,6 @@ Files: node_modules/proto-list/*
 Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
 License: Expat
 
-Files: node_modules/rimraf/*
-Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
-License: Expat
-
 Files: node_modules/slide/*
 Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
 License: Expat
