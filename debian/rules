@@ -29,7 +29,8 @@ DEB_UPSTREAM_REPACKAGE_EXCLUDES += \
 ./node_modules/abbrev/ \
 ./node_modules/nopt/ \
 ./node_modules/ini/ \
-./node_modules/block-stream/
+./node_modules/block-stream/ \
+./node_modules/fstream/
 
 DEB_UPSTREAM_REPACKAGE_TAG = $(shell echo $(DEB_UPSTREAM_VERSION) | egrep -o "dfsg[0-9]+")
 

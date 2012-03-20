@@ -4,7 +4,6 @@ Source: http://github.com/isaacs/npm
 
 Files: *
  node_modules/fast-list/*
- node_modules/fstream/*
  node_modules/read/*
  node_modules/tar/*
 Copyright: 2009-2012, Isaac Z. Schlueter (the "Original Author")
