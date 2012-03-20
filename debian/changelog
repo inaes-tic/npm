@@ -11,15 +11,12 @@ npm (1.1.4~dfsg7-1) UNRELEASED; urgency=low
     + node-node-uuid
     + node-request
     + node-mkdirp
-    + node-lru-cache
     + node-minimatch
     + node-semver
     + node-ini
     + node-graceful-fs
-    + node-inherits
     + node-abbrev
     + node-nopt
-    + node-block-stream
     + node-fstream
     + node-rimraf
     + node-tar
