@@ -3,7 +3,6 @@ Upstream-Contact: https://github.com/isaacs/npm/issues
 Source: http://github.com/isaacs/npm
 
 Files: *
- node_modules/fast-list/*
  node_modules/read/*
 Copyright: 2009-2012, Isaac Z. Schlueter (the "Original Author")
 License: Expat+no-false-attribs
