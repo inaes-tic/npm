@@ -21,13 +21,14 @@ Depends: nodejs (>= 0.6.12~),
  node-request (>= 2.9.153),
  node-mkdirp,
  node-minimatch,
- node-lru-cache,
  node-semver,
  node-ini,
  node-graceful-fs,
- node-inherits,
  node-abbrev,
  node-nopt,
+ node-fstream,
+ node-rimraf,
+ node-tar,
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
