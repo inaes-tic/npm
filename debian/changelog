@@ -1,4 +1,4 @@
-npm (1.1.4~dfsg8-1) UNRELEASED; urgency=low
+npm (1.1.4~dfsg9-1) UNRELEASED; urgency=low
 
   * New upstream release.
 
@@ -6,25 +6,11 @@ npm (1.1.4~dfsg8-1) UNRELEASED; urgency=low
   * License changed to Expat+no-false-attribs :
     + http://lists.debian.org/debian-legal/2012/03/msg00030.html
     + Use license from version 1.1.5, where the meaning of "Author" is clearer.
-  * Dependencies :
-    + node >= 0.6.12
-    + node-node-uuid
-    + node-request
-    + node-mkdirp
-    + node-minimatch
-    + node-semver
-    + node-ini
-    + node-graceful-fs
-    + node-abbrev
-    + node-nopt
-    + node-fstream
-    + node-rimraf
-    + node-tar
+  * Bundled modules are now package dependencies, except for those modules
+    that are too much bound to npm (proto-list, read, slide).
   * DFSG repackaging (using cdbs upstream-tarball.mk), remove :
     + non-free html/*/GubbleBum-Blocky.ttf
-    + dependency node_modules/node-uuid
-    + dependency node_modules/request
-    + dependency node_modules/mkdirp
+    + all modules that are dependencies.
   * Patches :
     + Drop patch to remove shebangs of non-executable files, applied upstream.
     + Drop patch to fix completion, it wasn't necessary.
