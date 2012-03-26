@@ -27,6 +27,7 @@ Depends: nodejs (>= 0.6.12~),
  node-fstream,
  node-rimraf,
  node-tar,
+ node-which,
  ${misc:Depends}
 Description: package manager for nodejs
  npm is the package manager for the Node JavaScript platform.  It puts
