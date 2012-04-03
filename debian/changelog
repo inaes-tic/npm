@@ -3,33 +3,32 @@ npm (1.1.4~dfsg9-1) UNRELEASED; urgency=low
   * New upstream release.
 
   [ Jérémy Lal ]
-  * License changed to Expat+no-false-attribs :
-    + http://lists.debian.org/debian-legal/2012/03/msg00030.html
-    + Use license from version 1.1.5, where the meaning of "Author" is clearer.
-  * Bundled modules are now package dependencies, except for those modules
-    that are too much bound to npm (proto-list, read, slide).
+  * Bundled modules are package dependencies, except for those modules
+    that are too bound to npm (proto-list, read, slide) to justify being
+    packaged independently.
+  * Update copyright:
+    + license changed to Expat+no-false-attribs, discussed at :
+      http://lists.debian.org/debian-legal/2012/03/msg00030.html
+    + Extend copyright year of debian/* section.
+    + Added sections for the included modules.
   * DFSG repackaging (using cdbs upstream-tarball.mk), remove :
     + non-free html/*/GubbleBum-Blocky.ttf
     + all modules that are dependencies.
   * Patches :
-    + Drop patch to remove shebangs of non-executable files, applied upstream.
-    + Drop patch to fix completion, it wasn't necessary.
-    + Comply with license : change upstream author's bug reporting
-      email addresses and urls with information on how to report debian bugs.
-  * npm can now be configured to follow FHS for root usage, though discouraged :
-    + prefix is /usr/local, globalconfig is /etc/npmrc,
-    + /etc/npm/rootrc and /etc/npm/userrc are removed,
-    + the configuration is kept after `npm -g update npm`.
-  * npm is also a node module :
-    + it can be "required",
-    + it has man(3) documentation.
+    + Drop patches for missing shebangs, applied upstream.
+    + Drop patch to fix completion, no longer needed.
+    + Comply with license: replace Original Author's bug reporting email
+      address and url with information on how to report debian bugs.
+  * npm configuration has moved from /etc/npm/rootrc, /etc/npm/userrc
+    to /etc/npmrc.
+  * npm is also installed as a node module, so has man(3) documentation.
   * Documentation :
-    + npm looks for its own manpages in /usr/share/npm/man, so add symlinks to
-      the proper location in /usr/share/man.
     + Fix gz extension, override lintian errors.
     + Install and register html with doc-base.
-  * debian/watch updated : github url update, tarball from npm registry.
-  * debian/README.Debian updated.
+  * Fixed watch file.
+  * README.Debian updated.
+  * Use anonscm.d.o in control Vcs-* fields.
+  * Bump policy compliance to standards-version 3.9.3.
 
   [ Jonas Smedegaard ]
   * Update copyright file:
