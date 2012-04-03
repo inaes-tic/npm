@@ -1,1 +1,3 @@
+# npm looks for its manpages in /usr/share/npm/man, which are symlinks
+# to the manpages in /usr/share/man
 npm: compressed-symlink-with-wrong-ext
