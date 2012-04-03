@@ -37,7 +37,7 @@ License: Expat+no-false-attribs
  OTHER DEALINGS IN THE SOFTWARE.
 
 Files: debian/*
-Copyright: 2010, Jérémy Lal <kapouer@melix.org>
+Copyright: 2010-2012, Jérémy Lal <kapouer@melix.org>
 License: Expat
 
 Files: node_modules/proto-list/*
