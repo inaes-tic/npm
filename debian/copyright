@@ -35,6 +35,8 @@ License: Expat+no-false-attribs
  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
+Comment: using the version that clarifies who the "Original Author" is:
+ https://raw.github.com/isaacs/npm/594bbbd2/LICENSE
 
 Files: debian/*
 Copyright: 2010-2012, Jérémy Lal <kapouer@melix.org>
