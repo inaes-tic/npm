@@ -10,8 +10,8 @@ Build-Depends: cdbs,
  bash-completion
 Standards-Version: 3.9.3
 Homepage: http://github.com/isaacs/npm
-Vcs-Git: git://git.debian.org/collab-maint/npm.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/npm.git;a=summary
+Vcs-Git: git://anonscm.debian.org/git/collab-maint/npm.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/npm.git
 
 Package: npm
 Architecture: all
