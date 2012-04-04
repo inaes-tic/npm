@@ -29,7 +29,7 @@ Depends: nodejs (>= 0.6.12~),
  node-tar,
  node-which,
  ${misc:Depends}
-Description: package manager for nodejs
+Description: package manager for Node.js
  npm is the package manager for the Node JavaScript platform.  It puts
  modules in place so that node can find them, and manages dependency
  conflicts intelligently.
@@ -37,3 +37,5 @@ Description: package manager for nodejs
  It is extremely configurable to support a wide variety of use cases.
  Most commonly, it is used to publish, discover, install, and develop
  node programs.
+ .
+ Node.js is an event-based server-side javascript engine.
