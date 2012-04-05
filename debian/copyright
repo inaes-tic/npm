@@ -7,6 +7,20 @@ Files: *
  node_modules/read/*
 Copyright: 2009-2012, Isaac Z. Schlueter (the "Original Author")
 License: Expat+no-false-attribs
+
+Files: debian/*
+Copyright: 2010-2012, Jérémy Lal <kapouer@melix.org>
+License: Expat
+
+Files: node_modules/proto-list/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+Files: node_modules/slide/*
+Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
+License: Expat
+
+License: Expat+no-false-attribs
  Permission is hereby granted, free of charge, to any person obtaining a
  copy of this software and associated documentation files (the
  "Software"), to deal in the Software without restriction, including
@@ -36,18 +50,6 @@ License: Expat+no-false-attribs
  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Comment: using the version that clarifies who the "Original Author" is:
  https://raw.github.com/isaacs/npm/594bbbd2/LICENSE
-
-Files: debian/*
-Copyright: 2010-2012, Jérémy Lal <kapouer@melix.org>
-License: Expat
-
-Files: node_modules/proto-list/*
-Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
-License: Expat
-
-Files: node_modules/slide/*
-Copyright: 2009, 2010, 2011 Isaac Z. Schlueter
-License: Expat
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a
