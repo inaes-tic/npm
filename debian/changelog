@@ -35,6 +35,8 @@ npm (1.1.4~dfsg9-1) UNRELEASED; urgency=low
     + Stop listing convenience copy of uuid.js: no longer included.
     + Extend a copyright year.
     + Abbreviate author middle name (to match upstream change).
+    + Add Upstream-Name field.
+  * Git-ignore .pc quilt subdir.
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
 
