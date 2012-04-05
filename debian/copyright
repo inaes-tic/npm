@@ -1,4 +1,5 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: npm
 Upstream-Contact: https://github.com/isaacs/npm/issues
 Source: http://github.com/isaacs/npm
 
