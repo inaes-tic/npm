@@ -6,6 +6,7 @@ Uploaders: Jérémy Lal <kapouer@melix.org>,
  Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@,
  bash-completion,
+ nodejs,
  ruby-ronn
 Standards-Version: 3.9.3
 Homepage: http://github.com/isaacs/npm
