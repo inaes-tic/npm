@@ -3,6 +3,25 @@ Upstream-Name: npm
 Upstream-Contact: https://github.com/isaacs/npm/issues
 Source: http://github.com/isaacs/npm
  Repackaged, excluding non-DFSG files and unused external projects
+Files-Excluded:
+ html/*/GubbleBum-Blocky.ttf*
+ node_modules/request/*
+ node_modules/node-uuid/*
+ node_modules/mkdirp/*
+ node_modules/minimatch/*
+ node_modules/lru-cache/*
+ node_modules/semver/*
+ node_modules/graceful-fs/*
+ node_modules/inherits/*
+ node_modules/abbrev/*
+ node_modules/nopt/*
+ node_modules/ini/*
+ node_modules/block-stream/*
+ node_modules/fstream/*
+ node_modules/rimraf/*
+ node_modules/tar/*
+ node_modules/fast-list/*
+ node_modules/which/*
 
 Files: *
  node_modules/read/*
