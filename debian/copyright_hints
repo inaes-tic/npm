@@ -32,6 +32,7 @@ Files: AUTHORS
  debian/manpages
  debian/npm.bash-completion
  debian/npmrc
+ debian/patches/1001_sort_index_build.patch
  debian/patches/2001_no-false-attribs.patch
  debian/patches/2002_use_ruby_ronn.patch
  debian/patches/2003_fix_doc.patch
