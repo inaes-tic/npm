@@ -45,11 +45,15 @@ DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(html/npm-.*\.png|debian/(changelog|copyrigh
 
 clean::
 	rm -f npmrc
+	make docclean
 
 configure/npm::npmrc
 
 npmrc:
 	./configure --globalconfig=/etc/npmrc --globalignorefile=/etc/npmignore --prefix=/usr/local
+
+build/npm::
+	make doc
 
 install/npm::
 	dh_bash-completion
