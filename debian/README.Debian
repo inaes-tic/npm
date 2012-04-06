@@ -1,27 +1,32 @@
 npm for Debian
 ==============
 
-WARNING
--------
+global mode npm
+---------------
 
-root user can do a global install of npm by npm : `npm -g install npm`
-Npm and its debian package have been designed to support this gracefully.
+When run in global mode, npm is configured like this :
 
-It is nonetheless *strongly advised* to update npm through the debian package.
-To fall back to npm installed by debian package, simply remove /usr/local/bin/npm.
+	prefix=/usr/local
+	globalconfig=/etc/npmrc
+	globalignorefile=/etc/npmignore
 
+That means npm -g install mymodule will be installed in :
 
-npm default configuration for global mode
------------------------------------------
+	/usr/local/lib/node_modules/
 
-prefix=/usr/local
-globalconfig=/etc/npmrc
-globalignorefile=/etc/npmignore
+If mymodule installs executables, they go to :
 
-In particular, modules installed globally go to /usr/local/lib/node_modules,
-executables to /usr/local/bin, and man pages to /usr/local/share/man.
+	/usr/local/bin
+
+And man pages to
+
+	/usr/local/share/man
 
 Please read npm-config(1), npm-folders(1) and npm-link(1) man pages.
+
+This global configuration is kept across a global self update of npm.
+It is not guaranteed it will stay like this, so it's safer to update
+npm debian package instead.
 
 
 do not confuse with /usr/lib/nodejs
