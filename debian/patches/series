@@ -1,3 +1,4 @@
 2001_no-false-attribs.patch
 2002_use_ruby_ronn.patch
 2003_fix_doc.patch
+2004_remove_shebang.patch
