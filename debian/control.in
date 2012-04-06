@@ -7,8 +7,7 @@ Uploaders: Jérémy Lal <kapouer@melix.org>,
 Build-Depends: @cdbs@,
  bash-completion,
  nodejs,
- ruby-ronn,
- node-graceful-fs
+ ruby-ronn
 Standards-Version: 3.9.3
 Homepage: http://github.com/isaacs/npm
 Vcs-Git: git://git.debian.org/collab-maint/npm.git
