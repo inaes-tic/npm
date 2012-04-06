@@ -37,6 +37,7 @@ Files: AUTHORS
  debian/patches/2002_use_ruby_ronn.patch
  debian/patches/2003_fix_doc.patch
  debian/patches/2004_remove_shebang.patch
+ debian/patches/2005_index_build_dont_run_npm.patch
  debian/patches/series
  debian/rules
  debian/source/format
