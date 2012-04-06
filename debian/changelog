@@ -23,13 +23,12 @@ npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
     + Drop patch to fix completion, no longer needed.
     + Comply with license: replace Original Author's bug reporting email
       address and url with information on how to report debian bugs.
-    + Use ruby-ronn to build documentation.
+    + Use ruby-ronn instead of ronnjs to build documentation.
     + Small documentation fixes.
   * npm configuration has moved from /etc/npm/rootrc, /etc/npm/userrc
     to /etc/npmrc.
   * npm is also installed as a node module, so has man(3) documentation.
-  * Documentation :
-    + Building documentation using ruby-ronn.
+  * Documentation installation:
     + Fix gz extension, override lintian errors.
     + Install and register html with doc-base.
   * Use githubredir for watch file.
