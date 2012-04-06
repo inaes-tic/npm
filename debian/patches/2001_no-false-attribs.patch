@@ -1,5 +1,9 @@
 Description: Comply with Expat+no-false-attribs license
- Please see debian/copyright.
+ https://raw.github.com/isaacs/npm/594bbbd2/LICENSE
+ When npm encounters a problem of any sort, it displays a message
+ that links to its own bug tracker and mailing list.
+ The no-false-attribs clause of its license requires the npm debian
+ package to displays its own bug tracker instead.
 Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2012-03-13
