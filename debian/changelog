@@ -11,6 +11,8 @@ npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
       http://lists.debian.org/debian-legal/2012/03/msg00030.html
     + Extend copyright year of debian/* section.
     + Added sections for the included modules.
+    + Explain Source is repackaged.
+    + Added (non-official) Files-Excluded paragraph in header.
   * DFSG repackaging (using cdbs upstream-tarball.mk), remove :
     + non-free html/*/GubbleBum-Blocky.ttf
     + all modules that are dependencies.
