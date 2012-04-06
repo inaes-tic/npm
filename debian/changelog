@@ -3,6 +3,7 @@ npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
   * New upstream release.
 
   [ Jérémy Lal ]
+  * Get the source from github repository.
   * Bundled modules are package dependencies, except for those modules
     that are too bound to npm (proto-list, read, slide) to justify being
     packaged independently.
@@ -18,16 +19,20 @@ npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
     + all modules that are dependencies.
   * Patches :
     + Drop patches for missing shebangs, applied upstream.
+    + Remove shebang from completion.sh as it is non-executable.
     + Drop patch to fix completion, no longer needed.
     + Comply with license: replace Original Author's bug reporting email
       address and url with information on how to report debian bugs.
+    + Use ruby-ronn to build documentation.
+    + Small documentation fixes.
   * npm configuration has moved from /etc/npm/rootrc, /etc/npm/userrc
     to /etc/npmrc.
   * npm is also installed as a node module, so has man(3) documentation.
   * Documentation :
+    + Building documentation using ruby-ronn.
     + Fix gz extension, override lintian errors.
     + Install and register html with doc-base.
-  * Fixed watch file.
+  * Use githubredir for watch file.
   * README.Debian updated.
   * Use anonscm.d.o in control Vcs-* fields.
   * Bump policy compliance to standards-version 3.9.3.
