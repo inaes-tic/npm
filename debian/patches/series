@@ -3,3 +3,4 @@
 2002_use_ruby_ronn.patch
 2003_fix_doc.patch
 2004_remove_shebang.patch
+2005_index_build_dont_run_npm.patch
