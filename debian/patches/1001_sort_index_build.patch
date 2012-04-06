@@ -1,0 +1,15 @@
+Description: Sort globbed files when building index of documentation.
+Origin: upstream,https://github.com/isaacs/npm/commit/af6444fe
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2012-04-07
+--- a/scripts/index-build.js
++++ b/scripts/index-build.js
+@@ -12,6 +12,7 @@
+ 
+ function done (which) { return function (er, docs) {
+   if (er) throw er
++  docs.sort();
+   if (which === "api") apidocs = docs
+   else clidocs = docs
+ 
