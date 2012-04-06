@@ -1,4 +1,3 @@
 version=3
-opts=downloadurlmangle=s/.*v(.*)/http\:\/\/registry\.npmjs\.org\/npm\/-\/npm\-$1\.tgz/,\
-filenamemangle=s/.*v(.*)$/npm-$1\.tar\.gz/ \
-https://github.com/isaacs/npm/tags .*/tarball/v([\d.-]+)	
+opts=dversionmangle=s/~dfsg[\d]*$// \
+http://githubredir.debian.net/github/isaacs/npm .*?(\d[^/]*).tar.gz
