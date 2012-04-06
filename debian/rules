@@ -44,13 +44,7 @@ DEB_UPSTREAM_REPACKAGE_TAG = $(shell echo $(DEB_UPSTREAM_VERSION) | egrep -o "df
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(html/npm-.*\.png|debian/(changelog|copyright(|_hints|_newhints)))$
 
 clean::
-	rm -f npmrc
 	make docclean
-
-configure/npm::npmrc
-
-npmrc:
-	./configure --globalconfig=/etc/npmrc --globalignorefile=/etc/npmignore --prefix=/usr/local
 
 build/npm::
 	make doc

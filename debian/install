@@ -5,5 +5,5 @@ lib/utils/npm-registry-client usr/share/npm/lib/utils
 bin/*.js usr/share/npm/bin
 package.json usr/share/npm
 node_modules usr/share/npm
-npmrc usr/share/npm
+debian/npmrc usr/share/npm
 doc usr/share/npm
