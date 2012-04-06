@@ -13,10 +13,10 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/npm.git
 
 Package: npm
 Architecture: all
-Depends: nodejs (>= 0.6.12~),
- nodejs-dev (>= 0.6.12~),
+Depends: nodejs,
+ nodejs-dev,
  node-node-uuid,
- node-request (>= 2.9.153),
+ node-request,
  node-mkdirp,
  node-minimatch,
  node-semver,
