@@ -9,7 +9,8 @@ Build-Depends: cdbs,
  dh-buildinfo,
  bash-completion,
  nodejs,
- ruby-ronn
+ ruby-ronn,
+ node-graceful-fs
 Standards-Version: 3.9.3
 Homepage: http://github.com/isaacs/npm
 Vcs-Git: git://git.debian.org/collab-maint/npm.git
