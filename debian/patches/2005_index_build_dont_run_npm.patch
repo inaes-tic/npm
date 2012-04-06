@@ -1,0 +1,16 @@
+Description: Do not run cli.js as it depends on many packages.
+ Just put empty version in the docs.
+Forwarded: not-needed
+Author: Jérémy Lal <kapouer@melix.org>
+Last-Update: 2012-04-07
+--- a/scripts/doc-build.sh
++++ b/scripts/doc-build.sh
+@@ -4,7 +4,7 @@
+ dest=$2
+ name=$(basename ${src%.*})
+ date=$(date -u +'%Y-%M-%d %H:%m:%S')
+-version=$(node cli.js -v)
++version=""
+ 
+ mkdir -p $(dirname $dest)
+ 
