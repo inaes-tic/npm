@@ -51,7 +51,6 @@ npmrc:
 
 install/npm::
 	dh_bash-completion
-	chmod a+x debian/npm/etc/bash_completion.d/npm
 
 # Fix manpages file names : prepend npm- except for npm.1,
 # and link manpages from npm manroot to the ones in /usr/share/man
