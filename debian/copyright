@@ -2,6 +2,7 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: npm
 Upstream-Contact: https://github.com/isaacs/npm/issues
 Source: http://github.com/isaacs/npm
+ Repackaged, excluding non-DFSG files and unused external projects
 
 Files: *
  node_modules/read/*
