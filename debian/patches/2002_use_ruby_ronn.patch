@@ -1,4 +1,5 @@
 Description: Use ruby-ronn to generate documentation
+ Command-line options are different. Perl regexp after generation need fixes.
 Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2012-04-07
@@ -60,3 +61,16 @@ Last-Update: 2012-04-07
       cat html/docfoot.html )\
      | sed "s|@NAME@|$name|g" \
      | sed "s|@DATE@|$date|g" \
+@@ -62,8 +30,10 @@
+     | perl -pi -e 's/npm-npm/npm/g' \
+     | perl -pi -e 's/([^"-])(npm-)?README(\(1\))?/\1<a href="..\/doc\/README.html">README<\/a>/g' \
+     | perl -pi -e 's/<title><a href="..\/doc\/README.html">README<\/a><\/title>/<title>README<\/title>/g' \
+-    | perl -pi -e 's/([^"-])npm-([^\(]+)(\(1\))/\1<a href="..\/doc\/\2.html">\2\3<\/a>/g' \
+-    | perl -pi -e 's/([^"-])npm-([^\(]+)(\(3\))/\1<a href="..\/api\/\2.html">\2\3<\/a>/g' \
++    | perl -pi -e 's/([^"-])npm-([^\(<]+)(\(1\))/\1<a href="..\/doc\/\2.html">\2\3<\/a>/g' \
++    | perl -pi -e 's/([^"-])npm-([^\(<]+)(\(3\))/\1<a href="..\/api\/\2.html">\2\3<\/a>/g' \
++    | perl -pi -e 's/([^"-])npm-([^\(<]+)(<span class="s">)(\(1\))(<\/span>)/\1<a href="..\/doc\/\2.html">\2\4<\/a>/g' \
++    | perl -pi -e 's/([^"-])npm-([^\(<]+)(<span class="s">)(\(3\))(<\/span>)/\1<a href="..\/api\/\2.html">\2\4<\/a>/g' \
+     | perl -pi -e 's/([^"-])npm\(1\)/\1<a href="..\/doc\/npm.html">npm(1)<\/a>/g' \
+     | perl -pi -e 's/([^"-])npm\(3\)/\1<a href="..\/api\/npm.html">npm(3)<\/a>/g' \
+     | perl -pi -e 's/\([13]\)<\/a><\/h1>/<\/a><\/h1>/g' \
