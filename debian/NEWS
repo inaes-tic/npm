@@ -1,4 +1,4 @@
-npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
+npm (1.1.4~dfsg-1) unstable; urgency=low
 
   This release of npm does not support previous modules layouts.
   Modules are now installed in ./node_modules when used in the default
