@@ -1,12 +1,20 @@
-npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
+npm (1.1.4~dfsg-1) unstable; urgency=low
 
   * New upstream release.
 
   [ Jérémy Lal ]
   * Get the source from github repository.
-  * Bundled modules are package dependencies, except for those modules
-    that are too bound to npm (proto-list, read, slide) to justify being
-    packaged independently.
+  * Update package relations:
+    + Relax to build-depend unversioned on cdbs and debhelper, and to
+      depend unversioned on nodejs and O-dev: Required versions
+      satisfied even in oldstable.
+    + Build-depend on nodejs and ruby-ronn.
+    + Depend on node-node-uuid, node-request, node-mkdirp,
+      node-minimatch, node-semver, node-ini, node-graceful-fs,
+      node-abbrev, node-nopt, node-fstream, node-rimraf, node-tar,
+      node-which: Modules bundled with npm upstream yet sensible to
+      reuse by other projects are packaged separately for Debian
+      (exceptions are proto-list, read and slide).
   * Update copyright:
     + license changed to Expat+no-false-attribs, discussed at :
       http://lists.debian.org/debian-legal/2012/03/msg00030.html
@@ -44,7 +52,7 @@ npm (1.1.4~dfsg-1) UNRELEASED; urgency=low
     + Add Upstream-Name field.
   * Git-ignore .pc quilt subdir.
 
- -- Jérémy Lal <kapouer@melix.org>  Fri, 16 Sep 2011 16:24:19 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 07 Apr 2012 10:16:32 +0200
 
 npm (0.2.19-1) unstable; urgency=low
 
