@@ -1,3 +1,10 @@
+npm (1.1.4~dfsg-2) UNRELEASED; urgency=low
+
+  * debian/patches/1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
+    Upstream commit. Closes: #687052.
+
+ -- Jérémy Lal <kapouer@melix.org>  Sun, 09 Sep 2012 11:14:56 +0200
+
 npm (1.1.4~dfsg-1) unstable; urgency=low
 
   * New upstream release.
