@@ -1,4 +1,5 @@
 1001_sort_index_build.patch
+1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
 2001_no-false-attribs.patch
 2002_use_ruby_ronn.patch
 2003_fix_doc.patch
