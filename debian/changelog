@@ -1,5 +1,6 @@
 npm (1.1.4~dfsg-3) UNRELEASED; urgency=low
 
+  [ Jérémy Lal ]
   * debian/patches:
     + 1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
       Upstream commit. Closes: #687052.
@@ -9,6 +10,9 @@ npm (1.1.4~dfsg-3) UNRELEASED; urgency=low
       of most packages installed by npm is not broken.
       Closes: #686894.
   * Depend and Build-Depend on nodejs (>= 0.6.19~dfsg1-3).
+
+  [ Jonas Smedegaard ]
+  * Directly use github.com (not githubredir.debian.net).
 
  -- Jérémy Lal <kapouer@melix.org>  Fri, 21 Sep 2012 14:34:04 +0200
 
