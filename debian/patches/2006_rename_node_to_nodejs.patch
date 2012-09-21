@@ -123,7 +123,7 @@ Last-Update: 2012-09-21
    if (!isNaN(opts.uid)) opts.uid = +opts.uid
    if (!isNaN(opts.gid)) opts.gid = +opts.gid
 +  c = c.replace(/^\s*node(\s+|$)/gm, function(m, p1, off, s) {
-+    return process.execPath + (p1.length ? " " : "")
++    return "nodejs" + (p1.length ? " " : "")
 +  })
    var name = c +" "+ a.map(JSON.stringify).join(" ")
    log.silly([c, a, opts.cwd], "spawning")
