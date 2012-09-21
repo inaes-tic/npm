@@ -1,4 +1,4 @@
-npm (1.1.4~dfsg-3) UNRELEASED; urgency=low
+npm (1.1.4~dfsg-2) unstable; urgency=low
 
   [ Jérémy Lal ]
   * debian/patches:
@@ -16,7 +16,7 @@ npm (1.1.4~dfsg-3) UNRELEASED; urgency=low
   * Directly use github.com (not broken githubredir.debian.net).
   * Allow Debian-Maintainer uploads.
 
- -- Jérémy Lal <kapouer@melix.org>  Fri, 21 Sep 2012 14:34:04 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 22 Sep 2012 00:19:00 +0200
 
 npm (1.1.4~dfsg-1) unstable; urgency=low
 

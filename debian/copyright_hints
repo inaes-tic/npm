@@ -33,11 +33,13 @@ Files: AUTHORS
  debian/npm.bash-completion
  debian/npmrc
  debian/patches/1001_sort_index_build.patch
+ debian/patches/1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
  debian/patches/2001_no-false-attribs.patch
  debian/patches/2002_use_ruby_ronn.patch
  debian/patches/2003_fix_doc.patch
  debian/patches/2004_remove_shebang.patch
  debian/patches/2005_index_build_dont_run_npm.patch
+ debian/patches/2006_rename_node_to_nodejs.patch
  debian/patches/series
  debian/rules
  debian/source/format
