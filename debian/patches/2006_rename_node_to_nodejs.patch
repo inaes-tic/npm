@@ -118,14 +118,12 @@ Last-Update: 2012-09-21
  // windows: running "npm blah" in this folder will invoke WSH, not node.
 --- a/lib/utils/lifecycle.js
 +++ b/lib/utils/lifecycle.js
-@@ -81,6 +81,11 @@
+@@ -81,6 +81,9 @@
    if (packageLifecycle) {
      // define this here so it's available to all scripts.
      env.npm_lifecycle_script = pkg.scripts[stage]
 +    if (env.npm_lifecycle_script) {
-+      env.npm_lifecycle_script = env.npm_lifecycle_script.replace(/^\s*node(\s+|$)/gm, function(m, p1, off, s) {
-+        return "nodejs" + (p1.length ? " " : "")
-+      })
++      env.npm_lifecycle_script = env.npm_lifecycle_script.replace(/\bnode\b/gm, "nodejs")
 +    }
    }
  
