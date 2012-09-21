@@ -1,4 +1,7 @@
-Description: Change shell command from node to nodejs
+Description: Change shell command from node to nodejs. Warn on failure.
+ If a lifecycle script fails, it might be because "node" command was needed.
+ We don't automatically try to fix it, and instead warn the user that might
+ have been the cause, and where to find more information.
 Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2012-09-21
