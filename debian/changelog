@@ -8,7 +8,9 @@ npm (1.1.4~dfsg-3) UNRELEASED; urgency=low
       node to nodejs in shebangs and makefile, print a warning and refer
       to nodejs README on failure of a package lifecycle script.
       Closes: #686894.
-  * Depend and Build-Depend on nodejs (>= 0.6.19~dfsg1-3).
+  * debian/control:
+    + Tighten nodejs version to the one after the rename.
+    + Suggests: build-essential. Closes: #681356.
 
   [ Jonas Smedegaard ]
   * Directly use github.com (not broken githubredir.debian.net).
