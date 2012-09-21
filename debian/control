@@ -33,6 +33,7 @@ Depends: nodejs (>= 0.6.19~dfsg1-3),
  node-tar,
  node-which,
  ${misc:Depends}
+Suggests: build-essential
 Description: package manager for Node.js
  Node.js is an event-based server-side javascript engine.
  .
