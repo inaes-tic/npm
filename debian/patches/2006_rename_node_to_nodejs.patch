@@ -18,7 +18,7 @@ Last-Update: 2012-09-21
 +++ b/scripts/index-build.js
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env node
-+#!/usr/bin/env nodejs
++#!/usr/bin/nodejs
  var fs = require("fs")
    , path = require("path")
    , cli = path.resolve(__dirname, "..", "doc", "cli")
@@ -48,7 +48,7 @@ Last-Update: 2012-09-21
 +++ b/Makefile
 @@ -1,4 +1,5 @@
  SHELL = bash
-+node = /usr/bin/nodejs
++node = nodejs
  
  markdowns = $(shell find doc -name '*.md' | grep -v 'index') README.md
  
@@ -106,13 +106,13 @@ Last-Update: 2012-09-21
 +++ b/cli.js
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env node
-+#!/usr/bin/env nodejs
++#!/usr/bin/nodejs
  require("./bin/npm-cli.js")
 --- a/bin/npm-cli.js
 +++ b/bin/npm-cli.js
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env node
-+#!/usr/bin/env nodejs
++#!/usr/bin/nodejs
  ;(function () { // wrapper in case we're in module_context mode
  
  // windows: running "npm blah" in this folder will invoke WSH, not node.
