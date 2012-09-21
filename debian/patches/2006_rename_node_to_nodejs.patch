@@ -118,14 +118,13 @@ Last-Update: 2012-09-21
  // windows: running "npm blah" in this folder will invoke WSH, not node.
 --- a/lib/utils/exec.js
 +++ b/lib/utils/exec.js
-@@ -113,6 +113,10 @@
- 
+@@ -108,6 +108,9 @@
+   if (!isNaN(gid)) opts.gid = gid
+   if (!isNaN(opts.uid)) opts.uid = +opts.uid
    if (!isNaN(opts.gid)) opts.gid = +opts.gid
- 
 +  c = c.replace(/^\s*node(\s+|$)/gm, function(m, p1, off, s) {
 +    return process.execPath + (p1.length ? " " : "")
 +  })
-+
    var name = c +" "+ a.map(JSON.stringify).join(" ")
    log.silly([c, a, opts.cwd], "spawning")
    cp = child_process.spawn(c, a, opts)
