@@ -1,7 +1,11 @@
 npm (1.1.4~dfsg-2) UNRELEASED; urgency=low
 
-  * debian/patches/1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
-    Upstream commit. Closes: #687052.
+  * debian/patches:
+    + 1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
+      Upstream commit. Closes: #687052.
+    + 2006_rename_node_to_nodejs.patch replaces "node" by
+      process.execPath in all spawned commands, so that npm package
+      lifecycle is not broken without nodejs-legacy. Closes: #686894.
 
  -- Jérémy Lal <kapouer@melix.org>  Sun, 09 Sep 2012 11:14:56 +0200
 
