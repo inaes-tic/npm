@@ -6,7 +6,7 @@ Uploaders: Jérémy Lal <kapouer@melix.org>,
  Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@,
  bash-completion,
- nodejs,
+ nodejs (>= 0.6.19~dfsg1-3),
  ruby-ronn
 Standards-Version: 3.9.3
 Homepage: http://github.com/isaacs/npm
@@ -15,7 +15,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/npm.git
 
 Package: npm
 Architecture: all
-Depends: nodejs,
+Depends: nodejs (>= 0.6.19~dfsg1-3),
  nodejs-dev,
  node-node-uuid,
  node-request,
@@ -31,6 +31,7 @@ Depends: nodejs,
  node-tar,
  node-which,
  ${misc:Depends}
+Suggests: build-essential
 Description: package manager for Node.js
  Node.js is an event-based server-side javascript engine.
  .
