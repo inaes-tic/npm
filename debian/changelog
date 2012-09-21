@@ -1,13 +1,16 @@
-npm (1.1.4~dfsg-2) UNRELEASED; urgency=low
+npm (1.1.4~dfsg-3) UNRELEASED; urgency=low
 
   * debian/patches:
     + 1002_only_use_numeric_UIDs_and_GIDs_in_spawn.patch
       Upstream commit. Closes: #687052.
-    + 2006_rename_node_to_nodejs.patch replaces "node" by
-      process.execPath in all spawned commands, so that npm package
-      lifecycle is not broken without nodejs-legacy. Closes: #686894.
+    + 2006_rename_node_to_nodejs.patch : apart from trivial rename
+      of node to nodejs in shebangs and makefile, replaces "node" by
+      process.execPath in all spawned commands, so that the lifecycle
+      of most packages installed by npm is not broken.
+      Closes: #686894.
+  * Depend and Build-Depend on nodejs (>= 0.6.19~dfsg1-3).
 
- -- Jérémy Lal <kapouer@melix.org>  Sun, 09 Sep 2012 11:14:56 +0200
+ -- Jérémy Lal <kapouer@melix.org>  Fri, 21 Sep 2012 14:34:04 +0200
 
 npm (1.1.4~dfsg-1) unstable; urgency=low
 
