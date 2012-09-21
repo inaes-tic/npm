@@ -32,28 +32,14 @@ Last-Update: 2012-09-09
    log.silly(cmd+" "+args.map(JSON.stringify).join(" "), "exec")
    var stdout = ""
      , stderr = ""
-@@ -77,6 +87,7 @@
-     cb(errState = new Error(
-       "Failed "+(cp1.name || "<unknown>")+"\nexited with "+code))
-   })
-+
-   cp2.on("exit", function (code) {
-     cp2._exited = true
-     if (errState) return
-@@ -94,10 +105,14 @@
+@@ -94,8 +104,8 @@
               , env : env || process.env
               , cwd : cwd || null }
      , cp
 -  if (uid != null) opts.uid = uid
 -  if (gid != null) opts.gid = gid
-+
 +  if (!isNaN(uid)) opts.uid = uid
 +  if (!isNaN(gid)) opts.gid = gid
-+
    if (!isNaN(opts.uid)) opts.uid = +opts.uid
-+
    if (!isNaN(opts.gid)) opts.gid = +opts.gid
-+
    var name = c +" "+ a.map(JSON.stringify).join(" ")
-   log.silly([c, a, opts.cwd], "spawning")
-   cp = child_process.spawn(c, a, opts)
