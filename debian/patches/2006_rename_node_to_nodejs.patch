@@ -118,13 +118,15 @@ Last-Update: 2012-09-21
  // windows: running "npm blah" in this folder will invoke WSH, not node.
 --- a/lib/utils/lifecycle.js
 +++ b/lib/utils/lifecycle.js
-@@ -81,6 +81,9 @@
-   if (packageLifecycle) {
-     // define this here so it's available to all scripts.
-     env.npm_lifecycle_script = pkg.scripts[stage]
-+    if (env.npm_lifecycle_script) {
-+      env.npm_lifecycle_script = env.npm_lifecycle_script.replace(/\bnode\b/gm, "nodejs")
-+    }
-   }
- 
-   if (failOk) {
+@@ -153,7 +153,10 @@
+         er.stage = stage
+         er.script = env.npm_lifecycle_script
+         er.pkgname = pkg.name
+-        return cb(er)
++        cb(er)
++        log.warn('', 'This failure might be due to the use of legacy binary "node"')
++        log.warn("For further explanations, please read\n/usr/share/doc/nodejs/README.Debian\n")
++        return
+       } else if (er) {
+         log.error(er, pkg._id+"."+stage)
+         log.error("failed, but continuing anyway", pkg._id+"."+stage)
