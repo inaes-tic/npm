@@ -13,7 +13,7 @@ Build-Depends: cdbs,
  ruby-ronn
 Standards-Version: 3.9.3
 Homepage: http://github.com/isaacs/npm
-Vcs-Git: git://git.debian.org/collab-maint/npm.git
+Vcs-Git: git://git.debian.org/git/collab-maint/npm.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/npm.git
 
 Package: npm
