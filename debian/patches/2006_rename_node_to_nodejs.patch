@@ -6,28 +6,21 @@ Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2012-09-21
 
---- a/test/packages/npm-test-shrinkwrap/test.sh
-+++ b/test/packages/npm-test-shrinkwrap/test.sh
-@@ -3,7 +3,7 @@
- # ensure that we get the npm being tested, not some global thing.
- npmbin=$npm_config_prefix/bin/npm
- npm () {
--  node $npmbin "$@"
-+  nodejs $npmbin "$@"
- }
- 
- # work around the weird env we're in, as part of npm's test
---- a/scripts/index-build.js
-+++ b/scripts/index-build.js
+Index: npm/scripts/index-build.js
+===================================================================
+--- npm.orig/scripts/index-build.js
++++ npm/scripts/index-build.js
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env node
 +#!/usr/bin/nodejs
  var fs = require("fs")
    , path = require("path")
    , cli = path.resolve(__dirname, "..", "doc", "cli")
---- a/scripts/clean-old.sh
-+++ b/scripts/clean-old.sh
-@@ -26,7 +26,7 @@
+Index: npm/scripts/clean-old.sh
+===================================================================
+--- npm.orig/scripts/clean-old.sh
++++ npm/scripts/clean-old.sh
+@@ -26,7 +26,7 @@ if [ "x$npm_config_prefix" != "x" ]; the
  else
    node="$NODE"
    if [ "x$node" = "x" ]; then
@@ -36,9 +29,11 @@ Last-Update: 2012-09-21
    fi
    if [ "x$node" = "x" ]; then
      echo "Can't find node to determine prefix. Aborting."
---- a/scripts/install.sh
-+++ b/scripts/install.sh
-@@ -42,7 +42,7 @@
+Index: npm/scripts/install.sh
+===================================================================
+--- npm.orig/scripts/install.sh
++++ npm/scripts/install.sh
+@@ -42,7 +42,7 @@ fi
  export npm_config_loglevel
  
  # make sure that node exists
@@ -47,15 +42,17 @@ Last-Update: 2012-09-21
  ret=$?
  if [ $ret -eq 0 ] && [ -x "$node" ]; then
    (exit 0)
---- a/Makefile
-+++ b/Makefile
+Index: npm/Makefile
+===================================================================
+--- npm.orig/Makefile
++++ npm/Makefile
 @@ -1,4 +1,5 @@
  SHELL = bash
 +node = nodejs
  
  markdowns = $(shell find doc -name '*.md' | grep -v 'index') README.md
  
-@@ -33,23 +34,23 @@
+@@ -33,23 +34,23 @@ latest:
  	@echo "Installing latest published npm"
  	@echo "Use 'make install' or 'make link' to install the code"
  	@echo "in this folder that you're looking at right now."
@@ -84,7 +81,7 @@ Last-Update: 2012-09-21
  
  doc: $(mandocs) $(htmldocs)
  
-@@ -89,17 +90,17 @@
+@@ -89,17 +90,17 @@ html/api/%.html: doc/api/%.md html/doche
  	scripts/doc-build.sh $< $@
  
  doc/cli/index.md: $(markdowns) scripts/index-build.js scripts/doc-build.sh package.json
@@ -92,8 +89,8 @@ Last-Update: 2012-09-21
 +	$(node) scripts/index-build.js > $@
  
  node_modules/.bin/ronn:
--	node cli.js install https://github.com/isaacs/ronnjs/tarball/master
-+	$(node) cli.js install https://github.com/isaacs/ronnjs/tarball/master
+-	node cli.js install ronn
++	$(node) cli.js install ronn
  
  doc: man
  
@@ -103,33 +100,39 @@ Last-Update: 2012-09-21
 -	node cli.js test
 +	$(node) cli.js test
  
- version: link
- 	git add package.json &&\
---- a/cli.js
-+++ b/cli.js
+ publish: link doc
+ 	@git push origin :v$(shell npm -v) || true
+Index: npm/cli.js
+===================================================================
+--- npm.orig/cli.js
++++ npm/cli.js
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env node
 +#!/usr/bin/nodejs
  require("./bin/npm-cli.js")
---- a/bin/npm-cli.js
-+++ b/bin/npm-cli.js
+Index: npm/bin/npm-cli.js
+===================================================================
+--- npm.orig/bin/npm-cli.js
++++ npm/bin/npm-cli.js
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env node
 +#!/usr/bin/nodejs
  ;(function () { // wrapper in case we're in module_context mode
  
  // windows: running "npm blah" in this folder will invoke WSH, not node.
---- a/lib/utils/lifecycle.js
-+++ b/lib/utils/lifecycle.js
-@@ -153,7 +153,10 @@
-         er.stage = stage
-         er.script = env.npm_lifecycle_script
-         er.pkgname = pkg.name
--        return cb(er)
-+        cb(er)
-+        log.warn('', 'This failure might be due to the use of legacy binary "node"')
-+        log.warn("For further explanations, please read\n/usr/share/doc/nodejs/README.Debian\n")
-+        return
-       } else if (er) {
-         log.error(er, pkg._id+"."+stage)
-         log.error("failed, but continuing anyway", pkg._id+"."+stage)
+Index: npm/lib/utils/lifecycle.js
+===================================================================
+--- npm.orig/lib/utils/lifecycle.js
++++ npm/lib/utils/lifecycle.js
+@@ -164,7 +164,10 @@ function runPackageLifecycle (pkg, env,
+       er.stage = stage
+       er.script = env.npm_lifecycle_script
+       er.pkgname = pkg.name
+-      return cb(er)
++      cb(er)
++      log.warn('', 'This failure might be due to the use of legacy binary "node"')
++      log.warn("For further explanations, please read\n/usr/share/doc/nodejs/README.Debian\n")
++      return
+     } else if (er) {
+       log.error(pkg._id+"."+stage, er)
+       log.error(pkg._id+"."+stage, "continuing anyway")

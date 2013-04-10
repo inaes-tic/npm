@@ -7,18 +7,20 @@ Description: Comply with Expat+no-false-attribs license
 Forwarded: not-needed
 Author: Jérémy Lal <kapouer@melix.org>
 Last-Update: 2012-03-13
---- a/lib/utils/error-handler.js
-+++ b/lib/utils/error-handler.js
-@@ -169,9 +169,9 @@
+Index: npm/lib/utils/error-handler.js
+===================================================================
+--- npm.orig/lib/utils/error-handler.js
++++ npm/lib/utils/error-handler.js
+@@ -230,9 +230,9 @@ function errorHandler (er) {
    default:
-     log.error(er)
-     log.error(["You may report this log at:"
--              ,"    <http://github.com/isaacs/npm/issues>"
--              ,"or email it to:"
--              ,"    <npm-@googlegroups.com>"
-+              ,"    <http://bugs.debian.org/npm>"
-+              ,"or use"
-+              ,"    reportbug --attach "+path.resolve("npm-debug.log")+" npm"
-               ].join("\n"))
+     log.error("", er.stack || er.message || er)
+     log.error("", ["If you need help, you may report this log at:"
+-                  ,"    <http://github.com/isaacs/npm/issues>"
+-                  ,"or email it to:"
+-                  ,"    <npm-@googlegroups.com>"
++                  ,"    <http://bugs.debian.org/npm>"
++                  ,"or use"
++                  ,"    reportbug --attach "+path.resolve("npm-debug.log")+" npm"
+                   ].join("\n"))
+     printStack = false
      break
-   }
