@@ -1,7 +1,6 @@
 lib/*.js usr/share/npm/lib
 lib/utils/*.js usr/share/npm/lib/utils
 lib/utils/completion usr/share/npm/lib/utils
-lib/utils/npm-registry-client usr/share/npm/lib/utils
 bin/*.js usr/share/npm/bin
 package.json usr/share/npm
 node_modules usr/share/npm

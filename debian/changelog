@@ -1,3 +1,9 @@
+npm (1.2.18~dfsg-1) unstable; urgency=low
+
+  * New Upstream Release
+
+ -- Niv Sardi <xaiki@debian.org>  Wed, 10 Apr 2013 10:57:50 -0300
+
 npm (1.1.4~dfsg-2) unstable; urgency=low
 
   [ Jérémy Lal ]
