@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Wed, 10 Apr 2013 10:57:50 -0300
+Source: npm
+Binary: npm
+Architecture: source all
+Version: 1.2.18-1
+Distribution: unstable
+Urgency: low
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Changed-By: Niv Sardi <xaiki@debian.org>
+Description: 
+ npm        - package manager for Node.js
+Changes: 
+ npm (1.2.18-1) unstable; urgency=low
+ .
+   * New Upstream Release
+Checksums-Sha1: 
+ 494f14313e42130beaf9ba7786929d45bf2f10d7 1112 npm_1.2.18-1.dsc
+ c51a664485a8e5f7c989f836f97a71d264918f86 2288396 npm_1.2.18.orig.tar.gz
+ 9ebe0b7596e2aa2980d7408af9bf0c44291a7b4a 12494 npm_1.2.18-1.debian.tar.gz
+ b6aa7fec019f98fae8e130226ae7d91c36983382 1791590 npm_1.2.18-1_all.deb
+Checksums-Sha256: 
+ 3a3c8d64af9031a0e45c9ed46ea522ef6b70ee78d72370fbfdf195a26b2a406c 1112 npm_1.2.18-1.dsc
+ fe748fed8721566c950da53b321bb1961d626f14ecb0aa6a174be902b07c37f0 2288396 npm_1.2.18.orig.tar.gz
+ d5bb220da15e337cd3a2f1fec9560424481a9f2702fa0fbfa10287021080bbc9 12494 npm_1.2.18-1.debian.tar.gz
+ bb630b4b3617207c37a8cb9ba7ecd57eec57f7b23ccfc133f6d78fbcaf40a963 1791590 npm_1.2.18-1_all.deb
+Files: 
+ 3f92c7ecfa3fcbedbd5df76a63bb0ac0 1112 web extra npm_1.2.18-1.dsc
+ 067b0fe4c69633f14e2fce36b69fa92a 2288396 web extra npm_1.2.18.orig.tar.gz
+ 6105989f3365d8e22289eb59cafca090 12494 web extra npm_1.2.18-1.debian.tar.gz
+ 22557fda54413b3c4e65f55a5b6d9983 1791590 web extra npm_1.2.18-1_all.deb
